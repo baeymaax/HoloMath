@@ -11,13 +11,18 @@ public class SliderController : MonoBehaviour
     public PinchSlider sliderB;
     public PinchSlider sliderC;
 
-    private void OnEnable()
+    void Awake()
     {
-        if (sliderA != null) sliderA.OnValueUpdated.AddListener(OnSliderAUpdated);
-        if (sliderB != null) sliderB.OnValueUpdated.AddListener(OnSliderBUpdated);
-        if (sliderC != null) sliderC.OnValueUpdated.AddListener(OnSliderCUpdated);
+        GameObject sliderObjectA = GameObject.Find("SliderA");
+        sliderA = sliderObjectA.GetComponent<PinchSlider>();
+        GameObject sliderObjectB = GameObject.Find("SliderB");
+        sliderB = sliderObjectB.GetComponent<PinchSlider>();
+        GameObject sliderObjectC = GameObject.Find("SliderC");
+        sliderC = sliderObjectC.GetComponent<PinchSlider>();
+        sliderA.OnValueUpdated.AddListener(OnSliderAUpdated);
+        sliderB.OnValueUpdated.AddListener(OnSliderBUpdated);
+        sliderC.OnValueUpdated.AddListener(OnSliderCUpdated);
     }
-
     private void OnDisable()
     {
         if (sliderA != null) sliderA.OnValueUpdated.RemoveListener(OnSliderAUpdated);

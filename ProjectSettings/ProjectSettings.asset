@@ -46,7 +46,7 @@ PlayerSettings:
   defaultScreenHeight: 1080
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
-  m_StereoRenderingPath: 0
+  m_StereoRenderingPath: 2
   m_ActiveColorSpace: 0
   m_MTRendering: 1
   mipStripping: 0
@@ -648,7 +648,7 @@ PlayerSettings:
   cloudProjectId: b62b35d2-859d-4cdf-baba-febf5f4e4f83
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
+  projectName: HoloMath 2025-05-08_17-27-07
   organizationId: adamchung
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
