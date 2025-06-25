@@ -13,6 +13,17 @@ public class vThirdPersonCamera : MonoBehaviour
     [Tooltip("Debug purposes, lock the camera behind the character for better align the states")]
     public bool lockCamera;
 
+    [Header("Camera Mode Settings")]
+    [Tooltip("Current camera mode")]
+    public CameraMode currentMode = CameraMode.ThirdPerson;
+    [Tooltip("Speed of transition between first and third person")]
+    public float modeTransitionSpeed = 5f;
+    [Tooltip("Key to toggle between camera modes")]
+    public KeyCode toggleModeKey = KeyCode.R;
+    [Tooltip("Auto-switch to first person when aiming")]
+    public bool autoFirstPersonWhenAiming = true;
+
+    [Header("Third Person Settings")]
     public float rightOffset = 0f;
     public float defaultDistance = 2.5f;
     public float height = 1.4f;
@@ -21,6 +32,19 @@ public class vThirdPersonCamera : MonoBehaviour
     public float yMouseSensitivity = 3f;
     public float yMinLimit = -40f;
     public float yMaxLimit = 80f;
+
+    [Header("First Person Settings")]
+    public float firstPersonHeight = 1.7f;
+    public float firstPersonSensitivity = 2f;
+    public float firstPersonYMinLimit = -60f;
+    public float firstPersonYMaxLimit = 60f;
+    public Vector3 firstPersonOffset = new Vector3(0, 0, 0.1f);
+
+    public enum CameraMode
+    {
+        FirstPerson,
+        ThirdPerson
+    }
 
     #endregion
 
@@ -44,9 +68,11 @@ public class vThirdPersonCamera : MonoBehaviour
     private Vector3 desired_cPos;
     private Camera _camera;
     private float distance = 5f;
+    private float targetDistance = 5f;
     private float mouseY = 0f;
     private float mouseX = 0f;
     private float currentHeight;
+    private float targetHeight;
     private float cullingDistance;
     private float checkHeightRadius = 0.4f;
     private float clipPlaneMargin = 0f;
@@ -56,11 +82,35 @@ public class vThirdPersonCamera : MonoBehaviour
     private float cullingHeight = 0.2f;
     private float cullingMinDist = 0.1f;
 
+    // Mode transition variables
+    private CameraMode previousMode;
+    private bool isTransitioning = false;
+    private float transitionProgress = 0f;
+    private Vector3 firstPersonTargetPos;
+    private Vector3 thirdPersonTargetPos;
+    private Quaternion firstPersonTargetRot;
+    private Quaternion thirdPersonTargetRot;
+
     #endregion
 
     void Start()
     {
         Init();
+    }
+
+    void Update()
+    {
+        // Handle mode switching input
+        if (Input.GetKeyDown(toggleModeKey))
+        {
+            ToggleCameraMode();
+        }
+
+        // Handle smooth transitions
+        if (isTransitioning)
+        {
+            UpdateTransition();
+        }
     }
 
     public void Init()
@@ -80,8 +130,23 @@ public class vThirdPersonCamera : MonoBehaviour
         mouseY = currentTarget.eulerAngles.x;
         mouseX = currentTarget.eulerAngles.y;
 
-        distance = defaultDistance;
-        currentHeight = height;
+        // Initialize based on current mode
+        if (currentMode == CameraMode.FirstPerson)
+        {
+            distance = 0f;
+            targetDistance = 0f;
+            currentHeight = firstPersonHeight;
+            targetHeight = firstPersonHeight;
+        }
+        else
+        {
+            distance = defaultDistance;
+            targetDistance = defaultDistance;
+            currentHeight = height;
+            targetHeight = height;
+        }
+
+        previousMode = currentMode;
     }
 
     void FixedUpdate()
@@ -89,6 +154,72 @@ public class vThirdPersonCamera : MonoBehaviour
         if (target == null || targetLookAt == null) return;
 
         CameraMovement();
+    }
+
+    /// <summary>
+    /// Toggle between first and third person camera modes
+    /// </summary>
+    public void ToggleCameraMode()
+    {
+        previousMode = currentMode;
+        currentMode = currentMode == CameraMode.FirstPerson ? CameraMode.ThirdPerson : CameraMode.FirstPerson;
+        StartTransition();
+    }
+
+    /// <summary>
+    /// Set camera mode directly
+    /// </summary>
+    /// <param name="mode"></param>
+    public void SetCameraMode(CameraMode mode)
+    {
+        if (currentMode != mode)
+        {
+            previousMode = currentMode;
+            currentMode = mode;
+            StartTransition();
+        }
+    }
+
+    /// <summary>
+    /// Start smooth transition between camera modes
+    /// </summary>
+    private void StartTransition()
+    {
+        isTransitioning = true;
+        transitionProgress = 0f;
+
+        // Set target values based on new mode
+        if (currentMode == CameraMode.FirstPerson)
+        {
+            targetDistance = 0f;
+            targetHeight = firstPersonHeight;
+        }
+        else
+        {
+            targetDistance = defaultDistance;
+            targetHeight = height;
+        }
+    }
+
+    /// <summary>
+    /// Update smooth transition between camera modes
+    /// </summary>
+    private void UpdateTransition()
+    {
+        transitionProgress += modeTransitionSpeed * Time.deltaTime;
+        
+        if (transitionProgress >= 1f)
+        {
+            transitionProgress = 1f;
+            isTransitioning = false;
+        }
+
+        // Smooth interpolation of camera parameters
+        float smoothProgress = Mathf.SmoothStep(0f, 1f, transitionProgress);
+        
+        // Interpolate distance and height
+        distance = Mathf.Lerp(distance, targetDistance, smoothProgress);
+        currentHeight = Mathf.Lerp(currentHeight, targetHeight, smoothProgress);
     }
 
     /// <summary>
@@ -126,15 +257,24 @@ public class vThirdPersonCamera : MonoBehaviour
     /// <param name="y"></param>
     public void RotateCamera(float x, float y)
     {
-        // free rotation 
-        mouseX += x * xMouseSensitivity;
-        mouseY -= y * yMouseSensitivity;
+        // Adjust sensitivity based on camera mode
+        float currentXSensitivity = currentMode == CameraMode.FirstPerson ? firstPersonSensitivity : xMouseSensitivity;
+        float currentYSensitivity = currentMode == CameraMode.FirstPerson ? firstPersonSensitivity : yMouseSensitivity;
+        
+        // Free rotation 
+        mouseX += x * currentXSensitivity;
+        mouseY -= y * currentYSensitivity;
 
         movementSpeed.x = x;
         movementSpeed.y = -y;
+        
         if (!lockCamera)
         {
-            mouseY = vExtensions.ClampAngle(mouseY, yMinLimit, yMaxLimit);
+            // Use different limits for first person vs third person
+            float currentYMinLimit = currentMode == CameraMode.FirstPerson ? firstPersonYMinLimit : yMinLimit;
+            float currentYMaxLimit = currentMode == CameraMode.FirstPerson ? firstPersonYMaxLimit : yMaxLimit;
+            
+            mouseY = vExtensions.ClampAngle(mouseY, currentYMinLimit, currentYMaxLimit);
             mouseX = vExtensions.ClampAngle(mouseX, xMinLimit, xMaxLimit);
         }
         else
@@ -152,14 +292,61 @@ public class vThirdPersonCamera : MonoBehaviour
         if (currentTarget == null)
             return;
 
-        distance = Mathf.Lerp(distance, defaultDistance, smoothFollow * Time.deltaTime);
+        // Smooth distance interpolation
+        distance = Mathf.Lerp(distance, targetDistance, smoothFollow * Time.deltaTime);
         cullingDistance = Mathf.Lerp(cullingDistance, distance, Time.deltaTime);
-        var camDir = (forward * targetLookAt.forward) + (rightOffset * targetLookAt.right);
 
+        var camDir = (forward * targetLookAt.forward) + (rightOffset * targetLookAt.right);
         camDir = camDir.normalized;
 
         var targetPos = new Vector3(currentTarget.position.x, currentTarget.position.y + offSetPlayerPivot, currentTarget.position.z);
         currentTargetPos = targetPos;
+
+        // Different positioning logic for first person vs third person
+        if (currentMode == CameraMode.FirstPerson)
+        {
+            FirstPersonCameraMovement(targetPos, camDir);
+        }
+        else
+        {
+            ThirdPersonCameraMovement(targetPos, camDir);
+        }
+
+        movementSpeed = Vector2.zero;
+    }
+
+    /// <summary>
+    /// First person camera movement logic
+    /// </summary>
+    #region FirstPersonCamera  
+    void FirstPersonCameraMovement(Vector3 targetPos, Vector3 camDir)
+    {
+        // Position camera at character's head level
+        desired_cPos = targetPos + new Vector3(0, currentHeight, 0);
+        current_cPos = desired_cPos;
+
+        // Add slight offset to prevent clipping with character model
+        Vector3 firstPersonPos = current_cPos + (currentTarget.forward * firstPersonOffset.z) + 
+                                (currentTarget.right * firstPersonOffset.x) + 
+                                (currentTarget.up * firstPersonOffset.y);
+
+        targetLookAt.position = current_cPos;
+
+        // Rotation for first person
+        Quaternion newRot = Quaternion.Euler(mouseY, mouseX, 0);
+        targetLookAt.rotation = Quaternion.Slerp(targetLookAt.rotation, newRot, smoothCameraRotation * Time.deltaTime);
+
+        // Set camera position and rotation
+        transform.position = firstPersonPos;
+        transform.rotation = targetLookAt.rotation;
+    }
+    #endregion
+    /// <summary>
+    /// Third person camera movement logic (original logic)
+    /// </summary>
+    #region ThirdPersonCamera  
+    void ThirdPersonCameraMovement(Vector3 targetPos, Vector3 camDir)
+    {
         desired_cPos = targetPos + new Vector3(0, height, 0);
         current_cPos = currentTargetPos + new Vector3(0, currentHeight, 0);
         RaycastHit hitInfo;
@@ -193,8 +380,11 @@ public class vThirdPersonCamera : MonoBehaviour
         {
             currentHeight = height;
         }
+
         //Check if target position with culling height applied is not blocked
-        if (CullingRayCast(current_cPos, planePoints, out hitInfo, distance, cullingLayer, Color.cyan)) distance = Mathf.Clamp(cullingDistance, 0.0f, defaultDistance);
+        if (CullingRayCast(current_cPos, planePoints, out hitInfo, distance, cullingLayer, Color.cyan)) 
+            distance = Mathf.Clamp(cullingDistance, 0.0f, defaultDistance);
+
         var lookPoint = current_cPos + targetLookAt.forward * 2f;
         lookPoint += (targetLookAt.right * Vector3.Dot(camDir * (distance), targetLookAt.right));
         targetLookAt.position = current_cPos;
@@ -205,8 +395,8 @@ public class vThirdPersonCamera : MonoBehaviour
         var rotation = Quaternion.LookRotation((lookPoint) - transform.position);
 
         transform.rotation = rotation;
-        movementSpeed = Vector2.zero;
     }
+    #endregion
 
     /// <summary>
     /// Custom Raycast using NearClipPlanesPoints
@@ -246,5 +436,32 @@ public class vThirdPersonCamera : MonoBehaviour
         }
 
         return hitInfo.collider && value;
+    }
+
+    /// <summary>
+    /// Get current camera mode
+    /// </summary>
+    /// <returns></returns>
+    public CameraMode GetCurrentMode()
+    {
+        return currentMode;
+    }
+
+    /// <summary>
+    /// Check if camera is in first person mode
+    /// </summary>
+    /// <returns></returns>
+    public bool IsFirstPerson()
+    {
+        return currentMode == CameraMode.FirstPerson;
+    }
+
+    /// <summary>
+    /// Check if camera is currently transitioning between modes
+    /// </summary>
+    /// <returns></returns>
+    public bool IsTransitioning()
+    {
+        return isTransitioning;
     }
 }
