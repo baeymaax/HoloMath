@@ -1436,7 +1436,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193854795}
   m_LocalRotation: {x: -0, y: 0.9999997, z: -0, w: -0.00085541746}
-  m_LocalPosition: {x: 3.8097153, y: 2.36, z: 8.814836}
+  m_LocalPosition: {x: 3.17, y: 2.36, z: 9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1821,7 +1821,7 @@ GameObject:
   - component: {fileID: 832439621}
   - component: {fileID: 832439622}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Cube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4074,6 +4074,7 @@ GameObject:
   - component: {fileID: 2074370983}
   - component: {fileID: 2074370976}
   - component: {fileID: 2074370975}
+  - component: {fileID: 2074370984}
   m_Layer: 0
   m_Name: Customize button
   m_TagString: Untagged
@@ -4172,8 +4173,112 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 33ebcee06079bc14cafe285a3b678930, type: 2}
   OnClick:
     m_PersistentCalls:
-      m_Calls: []
-  Events: []
+      m_Calls:
+      - m_Target: {fileID: 193854804}
+        m_TargetAssemblyTypeName: SimpleGeometryAnimation, Assembly-CSharp
+        m_MethodName: ToggleAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Events:
+  - Event:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2074370984}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: PlayOneShot
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 37dfa63b171bd924bba595e0c04eaab9, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    ClassName: InteractableOnPressReceiver
+    AssemblyQualifiedName: Microsoft.MixedReality.Toolkit.UI.InteractableOnPressReceiver,
+      Microsoft.MixedReality.Toolkit.SDK, Version=2.8.3.0, Culture=neutral, PublicKeyToken=null
+    Settings:
+    - Type: 18
+      Label: On Release
+      Name: OnRelease
+      Tooltip: The button is released
+      IntValue: 0
+      StringValue: 
+      FloatValue: 0
+      BoolValue: 0
+      GameObjectValue: {fileID: 0}
+      ScriptableObjectValue: {fileID: 0}
+      ObjectValue: {fileID: 0}
+      MaterialValue: {fileID: 0}
+      TextureValue: {fileID: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+      Vector2Value: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      CurveValue:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      AudioClipValue: {fileID: 0}
+      QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+      EventValue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 2074370984}
+            m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+            m_MethodName: PlayOneShot
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 8300000, guid: c4f1a327f9a98f2488d81533e353cd20, type: 3}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      Options: []
+    - Type: 5
+      Label: Interaction Filter
+      Name: InteractionFilter
+      Tooltip: Specify whether press event is for near or far interaction
+      IntValue: 0
+      StringValue: 
+      FloatValue: 0
+      BoolValue: 0
+      GameObjectValue: {fileID: 0}
+      ScriptableObjectValue: {fileID: 0}
+      ObjectValue: {fileID: 0}
+      MaterialValue: {fileID: 0}
+      TextureValue: {fileID: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+      Vector2Value: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      CurveValue:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      AudioClipValue: {fileID: 0}
+      QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+      EventValue:
+        m_PersistentCalls:
+          m_Calls: []
+      Options:
+      - Near and Far
+      - Near Only
+      - Far Only
   resetOnDestroy: 0
   enabledOnStart: 1
 --- !u!114 &2074370976
@@ -4198,7 +4303,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2074370968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 7.7233}
+  m_LocalPosition: {x: 0, y: 0, z: 6.61}
   m_LocalScale: {x: 1, y: 1, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4210,7 +4315,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17.31, y: 1.21}
+  m_AnchoredPosition: {x: 4.89, y: 0.89}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2074370982
@@ -4298,7 +4403,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  movingButtonIconText: {fileID: 470173744}
+  movingButtonIconText: {fileID: 832439620}
   compressableButtonVisuals: {fileID: 470173744}
   minCompressPercentage: 0.25
   highlightPlate: {fileID: 832439621}
@@ -4322,6 +4427,102 @@ MonoBehaviour:
   localCenter: {x: 0, y: 0, z: -0.5}
   bounds: {x: 1, y: 1}
   touchableCollider: {fileID: 2074370969}
+--- !u!82 &2074370984
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074370968}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &2132377047
 PrefabInstance:
   m_ObjectHideFlags: 0
