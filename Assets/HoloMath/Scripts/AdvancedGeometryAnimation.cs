@@ -24,8 +24,8 @@ public class AdvancedGeometryAnimation : MonoBehaviour
     public Color trailColor = Color.cyan;
 
     [Header("公式顯示")]
-    public TextMeshProUGUI formulaText;  // 改為 TextMeshProUGUI
-    public Canvas formulaCanvas;
+    public TextMeshPro formulaText;
+
 
     [Header("數學圖形類型")]
     public GeometryType geometryType = GeometryType.Lissajous;
@@ -40,6 +40,8 @@ public class AdvancedGeometryAnimation : MonoBehaviour
     public float frequencyZ = 1f;
     [Range(0f, 6.28f)]
     public float phaseShift = 0f;
+
+
 
     public enum GeometryType
     {
