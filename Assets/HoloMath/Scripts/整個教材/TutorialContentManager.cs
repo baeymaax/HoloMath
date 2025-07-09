@@ -62,8 +62,25 @@ public class TutorialContentManager : MonoBehaviour
             questionText3D = questionCubeParent.GetComponentInChildren<TextMeshPro>();
         }
 
+        // 初始化所有3D物件狀態（先全部隱藏）
+        InitializeThreeDObjects();
+
         InitializeButtons();
         LoadContent(0); // 載入第一個內容
+    }
+
+    /// <summary>
+    /// 初始化所有3D物件狀態（在開始時隱藏所有物件）
+    /// </summary>
+    private void InitializeThreeDObjects()
+    {
+        for (int i = 0; i < tutorialContents.Length; i++)
+        {
+            if (tutorialContents[i].threeDObject != null)
+            {
+                tutorialContents[i].threeDObject.SetActive(false);
+            }
+        }
     }
 
     /// <summary>
