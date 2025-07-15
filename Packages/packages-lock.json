@@ -89,12 +89,15 @@
       }
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
       "source": "builtin",
       "dependencies": {}
     },
+=======
+>>>>>>> parent of 206de2b (Bob)
     "com.unity.ai.navigation": {
       "version": "2.0.8",
       "depth": 0,
