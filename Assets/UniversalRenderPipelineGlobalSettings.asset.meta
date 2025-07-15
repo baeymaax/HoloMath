@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 0451d6dbaef3a5f40b0e46ab74b0a696
+=======
+guid: 5a53e4e6c23081245b8303a2029673bf
+>>>>>>> bigpupu
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
