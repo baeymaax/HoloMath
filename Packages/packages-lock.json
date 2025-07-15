@@ -88,16 +88,12 @@
         "com.microsoft.mixedreality.toolkit.foundation": "2.8.3"
       }
     },
-<<<<<<< HEAD
-<<<<<<< HEAD
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
       "source": "builtin",
       "dependencies": {}
     },
-=======
->>>>>>> parent of 206de2b (Bob)
     "com.unity.ai.navigation": {
       "version": "2.0.8",
       "depth": 0,
@@ -124,14 +120,6 @@
       "dependencies": {
         "com.unity.splines": "2.0.0",
         "com.unity.modules.imgui": "1.0.0"
-=======
-    "com.unity.burst": {
-      "version": "1.8.4",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.mathematics": "1.2.1"
->>>>>>> bigpupu
       },
       "url": "https://packages.unity.com"
     },
@@ -208,7 +196,6 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.mathematics": {
-<<<<<<< HEAD
       "version": "1.3.2",
       "depth": 2,
       "source": "registry",
@@ -226,10 +213,6 @@
     "com.unity.nuget.mono-cecil": {
       "version": "1.11.4",
       "depth": 3,
-=======
-      "version": "1.2.6",
-      "depth": 1,
->>>>>>> bigpupu
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -249,7 +232,6 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.render-pipelines.core": {
-<<<<<<< HEAD
       "version": "17.1.0",
       "depth": 1,
       "source": "builtin",
@@ -294,43 +276,11 @@
     },
     "com.unity.searcher": {
       "version": "4.9.3",
-=======
-      "version": "12.1.11",
-      "depth": 1,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.ugui": "1.0.0",
-        "com.unity.modules.physics": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0"
-      }
-    },
-    "com.unity.render-pipelines.universal": {
-      "version": "12.1.11",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.mathematics": "1.2.1",
-        "com.unity.burst": "1.8.4",
-        "com.unity.render-pipelines.core": "12.1.11",
-        "com.unity.shadergraph": "12.1.11"
-      }
-    },
-    "com.unity.searcher": {
-      "version": "4.9.1",
       "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.settings-manager": {
-      "version": "1.0.3",
->>>>>>> bigpupu
-      "depth": 2,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-<<<<<<< HEAD
     "com.unity.settings-manager": {
       "version": "2.1.0",
       "depth": 2,
@@ -350,20 +300,6 @@
     "com.unity.splines": {
       "version": "2.8.1",
       "depth": 1,
-=======
-    "com.unity.shadergraph": {
-      "version": "12.1.11",
-      "depth": 1,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.render-pipelines.core": "12.1.11",
-        "com.unity.searcher": "4.9.1"
-      }
-    },
-    "com.unity.subsystemregistration": {
-      "version": "1.1.0",
-      "depth": 3,
->>>>>>> bigpupu
       "source": "registry",
       "dependencies": {
         "com.unity.mathematics": "1.2.1",
@@ -403,15 +339,9 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.textmeshpro": {
-<<<<<<< HEAD
       "version": "5.0.0",
       "depth": 1,
       "source": "builtin",
-=======
-      "version": "3.0.9",
-      "depth": 0,
-      "source": "registry",
->>>>>>> bigpupu
       "dependencies": {
         "com.unity.ugui": "2.0.0"
       }
