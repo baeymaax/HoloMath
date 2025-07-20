@@ -2428,7 +2428,7 @@ MonoBehaviour:
       isCaseSensitive: 0
       allowPartialMatch: 0
       textPosition: {x: -3.5, y: -2.13, z: 14.17}
-      inputFieldPosition: {x: -3.6, y: -1.3, z: 13.5}
+      inputFieldPosition: {x: -3.7, y: -1.375, z: 13.5}
       textRotation: {x: 0, y: 0, z: 0}
       inputFieldRotation: {x: 0, y: 0, z: 0}
       textSize: {x: 7.0365, y: 2.1113}
@@ -2444,7 +2444,7 @@ MonoBehaviour:
       isCaseSensitive: 0
       allowPartialMatch: 0
       textPosition: {x: -3.5, y: -2.99, z: 14.17}
-      inputFieldPosition: {x: -2.538, y: -2.09, z: 13.5}
+      inputFieldPosition: {x: -2.558, y: -2.237, z: 13.5}
       textRotation: {x: 0, y: 0, z: 0}
       inputFieldRotation: {x: 0, y: 0, z: 0}
       textSize: {x: 7.0365, y: 2.1113}
@@ -2459,8 +2459,8 @@ MonoBehaviour:
       tolerance: 0
       isCaseSensitive: 0
       allowPartialMatch: 0
-      textPosition: {x: -3.5, y: -3.83, z: 14.17}
-      inputFieldPosition: {x: -3.374, y: -2.83, z: 13.5}
+      textPosition: {x: -3.5, y: -3.8, z: 14.17}
+      inputFieldPosition: {x: -3.419, y: -3.083, z: 13.5}
       textRotation: {x: 0, y: 0, z: 0}
       inputFieldRotation: {x: 0, y: 0, z: 0}
       textSize: {x: 7.0365, y: 2.1113}
@@ -2476,7 +2476,7 @@ MonoBehaviour:
       isCaseSensitive: 0
       allowPartialMatch: 0
       textPosition: {x: -3.5, y: -4.65, z: 14.17}
-      inputFieldPosition: {x: -2.28, y: -3.55, z: 13.5}
+      inputFieldPosition: {x: -2.28, y: -3.897, z: 13.5}
       textRotation: {x: 0, y: 0, z: 0}
       inputFieldRotation: {x: 0, y: 0, z: 0}
       textSize: {x: 7.0365, y: 2.1113}
@@ -23296,6 +23296,30 @@ PrefabInstance:
     - target: {fileID: 1315703472846774290, guid: b61c79fef80497d4c8f590a782134151, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348965563134624904, guid: b61c79fef80497d4c8f590a782134151, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1.0227
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348965563134624904, guid: b61c79fef80497d4c8f590a782134151, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.5312
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348965563134624904, guid: b61c79fef80497d4c8f590a782134151, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.644
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348965563134624904, guid: b61c79fef80497d4c8f590a782134151, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348965563134624904, guid: b61c79fef80497d4c8f590a782134151, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348965563134624904, guid: b61c79fef80497d4c8f590a782134151, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2702133022659021030, guid: b61c79fef80497d4c8f590a782134151, type: 3}
       propertyPath: m_Materials.Array.size
