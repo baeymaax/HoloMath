@@ -61,13 +61,13 @@ public class TutorialQuestion_Test
     [Header("選擇題排版設定")]
     public float optionSpacing = 0.3f;
     public Vector3 optionScale = Vector3.one;
-    
+   
     [Header("選擇題位置設定")]
     public bool useCustomQuestionTextPosition = false;
     public Vector3 questionTextPosition = Vector3.zero;
     public bool useCustomOptionPositions = false;
     public Vector3 optionStartPosition = Vector3.zero;
-    
+   
     [Header("選擇題文字設定")]
     public float questionTextFontSize = 4f;
 
@@ -105,20 +105,32 @@ public class TutorialContent_Test
     public bool hasImage = false;
     public GameObject threeDObject;
     public string questionText;
+    
+    [Header("Question Text 設定")]
+    public bool useCustomQuestionTextSettings = false;
+    public Vector3 questionTextPosition = Vector3.zero;
+    public Vector3 questionTextRotation = Vector3.zero;
+    public float questionTextFontSize = 4f;
+    public Vector2 questionTextSize = new Vector2(10f, 2f); // Width x Height
+    public bool showQuestionText = true;  // 控制是否顯示 questionText
+    
     public List<TutorialQuestion_Test> questions = new List<TutorialQuestion_Test>();
     public bool showHints = true;
     public bool allowRetry = true;
     public bool showProgress = true;
     public int passingScore = 60;
     public bool requireAllCorrect = false;
+
     public bool HasInteractiveQuestions()
     {
         return questions != null && questions.Count > 0;
     }
+
     public int GetQuestionCount()
     {
         return questions != null ? questions.Count : 0;
     }
+
     public TutorialQuestion_Test GetQuestion(int index)
     {
         if (questions != null && index >= 0 && index < questions.Count)
@@ -127,6 +139,7 @@ public class TutorialContent_Test
         }
         return null;
     }
+
     public void AddQuestion(TutorialQuestion_Test question)
     {
         if (questions == null)
@@ -135,6 +148,7 @@ public class TutorialContent_Test
         }
         questions.Add(question);
     }
+
     public bool RemoveQuestion(int index)
     {
         if (questions != null && index >= 0 && index < questions.Count)
@@ -144,6 +158,7 @@ public class TutorialContent_Test
         }
         return false;
     }
+
     public void ClearQuestions()
     {
         if (questions != null)
@@ -151,11 +166,13 @@ public class TutorialContent_Test
             questions.Clear();
         }
     }
+
     public bool IsValid()
     {
         return videoClip != null || threeDObject != null ||
                HasInteractiveQuestions() || !string.IsNullOrEmpty(questionText);
     }
+
     public string GetSummary()
     {
         string summary = $"內容: {contentName}";
@@ -209,6 +226,10 @@ public class TutorialContentManager_Test : MonoBehaviour
     [SerializeField] private TMP_FontAsset chineseFont; // 拖拉你的中文字體
     [SerializeField] private Material chineseFontMaterial; // 拖拉 MSJH_CHT_SDF_4096Material
 
+    [Header("計分系統UI")]
+    [SerializeField] private TextMeshPro totalScoreText; // 顯示總分的UI
+    [SerializeField] private TextMeshPro currentContentScoreText; // 顯示當前內容分數的UI
+
     private GameObject currentThreeDObject;
     private List<TMP_InputField> inputFields = new List<TMP_InputField>();
     private List<TextMeshPro> questionPrompts = new List<TextMeshPro>();
@@ -217,16 +238,115 @@ public class TutorialContentManager_Test : MonoBehaviour
     private bool isAnswerChecked = false;
     private List<bool> questionResults = new List<bool>();
 
+    // 計分系統相關變數
+    private Dictionary<int, int> contentScores = new Dictionary<int, int>(); // 每個內容的分數
+    private Dictionary<int, bool> contentCompleted = new Dictionary<int, bool>(); // 每個內容是否已完成
+    private int totalScore = 0; // 總分
+
     void Start()
     {
         if (questionText3D == null && questionCubeParent != null)
         {
             questionText3D = questionCubeParent.GetComponentInChildren<TextMeshPro>();
         }
+
+        InitializeScoreSystem();
         InitializeThreeDObjects();
         InitializeButtons();
         InitializeInteractiveButtons();
         LoadContent(0);
+    }
+
+    private void InitializeScoreSystem()
+    {
+        // 初始化計分系統
+        for (int i = 0; i < tutorialContents.Length; i++)
+        {
+            contentScores[i] = 0;
+            contentCompleted[i] = false;
+        }
+        UpdateScoreDisplay();
+    }
+
+    // 計算所有 tutorial content 的總題目數
+    private int GetTotalQuestionCount()
+    {
+        int totalQuestions = 0;
+        for (int i = 0; i < tutorialContents.Length; i++)
+        {
+            if (tutorialContents[i].HasInteractiveQuestions())
+            {
+                totalQuestions += tutorialContents[i].GetQuestionCount();
+            }
+        }
+        return totalQuestions;
+    }
+
+    private void UpdateScoreDisplay()
+    {
+        // 更新總分顯示
+        if (totalScoreText != null)
+        {
+            totalScoreText.text = $"總分: {totalScore}/100";
+        }
+
+        // 更新當前內容分數顯示
+        if (currentContentScoreText != null && currentContentIndex >= 0 && currentContentIndex < tutorialContents.Length)
+        {
+            var content = tutorialContents[currentContentIndex];
+            if (content.HasInteractiveQuestions())
+            {
+                int currentContentScore = contentScores.ContainsKey(currentContentIndex) ? contentScores[currentContentIndex] : 0;
+                int totalQuestions = GetTotalQuestionCount();
+                int maxPossibleScoreForThisContent = totalQuestions > 0 ? (content.GetQuestionCount() * 100 / totalQuestions) : 0;
+                currentContentScoreText.text = $"當前內容: {currentContentScore}/{maxPossibleScoreForThisContent} 分";
+            }
+            else
+            {
+                currentContentScoreText.text = "此內容無互動題目";
+            }
+        }
+    }
+
+    private int CalculateContentScore(List<bool> results, int contentQuestionCount)
+    {
+        if (contentQuestionCount == 0) return 0;
+        
+        int correctCount = results.Count(r => r);
+        int totalQuestions = GetTotalQuestionCount(); // 獲取所有內容的總題目數
+        
+        if (totalQuestions == 0) return 0;
+        
+        // 每題分數 = 100 / 總題目數
+        int scorePerQuestion = 100 / totalQuestions;
+        int remainingScore = 100 % totalQuestions; // 處理無法整除的餘數
+        
+        // 只計算答對的題目分數
+        int score = correctCount * scorePerQuestion;
+        
+        // 如果這是最後完成的內容且有餘數，將餘數加到最後
+        // 這裡簡化處理：如果當前內容全對且總完成題數接近總題數，就加上餘數
+        if (correctCount == contentQuestionCount && remainingScore > 0)
+        {
+            // 計算目前已完成的總題數
+            int completedQuestions = 0;
+            for (int i = 0; i < tutorialContents.Length; i++)
+            {
+                if (contentCompleted[i] && tutorialContents[i].HasInteractiveQuestions())
+                {
+                    completedQuestions += tutorialContents[i].GetQuestionCount();
+                }
+            }
+            completedQuestions += correctCount; // 加上當前答對的題數
+            
+            // 如果這樣會達到總題數，就把餘數也給它
+            if (completedQuestions >= totalQuestions - remainingScore)
+            {
+                score += remainingScore;
+            }
+        }
+        
+        return score;
     }
 
     private void InitializeThreeDObjects()
@@ -283,10 +403,12 @@ public class TutorialContentManager_Test : MonoBehaviour
         {
             currentContentIndex = contentIndex;
             TutorialContent_Test content = tutorialContents[contentIndex];
+
             UpdateVideo(content.videoClip);
             UpdateQuestionContent(content);
             Update3DObject(content.threeDObject);
             ResetAnswerState();
+            UpdateScoreDisplay(); // 更新分數顯示
         }
     }
 
@@ -302,6 +424,10 @@ public class TutorialContentManager_Test : MonoBehaviour
     private void UpdateQuestionContent(TutorialContent_Test content)
     {
         UpdateQuestionImage(content.questionImage, content.hasImage);
+
+        // 總是更新 questionText（不管有沒有互動題目）
+        UpdateQuestionText(content);
+
         if (content.HasInteractiveQuestions())
         {
             GenerateQuestionFields(content.questions);
@@ -310,7 +436,6 @@ public class TutorialContentManager_Test : MonoBehaviour
         }
         else
         {
-            UpdateQuestionText(content.questionText);
             UpdateInteractiveUI(false);
         }
     }
@@ -340,7 +465,9 @@ public class TutorialContentManager_Test : MonoBehaviour
     private void GenerateQuestionFields(List<TutorialQuestion_Test> questions)
     {
         if (questionPanel == null) return;
+
         ClearQuestionFields();
+
         float currentYOffset = 0f;
         for (int i = 0; i < questions.Count; i++)
         {
@@ -351,6 +478,7 @@ public class TutorialContentManager_Test : MonoBehaviour
             questionContainer.transform.localRotation = Quaternion.identity;
             questionContainer.transform.localScale = Vector3.one;
             questionContainers.Add(questionContainer);
+
             if (question.IsFillInBlank())
             {
                 CreateFillInBlankQuestion(question, questionContainer, i, ref currentYOffset);
@@ -360,6 +488,7 @@ public class TutorialContentManager_Test : MonoBehaviour
                 CreateMultipleChoiceQuestion(question, questionContainer, i, ref currentYOffset);
             }
         }
+
         if (resultText != null) resultText.text = "";
         if (hintText != null) hintText.text = "";
     }
@@ -367,12 +496,12 @@ public class TutorialContentManager_Test : MonoBehaviour
     private void CreateFillInBlankQuestion(TutorialQuestion_Test question, GameObject container, int questionIndex, ref float yOffset)
     {
         if (inputFieldPrefab == null) return;
+
         var fieldObj = Instantiate(inputFieldPrefab, container.transform);
         var promptText = fieldObj.GetComponentInChildren<TextMeshPro>();
         if (promptText != null)
         {
             promptText.text = $"{questionIndex + 1}. {question.promptText}";
-
             if (chineseFont != null)
             {
                 promptText.font = chineseFont;
@@ -385,8 +514,8 @@ public class TutorialContentManager_Test : MonoBehaviour
             {
                 promptText.fontMaterial = chineseFont.material;
             }
-
             questionPrompts.Add(promptText);
+
             if (question.useCustomPositions)
             {
                 promptText.transform.localPosition = question.textPosition;
@@ -402,11 +531,13 @@ public class TutorialContentManager_Test : MonoBehaviour
                 promptText.transform.localPosition = new Vector3(0, yOffset, 0);
             }
         }
+
         var inputField = fieldObj.GetComponentInChildren<TMP_InputField>();
         if (inputField != null)
         {
             inputField.text = "";
             inputFields.Add(inputField);
+
             if (question.useCustomPositions)
             {
                 inputField.transform.localPosition = question.inputFieldPosition;
@@ -422,111 +553,111 @@ public class TutorialContentManager_Test : MonoBehaviour
                 inputField.transform.localPosition = new Vector3(0, yOffset - 0.15f, 0);
             }
         }
+
         multipleChoiceSelections.Add(new HashSet<int>());
         yOffset -= 0.5f;
     }
 
     private void CreateMultipleChoiceQuestion(TutorialQuestion_Test question, GameObject container, int questionIndex, ref float yOffset)
-{
-    if (optionPrefab == null) return;
-
-    // 創建問題文字
-    GameObject questionTextObj = new GameObject($"QuestionText_{questionIndex}");
-    questionTextObj.transform.SetParent(container.transform);
-    
-    // 設定問題文字位置
-    Vector3 questionTextPos;
-    if (question.useCustomQuestionTextPosition)
     {
-        questionTextPos = question.questionTextPosition;
-    }
-    else
-    {
-        questionTextPos = new Vector3(0, yOffset, 0);
-    }
-    questionTextObj.transform.localPosition = questionTextPos;
-    questionTextObj.transform.localRotation = Quaternion.identity;
-    questionTextObj.transform.localScale = Vector3.one;
+        if (optionPrefab == null) return;
 
-    TextMeshPro questionTextMesh = questionTextObj.AddComponent<TextMeshPro>();
-    questionTextMesh.text = $"{questionIndex + 1}. {question.promptText}";
-    questionTextMesh.fontSize = question.questionTextFontSize;
-    questionTextMesh.alignment = TextAlignmentOptions.Left;
-
-    // 設定中文字體和材質
-    if (chineseFont != null)
-    {
-        questionTextMesh.font = chineseFont;
-    }
-    if (chineseFontMaterial != null)
-    {
-        questionTextMesh.fontMaterial = chineseFontMaterial;
-    }
-    else if (chineseFont != null && chineseFont.material != null)
-    {
-        questionTextMesh.fontMaterial = chineseFont.material;
-    }
-
-    questionPrompts.Add(questionTextMesh);
-
-    // 如果沒有使用自訂位置，更新 yOffset
-    if (!question.useCustomQuestionTextPosition)
-    {
-        yOffset -= 0.2f;
-    }
-
-    HashSet<int> selections = new HashSet<int>();
-    multipleChoiceSelections.Add(selections);
-
-    // 創建選項
-    for (int optionIndex = 0; optionIndex < question.options.Count; optionIndex++)
-    {
-        GameObject optionObj = Instantiate(optionPrefab, container.transform);
-        optionObj.name = $"Option_{questionIndex}_{optionIndex}";
-
-        // 設定選項位置
-        Vector3 optionPosition;
-        if (question.useCustomOptionPositions)
+        // 創建問題文字
+        GameObject questionTextObj = new GameObject($"QuestionText_{questionIndex}");
+        questionTextObj.transform.SetParent(container.transform);
+       
+        // 設定問題文字位置
+        Vector3 questionTextPos;
+        if (question.useCustomQuestionTextPosition)
         {
-            // 使用自訂起始位置，然後根據 optionSpacing 計算每個選項的位置
-            optionPosition = question.optionStartPosition + new Vector3(0, -(optionIndex * question.optionSpacing), 0);
+            questionTextPos = question.questionTextPosition;
         }
         else
         {
-            // 使用預設位置計算
-            optionPosition = new Vector3(0, yOffset - (optionIndex * question.optionSpacing), 0);
+            questionTextPos = new Vector3(0, yOffset, 0);
         }
+        questionTextObj.transform.localPosition = questionTextPos;
+        questionTextObj.transform.localRotation = Quaternion.identity;
+        questionTextObj.transform.localScale = Vector3.one;
 
-        optionObj.transform.localPosition = optionPosition;
-        optionObj.transform.localScale = question.optionScale;
+        TextMeshPro questionTextMesh = questionTextObj.AddComponent<TextMeshPro>();
+        questionTextMesh.text = $"{questionIndex + 1}. {question.promptText}";
+        questionTextMesh.fontSize = question.questionTextFontSize;
+        questionTextMesh.alignment = TextAlignmentOptions.Left;
 
-        QuizOptionComponent_Test optionComponent = optionObj.GetComponent<QuizOptionComponent_Test>();
-        if (optionComponent == null)
+        // 設定中文字體和材質
+        if (chineseFont != null)
         {
-            optionComponent = optionObj.AddComponent<QuizOptionComponent_Test>();
+            questionTextMesh.font = chineseFont;
         }
-
-        // 設定選項組件的中文字體
-        if (chineseFont != null || chineseFontMaterial != null)
+        if (chineseFontMaterial != null)
         {
-            optionComponent.SetChineseFont(chineseFont, chineseFontMaterial);
+            questionTextMesh.fontMaterial = chineseFontMaterial;
+        }
+        else if (chineseFont != null && chineseFont.material != null)
+        {
+            questionTextMesh.fontMaterial = chineseFont.material;
         }
 
-        int capturedQuestionIndex = questionIndex;
-        int capturedOptionIndex = optionIndex;
+        questionPrompts.Add(questionTextMesh);
 
-        optionComponent.Initialize(optionIndex, question.options[optionIndex].optionText,
-            (selectedOptionIndex) => OnMultipleChoiceOptionSelected(capturedQuestionIndex, selectedOptionIndex));
-    }
+        // 如果沒有使用自訂位置，更新 yOffset
+        if (!question.useCustomQuestionTextPosition)
+        {
+            yOffset -= 0.2f;
+        }
 
-    inputFields.Add(null);
-    
-    // 如果沒有使用自訂位置，更新 yOffset 為下一個問題做準備
-    if (!question.useCustomOptionPositions)
-    {
-        yOffset -= (question.options.Count * question.optionSpacing + 0.3f);
+        HashSet<int> selections = new HashSet<int>();
+        multipleChoiceSelections.Add(selections);
+
+        // 創建選項
+        for (int optionIndex = 0; optionIndex < question.options.Count; optionIndex++)
+        {
+            GameObject optionObj = Instantiate(optionPrefab, container.transform);
+            optionObj.name = $"Option_{questionIndex}_{optionIndex}";
+
+            // 設定選項位置
+            Vector3 optionPosition;
+            if (question.useCustomOptionPositions)
+            {
+                // 使用自訂起始位置，然後根據 optionSpacing 計算每個選項的位置
+                optionPosition = question.optionStartPosition + new Vector3(0, -(optionIndex * question.optionSpacing), 0);
+            }
+            else
+            {
+                // 使用預設位置計算
+                optionPosition = new Vector3(0, yOffset - (optionIndex * question.optionSpacing), 0);
+            }
+
+            optionObj.transform.localPosition = optionPosition;
+            optionObj.transform.localScale = question.optionScale;
+
+            QuizOptionComponent_Test optionComponent = optionObj.GetComponent<QuizOptionComponent_Test>();
+            if (optionComponent == null)
+            {
+                optionComponent = optionObj.AddComponent<QuizOptionComponent_Test>();
+            }
+
+            // 設定選項組件的中文字體
+            if (chineseFont != null || chineseFontMaterial != null)
+            {
+                optionComponent.SetChineseFont(chineseFont, chineseFontMaterial);
+            }
+
+            int capturedQuestionIndex = questionIndex;
+            int capturedOptionIndex = optionIndex;
+            optionComponent.Initialize(optionIndex, question.options[optionIndex].optionText,
+                (selectedOptionIndex) => OnMultipleChoiceOptionSelected(capturedQuestionIndex, selectedOptionIndex));
+        }
+
+        inputFields.Add(null);
+       
+        // 如果沒有使用自訂位置，更新 yOffset 為下一個問題做準備
+        if (!question.useCustomOptionPositions)
+        {
+            yOffset -= (question.options.Count * question.optionSpacing + 0.3f);
+        }
     }
-}
 
     private void ClearQuestionFields()
     {
@@ -534,6 +665,7 @@ public class TutorialContentManager_Test : MonoBehaviour
         {
             return;
         }
+
         foreach (Transform child in questionPanel)
         {
             if (child != null)
@@ -541,6 +673,7 @@ public class TutorialContentManager_Test : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
+
         inputFields.Clear();
         questionPrompts.Clear();
         questionContainers.Clear();
@@ -553,6 +686,7 @@ public class TutorialContentManager_Test : MonoBehaviour
         {
             var selections = multipleChoiceSelections[questionIndex];
             bool wasSelected = selections.Contains(optionIndex);
+
             if (selections.Contains(optionIndex))
             {
                 selections.Remove(optionIndex);
@@ -561,6 +695,7 @@ public class TutorialContentManager_Test : MonoBehaviour
             {
                 selections.Add(optionIndex);
             }
+
             if (questionIndex < questionContainers.Count)
             {
                 var container = questionContainers[questionIndex];
@@ -576,11 +711,14 @@ public class TutorialContentManager_Test : MonoBehaviour
     public void CheckAnswers()
     {
         if (currentContentIndex < 0 || currentContentIndex >= tutorialContents.Length) return;
+
         var content = tutorialContents[currentContentIndex];
         if (!content.HasInteractiveQuestions()) return;
+
         var questions = content.questions;
         int correctCount = 0;
         questionResults.Clear();
+
         for (int i = 0; i < questions.Count; i++)
         {
             bool isCorrect = false;
@@ -603,36 +741,78 @@ public class TutorialContentManager_Test : MonoBehaviour
                     UpdateMultipleChoiceVisuals(i, isCorrect, correctAnswers);
                 }
             }
+
             questionResults.Add(isCorrect);
             if (isCorrect)
             {
                 correctCount++;
             }
         }
+
+        // 計算當前內容的分數 (傳入當前內容的題目數量)
+        int newContentScore = CalculateContentScore(questionResults, questions.Count);
+        
+        // 更新分數邏輯
+        int oldScore = contentScores.ContainsKey(currentContentIndex) ? contentScores[currentContentIndex] : 0;
+        
+        // 無論是否全對都更新分數（因為現在是按題計分）
+        contentScores[currentContentIndex] = newContentScore;
+        
+        // 如果全對則標記為完成
+        if (correctCount == questions.Count)
+        {
+            contentCompleted[currentContentIndex] = true;
+        }
+        else
+        {
+            contentCompleted[currentContentIndex] = false;
+        }
+        
+        // 重新計算總分（累加所有內容的分數）
+        totalScore = 0;
+        foreach (var kvp in contentScores)
+        {
+            totalScore += kvp.Value;
+        }
+
+        // 更新結果顯示
         if (resultText != null)
         {
+            int totalQuestions = GetTotalQuestionCount();
+            int scorePerQuestion = totalQuestions > 0 ? 100 / totalQuestions : 0;
+            
             string resultMessage = $"你答對了 {correctCount} / {questions.Count} 題！";
+            if (newContentScore > 0)
+            {
+                resultMessage += $"\n本次獲得 {newContentScore} 分！";
+                resultMessage += $"\n(每題 {scorePerQuestion} 分)";
+            }
             if (correctCount == questions.Count)
             {
-                resultMessage += " 全部正確！";
+                resultMessage += "\n全部正確！";
             }
-            else if (correctCount > questions.Count / 2)
+            else if (correctCount > 0)
             {
-                resultMessage += " 不錯！";
+                resultMessage += $"\n答對 {correctCount} 題得到部分分數！";
             }
             else
             {
-                resultMessage += " 繼續努力！";
+                resultMessage += "\n繼續努力！";
             }
+
             resultText.text = resultMessage;
-            resultText.color = correctCount == questions.Count ? correctAnswerColor : wrongAnswerColor;
+            resultText.color = correctCount > 0 ? correctAnswerColor : wrongAnswerColor;
         }
+
+        // 更新分數顯示
+        UpdateScoreDisplay();
         isAnswerChecked = true;
     }
 
     private bool CheckSingleAnswer(string userInput, TutorialQuestion_Test question)
     {
         if (string.IsNullOrEmpty(userInput)) return false;
+
         switch (question.answerType)
         {
             case AnswerType.Text:
@@ -650,11 +830,14 @@ public class TutorialContentManager_Test : MonoBehaviour
     {
         string normalizedInput = userInput.ToLower().Trim();
         string normalizedAnswer = question.correctAnswer.ToLower().Trim();
+
         if (normalizedInput == normalizedAnswer) return true;
+
         foreach (var acceptableAnswer in question.acceptableAnswers)
         {
             if (normalizedInput == acceptableAnswer.ToLower().Trim()) return true;
         }
+
         return false;
     }
 
@@ -665,12 +848,14 @@ public class TutorialContentManager_Test : MonoBehaviour
         {
             return Mathf.Abs(userValue - correctValue) <= question.tolerance;
         }
+
         return CheckTextAnswer(userInput, question);
     }
 
     private bool CheckExpressionAnswer(string userInput, TutorialQuestion_Test question)
     {
         if (CheckTextAnswer(userInput, question)) return true;
+
         try
         {
             float userValue = EvaluateExpression(userInput);
@@ -688,6 +873,7 @@ public class TutorialContentManager_Test : MonoBehaviour
         string normalized = expression.ToLower().Trim();
         normalized = normalized.Replace("π", Mathf.PI.ToString());
         normalized = normalized.Replace("pi", Mathf.PI.ToString());
+
         if (normalized.Contains("/"))
         {
             string[] parts = normalized.Split('/');
@@ -698,10 +884,12 @@ public class TutorialContentManager_Test : MonoBehaviour
                 return numerator / denominator;
             }
         }
+
         if (float.TryParse(normalized, out float result))
         {
             return result;
         }
+
         throw new System.InvalidOperationException("無法評估表達式");
     }
 
@@ -723,11 +911,13 @@ public class TutorialContentManager_Test : MonoBehaviour
         {
             var container = questionContainers[questionIndex];
             var optionComponents = container.GetComponentsInChildren<QuizOptionComponent_Test>();
+
             for (int i = 0; i < optionComponents.Length; i++)
             {
                 var optionComponent = optionComponents[i];
                 bool shouldBeSelected = correctAnswers.Contains(i);
                 bool wasSelected = multipleChoiceSelections[questionIndex].Contains(i);
+
                 if (shouldBeSelected)
                 {
                     optionComponent.SetResultColor(correctAnswerColor);
@@ -742,6 +932,7 @@ public class TutorialContentManager_Test : MonoBehaviour
 
     public void RetryQuestions()
     {
+        // 清除當前答案
         foreach (var inputField in inputFields)
         {
             if (inputField != null)
@@ -754,6 +945,7 @@ public class TutorialContentManager_Test : MonoBehaviour
                 }
             }
         }
+
         for (int i = 0; i < multipleChoiceSelections.Count; i++)
         {
             multipleChoiceSelections[i].Clear();
@@ -767,16 +959,24 @@ public class TutorialContentManager_Test : MonoBehaviour
                 }
             }
         }
+
         ResetAnswerState();
+        
+        // 跳回第一個 control button
+        LoadContent(0);
+        UpdateButtonVisual(0);
     }
 
     public void ShowHints()
     {
         if (currentContentIndex < 0 || currentContentIndex >= tutorialContents.Length) return;
+
         var content = tutorialContents[currentContentIndex];
         if (!content.HasInteractiveQuestions() || !content.showHints) return;
+
         var questions = content.questions;
         string hintsText = "";
+
         for (int i = 0; i < questions.Count; i++)
         {
             if (questions[i].IsFillInBlank() && !string.IsNullOrEmpty(questions[i].hint))
@@ -792,6 +992,7 @@ public class TutorialContentManager_Test : MonoBehaviour
                 }
             }
         }
+
         if (hintText != null)
         {
             hintText.text = string.IsNullOrEmpty(hintsText) ? "暫無提示" : hintsText;
@@ -802,6 +1003,7 @@ public class TutorialContentManager_Test : MonoBehaviour
     {
         isAnswerChecked = false;
         questionResults.Clear();
+
         if (resultText != null)
         {
             resultText.text = "";
@@ -812,19 +1014,80 @@ public class TutorialContentManager_Test : MonoBehaviour
         }
     }
 
-    private void UpdateQuestionText(string newQuestionText)
+    private void UpdateQuestionText(TutorialContent_Test content)
     {
-        if (questionText3D != null)
+        // 如果不顯示 questionText 或文字為空，就隱藏
+        if (!content.showQuestionText || string.IsNullOrEmpty(content.questionText))
         {
-            questionText3D.text = newQuestionText;
+            if (questionText3D != null)
+            {
+                questionText3D.gameObject.SetActive(false);
+            }
+            else if (questionCubeParent != null)
+            {
+                questionCubeParent.SetActive(false);
+            }
+            return;
         }
-        else if (questionCubeParent != null)
+
+        // 確保 questionText3D 存在
+        if (questionText3D == null && questionCubeParent != null)
         {
             TextMeshPro textMesh = questionCubeParent.GetComponentInChildren<TextMeshPro>();
             if (textMesh != null)
             {
-                textMesh.text = newQuestionText;
                 questionText3D = textMesh;
+            }
+            else
+            {
+                // 如果沒有 TextMeshPro 組件，就創建一個
+                GameObject textObj = new GameObject("QuestionText");
+                textObj.transform.SetParent(questionCubeParent.transform);
+                questionText3D = textObj.AddComponent<TextMeshPro>();
+            }
+        }
+
+        if (questionText3D != null)
+        {
+            // 顯示物件
+            questionText3D.gameObject.SetActive(true);
+            if (questionCubeParent != null)
+            {
+                questionCubeParent.SetActive(true);
+            }
+
+            // 設定文字內容
+            questionText3D.text = content.questionText;
+
+            // 設定中文字體
+            if (chineseFont != null)
+            {
+                questionText3D.font = chineseFont;
+            }
+            if (chineseFontMaterial != null)
+            {
+                questionText3D.fontMaterial = chineseFontMaterial;
+            }
+            else if (chineseFont != null && chineseFont.material != null)
+            {
+                questionText3D.fontMaterial = chineseFont.material;
+            }
+
+            // 設定字體大小
+            questionText3D.fontSize = content.questionTextFontSize;
+
+            // 設定文字框大小
+            RectTransform rectTransform = questionText3D.GetComponent<RectTransform>();
+            if (rectTransform != null && content.useCustomQuestionTextSettings)
+            {
+                rectTransform.sizeDelta = content.questionTextSize;
+            }
+
+            // 設定位置和旋轉
+            if (content.useCustomQuestionTextSettings)
+            {
+                questionText3D.transform.localPosition = content.questionTextPosition;
+                questionText3D.transform.localRotation = Quaternion.Euler(content.questionTextRotation);
             }
         }
     }
@@ -865,6 +1128,7 @@ public class TutorialContentManager_Test : MonoBehaviour
         {
             currentThreeDObject.SetActive(false);
         }
+
         if (newThreeDObject != null)
         {
             if (newThreeDObject.transform.parent != threeDContainer)
@@ -886,7 +1150,9 @@ public class TutorialContentManager_Test : MonoBehaviour
             {
                 var buttonRenderer = controlButtons[i].GetComponent<Renderer>();
                 var buttonImage = controlButtons[i].GetComponent<Image>();
+
                 Color targetColor = (i == selectedIndex) ? selectedButtonColor : normalButtonColor;
+
                 if (buttonRenderer != null)
                 {
                     buttonRenderer.material.color = targetColor;
@@ -943,5 +1209,52 @@ public class TutorialContentManager_Test : MonoBehaviour
     public int GetCorrectAnswerCount()
     {
         return questionResults.Count(result => result);
+    }
+
+    // 新增的計分系統公開方法
+    public int GetTotalScore()
+    {
+        return totalScore;
+    }
+
+    public int GetContentScore(int contentIndex)
+    {
+        return contentScores.ContainsKey(contentIndex) ? contentScores[contentIndex] : 0;
+    }
+
+    public bool IsContentCompleted(int contentIndex)
+    {
+        return contentCompleted.ContainsKey(contentIndex) && contentCompleted[contentIndex];
+    }
+
+    public Dictionary<int, int> GetAllContentScores()
+    {
+        return new Dictionary<int, int>(contentScores);
+    }
+
+    public void ResetAllScores()
+    {
+        totalScore = 0;
+        contentScores.Clear();
+        contentCompleted.Clear();
+        InitializeScoreSystem();
+    }
+
+    // 新增方法：獲取完成進度
+    public float GetCompletionProgress()
+    {
+        int completedCount = contentCompleted.Values.Count(completed => completed);
+        int totalContents = tutorialContents.Count(content => content.HasInteractiveQuestions());
+        return totalContents > 0 ? (float)completedCount / totalContents : 0f;
+    }
+
+    // 新增方法：獲取平均分數
+    public float GetAverageScore()
+    {
+        var completedContents = contentCompleted.Where(kvp => kvp.Value).ToList();
+        if (completedContents.Count == 0) return 0f;
+        
+        int totalCompletedScore = completedContents.Sum(kvp => contentScores[kvp.Key]);
+        return (float)totalCompletedScore / completedContents.Count;
     }
 }
