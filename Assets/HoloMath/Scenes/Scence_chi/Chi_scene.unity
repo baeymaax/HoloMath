@@ -18145,8 +18145,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 3}
+  m_SizeDelta: {x: 7.2304, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &759262451
 MeshRenderer:
@@ -18213,7 +18213,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sample text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af1c0d69ff042647a7fb2fe915c697f, type: 2}
   m_sharedMaterial: {fileID: -9165364820383737309, guid: 3af1c0d69ff042647a7fb2fe915c697f, type: 2}
@@ -18240,8 +18240,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 5
+  m_fontSizeBase: 5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -21297,8 +21297,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 5
+  m_fontSizeBase: 5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -39687,7 +39687,7 @@ MonoBehaviour:
   checkAnswerButton: {fileID: 1360931054}
   retryButton: {fileID: 2035234440}
   showHintButton: {fileID: 587168459}
-  resultText: {fileID: 528354397}
+  resultText: {fileID: 0}
   hintText: {fileID: 194362143}
   currentContentIndex: 0
   normalButtonColor: {r: 1, g: 1, b: 1, a: 1}
@@ -39697,7 +39697,7 @@ MonoBehaviour:
   chineseFont: {fileID: 11400000, guid: 3af1c0d69ff042647a7fb2fe915c697f, type: 2}
   chineseFontMaterial: {fileID: -9165364820383737309, guid: 3af1c0d69ff042647a7fb2fe915c697f, type: 2}
   totalScoreText: {fileID: 759262452}
-  currentContentScoreText: {fileID: 948656689}
+  currentContentScoreText: {fileID: 0}
 --- !u!4 &1839588434
 Transform:
   m_ObjectHideFlags: 0
