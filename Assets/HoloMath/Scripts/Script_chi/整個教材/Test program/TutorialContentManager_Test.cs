@@ -804,13 +804,13 @@ public class TutorialContentManager_Test : MonoBehaviour
 
         // 計算當前內容的分數 (傳入當前內容的題目數量)
         int newContentScore = CalculateContentScore(questionResults, questions.Count);
-        
+
         // 更新分數邏輯
         int oldScore = contentScores.ContainsKey(currentContentIndex) ? contentScores[currentContentIndex] : 0;
-        
+
         // 無論是否全對都更新分數（因為現在是按題計分）
         contentScores[currentContentIndex] = newContentScore;
-        
+
         // 如果全對則標記為完成
         if (correctCount == questions.Count)
         {
@@ -820,7 +820,7 @@ public class TutorialContentManager_Test : MonoBehaviour
         {
             contentCompleted[currentContentIndex] = false;
         }
-        
+
         // 重新計算總分（累加所有內容的分數）
         totalScore = 0;
         foreach (var kvp in contentScores)
@@ -833,7 +833,7 @@ public class TutorialContentManager_Test : MonoBehaviour
         {
             int totalQuestions = GetTotalQuestionCount();
             int scorePerQuestion = totalQuestions > 0 ? 100 / totalQuestions : 0;
-            
+
             string resultMessage = $"你答對了 {correctCount} / {questions.Count} 題！";
             if (newContentScore > 0)
             {
@@ -857,9 +857,16 @@ public class TutorialContentManager_Test : MonoBehaviour
             resultText.color = correctCount > 0 ? correctAnswerColor : wrongAnswerColor;
         }
 
-        // 更新分數顯示
         UpdateScoreDisplay();
         isAnswerChecked = true;
+        float delay = correctCount == questions.Count ? 2f : 3f; 
+        StartCoroutine(DelayedButtonPressed(delay));
+    }
+        private IEnumerator DelayedButtonPressed(float delay = 2f)
+    {
+        yield return new WaitForSeconds(delay);
+        
+        OnButtonPressedQuz();
     }
 
     private bool CheckSingleAnswer(string userInput, TutorialQuestion_Test question)
