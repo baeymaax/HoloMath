@@ -48471,7 +48471,162 @@ MonoBehaviour:
   - contentName: 
     description: 
     videoClip: {fileID: 32900000, guid: 5a0cc45f44531e44fa152f2d17081d6e, type: 3}
-    questionImage: {fileID: 2800000, guid: 35a54e486613f0247bdaa9fe276d59ec, type: 3}
+    questionImage: {fileID: 0}
+    hasImage: 0
+    threeDObject: {fileID: 1607191795}
+    questionText: 
+    useCustomQuestionTextSettings: 0
+    questionTextPosition: {x: 0, y: 0, z: 0}
+    questionTextRotation: {x: 0, y: 0, z: 0}
+    questionTextFontSize: 4
+    questionTextSize: {x: 10, y: 2}
+    showQuestionText: 0
+    questions:
+    - questionType: 1
+      promptText: "\u4E0B\u5716\u662F\u4E00\u500B\u4E09\u89D2\u67F1\uFF0C\u5176\u4E2D\u2206BCF\u662F\u76F4\u89D2\u4E09\u89D2\u5F62\u3002\u8ACB\u554F\u7DDA\u6BB5AF\u548C\u5E73\u9762ABCD\u7684\u593E\u89D2\u70BA\u4E0B\u5217\u4F55\u8005\uFF1F\uFF08\u55AE\u9078\uFF09"
+      correctAnswer: 
+      acceptableAnswers: []
+      hint: 
+      answerType: 0
+      tolerance: 0
+      isCaseSensitive: 0
+      allowPartialMatch: 0
+      options:
+      - optionText: "(A)\u2220FAB"
+        isCorrect: 0
+      - optionText: "(B)\u2220FAC"
+        isCorrect: 1
+      - optionText: "(C)\u2220FAD"
+        isCorrect: 0
+      - optionText: "(D)\u2220FBC"
+        isCorrect: 0
+      - optionText: "(E)\u2220EAC"
+        isCorrect: 0
+      textPosition: {x: 0, y: 0, z: 0}
+      inputFieldPosition: {x: 0, y: 0, z: 0}
+      textRotation: {x: 0, y: 0, z: 0}
+      inputFieldRotation: {x: 0, y: 0, z: 0}
+      textSize: {x: 0, y: 0}
+      inputFieldSize: {x: 0, y: 0}
+      useCustomPositions: 0
+      optionSpacing: 0.75
+      optionScale: {x: 1, y: 1, z: 1}
+      useCustomQuestionTextPosition: 1
+      questionTextPosition: {x: 4.5, y: -0.2, z: 14}
+      useCustomOptionPositions: 1
+      optionStartPosition: {x: 0.5, y: -1, z: 14}
+      questionTextFontSize: 5
+    showHints: 1
+    allowRetry: 1
+    showProgress: 1
+    passingScore: 60
+    requireAllCorrect: 0
+  - contentName: 
+    description: 
+    videoClip: {fileID: 32900000, guid: 5a0cc45f44531e44fa152f2d17081d6e, type: 3}
+    questionImage: {fileID: 0}
+    hasImage: 0
+    threeDObject: {fileID: 1607191795}
+    questionText: 
+    useCustomQuestionTextSettings: 0
+    questionTextPosition: {x: 0, y: 0, z: 0}
+    questionTextRotation: {x: 0, y: 0, z: 0}
+    questionTextFontSize: 4
+    questionTextSize: {x: 10, y: 2}
+    showQuestionText: 0
+    questions:
+    - questionType: 1
+      promptText: "\u4E0B\u5716\u662F\u4E00\u500B\u4E09\u89D2\u67F1\uFF0C\u5176\u4E2D\u2206BCF\u662F\u76F4\u89D2\u4E09\u89D2\u5F62\u3002\u8ACB\u554F\u7DDA\u6BB5AF\u548C\u5E73\u9762ABCD\u7684\u593E\u89D2\u70BA\u4E0B\u5217\u4F55\u8005\uFF1F\uFF08\u55AE\u9078\uFF09"
+      correctAnswer: 
+      acceptableAnswers: []
+      hint: 
+      answerType: 0
+      tolerance: 0
+      isCaseSensitive: 0
+      allowPartialMatch: 0
+      options:
+      - optionText: "(A)\u920D\u89D2\u4E09\u89D2\u5F62"
+        isCorrect: 0
+      - optionText: "(B) \u76F4\u89D2\u4E09\u89D2\u5F62"
+        isCorrect: 0
+      - optionText: "(C) \u92B3\u89D2\u4E09\u89D2\u5F62"
+        isCorrect: 1
+      textPosition: {x: 0, y: 0, z: 0}
+      inputFieldPosition: {x: 0, y: 0, z: 0}
+      textRotation: {x: 0, y: 0, z: 0}
+      inputFieldRotation: {x: 0, y: 0, z: 0}
+      textSize: {x: 0, y: 0}
+      inputFieldSize: {x: 0, y: 0}
+      useCustomPositions: 0
+      optionSpacing: 0.75
+      optionScale: {x: 1, y: 1, z: 1}
+      useCustomQuestionTextPosition: 1
+      questionTextPosition: {x: 4.5, y: -0.2, z: 14}
+      useCustomOptionPositions: 1
+      optionStartPosition: {x: 0.5, y: -1, z: 14}
+      questionTextFontSize: 5
+    showHints: 1
+    allowRetry: 1
+    showProgress: 1
+    passingScore: 60
+    requireAllCorrect: 0
+  - contentName: 
+    description: 
+    videoClip: {fileID: 32900000, guid: 5a0cc45f44531e44fa152f2d17081d6e, type: 3}
+    questionImage: {fileID: 0}
+    hasImage: 0
+    threeDObject: {fileID: 1607191795}
+    questionText: 
+    useCustomQuestionTextSettings: 0
+    questionTextPosition: {x: 0, y: 0, z: 0}
+    questionTextRotation: {x: 0, y: 0, z: 0}
+    questionTextFontSize: 4
+    questionTextSize: {x: 10, y: 2}
+    showQuestionText: 0
+    questions:
+    - questionType: 1
+      promptText: "\u5728\u7A7A\u9593\u4E2D\uFF0C\u54EA\u4E9B\u9078\u9805\u70BA\u975E\uFF1F\uFF08\u591A\u9078\uFF09"
+      correctAnswer: 
+      acceptableAnswers: []
+      hint: 
+      answerType: 0
+      tolerance: 0
+      isCaseSensitive: 0
+      allowPartialMatch: 0
+      options:
+      - optionText: "(A)\u5169\u5E73\u884C\u76F4\u7DDA\u53EF\u6C7A\u5B9A\u4E00\u5E73\u9762"
+        isCorrect: 0
+      - optionText: "(B)\u6C92\u6709\u4EA4\u9EDE\u7684\u4E8C\u76F4\u7DDA\u662F\u5E73\u884C\u7DDA"
+        isCorrect: 1
+      - optionText: "(C)\u5206\u5225\u5728\u4E8C\u5E73\u9762\u7684\u76F4\u7DDA\u4E00\u5B9A\u662F\u6B6A\u659C\u7DDA"
+        isCorrect: 1
+      - optionText: "(D)\u5206\u5225\u5728\u76F8\u4EA4\u4E8C\u5E73\u9762\u7684\u76F4\u7DDA\u4E00\u5B9A\u76F8\u4EA4"
+        isCorrect: 1
+      - optionText: "(E)\u76F8\u7570\u5169\u76F4\u7DDA\u4E00\u5B9A\u53EF\u6C7A\u5B9A\u4E00\u5E73\u9762"
+        isCorrect: 1
+      textPosition: {x: 0, y: 0, z: 0}
+      inputFieldPosition: {x: 0, y: 0, z: 0}
+      textRotation: {x: 0, y: 0, z: 0}
+      inputFieldRotation: {x: 0, y: 0, z: 0}
+      textSize: {x: 0, y: 0}
+      inputFieldSize: {x: 0, y: 0}
+      useCustomPositions: 0
+      optionSpacing: 0.75
+      optionScale: {x: 1, y: 1, z: 1}
+      useCustomQuestionTextPosition: 1
+      questionTextPosition: {x: 4.5, y: -0.2, z: 14}
+      useCustomOptionPositions: 1
+      optionStartPosition: {x: 0.5, y: -1, z: 14}
+      questionTextFontSize: 5
+    showHints: 1
+    allowRetry: 1
+    showProgress: 1
+    passingScore: 60
+    requireAllCorrect: 0
+  - contentName: 
+    description: 
+    videoClip: {fileID: 32900000, guid: 5a0cc45f44531e44fa152f2d17081d6e, type: 3}
+    questionImage: {fileID: 2800000, guid: 13467a18a1c83d743beff6fca1474441, type: 3}
     hasImage: 1
     threeDObject: {fileID: 1607191795}
     questionText: 
@@ -48483,7 +48638,7 @@ MonoBehaviour:
     showQuestionText: 0
     questions:
     - questionType: 1
-      promptText: "\u4E0B\u5716\u662F\u4E00\u500B\u4E09\u89D2\u67F1\uFF0C\u5176\u4E2D\u2206BCF\u662F\u76F4\u89D2\u4E09\u89D2\u5F62\u3002\u8ACB\u554F\u7DDA\u6BB5AF\u548C\u5E73\u9762ABCD\u7684\u593E\u89D2\u70BA\u4E0B\u5217\u4F55\u8005\uFF1F\uFF08\u55AE\u9078\uFF09"
+      promptText: "\u4E0B\u5716ABCD-EFGH\u662F\u4E00\u500B\u9577\u65B9\u9AD4\uFF0C\u8A66\u5224\u65B7\u4E0B\u5217\u54EA\u4E9B\u9078\u9805\u662F\u6B63\u78BA\u7684\uFF1F\uFF08\u591A\u9078\uFF09"
       correctAnswer: 
       acceptableAnswers: []
       hint: 
@@ -48492,16 +48647,66 @@ MonoBehaviour:
       isCaseSensitive: 0
       allowPartialMatch: 0
       options:
-      - optionText: "(A)\u2220FAB"
-        isCorrect: 0
-      - optionText: "(B)\u2220FAC"
+      - optionText: "(A)\u76F4\u7DDAAB\u8207\u76F4\u7DDAGH\u5E73\u884C"
         isCorrect: 1
-      - optionText: "(C)\u2220FAD"
+      - optionText: "(B)\u76F4\u7DDAAB\u8207\u76F4\u7DDAEG\u76F8\u4EA4"
         isCorrect: 0
-      - optionText: "(D)\u2220FBC"
+      - optionText: "(C)\u76F4\u7DDAAC\u8207\u76F4\u7DDAEG\u5E73\u884C"
+        isCorrect: 1
+      - optionText: "(D)\u76F4\u7DDAAC\u8207\u76F4\u7DDAFH\u76F8\u4EA4"
         isCorrect: 0
-      - optionText: "(E)\u2220EAC"
+      - optionText: "(E)\u76F4\u7DDAAC\u8207\u76F4\u7DDAGD\u6B6A\u659C"
+        isCorrect: 1
+      textPosition: {x: 0, y: 0, z: 0}
+      inputFieldPosition: {x: 0, y: 0, z: 0}
+      textRotation: {x: 0, y: 0, z: 0}
+      inputFieldRotation: {x: 0, y: 0, z: 0}
+      textSize: {x: 0, y: 0}
+      inputFieldSize: {x: 0, y: 0}
+      useCustomPositions: 0
+      optionSpacing: 0.75
+      optionScale: {x: 1, y: 1, z: 1}
+      useCustomQuestionTextPosition: 1
+      questionTextPosition: {x: 4.5, y: -0.2, z: 14}
+      useCustomOptionPositions: 1
+      optionStartPosition: {x: 0.5, y: -1, z: 14}
+      questionTextFontSize: 5
+    showHints: 1
+    allowRetry: 1
+    showProgress: 1
+    passingScore: 60
+    requireAllCorrect: 0
+  - contentName: 
+    description: 
+    videoClip: {fileID: 32900000, guid: 5a0cc45f44531e44fa152f2d17081d6e, type: 3}
+    questionImage: {fileID: 2800000, guid: 6d28a798397a0024a9a690300238df52, type: 3}
+    hasImage: 1
+    threeDObject: {fileID: 1607191795}
+    questionText: 
+    useCustomQuestionTextSettings: 0
+    questionTextPosition: {x: 0, y: 0, z: 0}
+    questionTextRotation: {x: 0, y: 0, z: 0}
+    questionTextFontSize: 4
+    questionTextSize: {x: 10, y: 2}
+    showQuestionText: 0
+    questions:
+    - questionType: 1
+      promptText: "\u4E0B\u5716\u662F\u4E00\u500B\u67F1\u9AD4\uFF0C\u5176\u4E2DABCDEF\u3001GHIJKL\u662F\u6B63\u516D\u908A\u5F62\u3002\u8A66\u554F\u76F4\u7DDAAB
+        \u0305\u8207\u4E0B\u5217\u76F4\u7DDA\u7684\u95DC\u4FC2\u4F55\u8005\u6B63\u78BA\uFF1F\uFF08\u55AE\u9078\uFF09"
+      correctAnswer: 
+      acceptableAnswers: []
+      hint: 
+      answerType: 0
+      tolerance: 0
+      isCaseSensitive: 0
+      allowPartialMatch: 0
+      options:
+      - optionText: "(A)\u548C\u76F4\u7DDAJK\u5E73\u884C"
         isCorrect: 0
+      - optionText: "(B)\u548C\u76F4\u7DDAEF\u6B6A\u659C"
+        isCorrect: 1
+      - optionText: "(C)\u548C\u76F4\u7DDAGL\u76F8\u4EA4\u65BC\u4E00\u9EDE"
+        isCorrect: 1
       textPosition: {x: 0, y: 0, z: 0}
       inputFieldPosition: {x: 0, y: 0, z: 0}
       textRotation: {x: 0, y: 0, z: 0}
@@ -48536,7 +48741,7 @@ MonoBehaviour:
     showQuestionText: 0
     questions:
     - questionType: 1
-      promptText: "\u4E0B\u5716\u662F\u4E00\u500B\u4E09\u89D2\u67F1\uFF0C\u5176\u4E2D\u2206BCF\u662F\u76F4\u89D2\u4E09\u89D2\u5F62\u3002\u8ACB\u554F\u7DDA\u6BB5AF\u548C\u5E73\u9762ABCD\u7684\u593E\u89D2\u70BA\u4E0B\u5217\u4F55\u8005\uFF1F\uFF08\u55AE\u9078\uFF09"
+      promptText: "\u8A2DL1\u3001L2\u3001L3\u662F\u7A7A\u9593\u4E2D\u7684\u76F8\u7570\u4E09\u76F4\u7DDA\uFF0C\u4E0B\u5217\u6558\u8FF0\u4F55\u8005\u662F\u6B63\u78BA\u7684\uFF1F\uFF08\u591A\u9078\uFF09"
       correctAnswer: 
       acceptableAnswers: []
       hint: 
@@ -48545,16 +48750,16 @@ MonoBehaviour:
       isCaseSensitive: 0
       allowPartialMatch: 0
       options:
-      - optionText: "(A)\u2220FAB"
+      - optionText: "(A)\u82E5L_1\u2225L_2\uFF0C\u5247L_1\u2225L_3"
         isCorrect: 0
-      - optionText: "(B)\u2220FAC"
+      - optionText: "(B)\u82E5L_1\u22A5L_3\uFF0C\u5247L_2\u22A5L_3"
         isCorrect: 1
-      - optionText: "(C)\u2220FAD"
-        isCorrect: 0
-      - optionText: "(D)\u2220FBC"
-        isCorrect: 0
-      - optionText: "(E)\u2220EAC"
-        isCorrect: 0
+      - optionText: "(C)L_1\u22A5L_2\u4E14L_2\u22A5L_3"
+        isCorrect: 1
+      - optionText: "(D)\u82E5L_1\u8207L_2\u76F8\u4EA4\u65BC\u4E00\u9EDE"
+        isCorrect: 1
+      - optionText: "(E)L_1\u2225L_2\u4E14L_2\u8207L_3\u6B6A\u659C"
+        isCorrect: 1
       textPosition: {x: 0, y: 0, z: 0}
       inputFieldPosition: {x: 0, y: 0, z: 0}
       textRotation: {x: 0, y: 0, z: 0}
@@ -48589,7 +48794,7 @@ MonoBehaviour:
     showQuestionText: 0
     questions:
     - questionType: 1
-      promptText: "\u4E0B\u5716\u662F\u4E00\u500B\u4E09\u89D2\u67F1\uFF0C\u5176\u4E2D\u2206BCF\u662F\u76F4\u89D2\u4E09\u89D2\u5F62\u3002\u8ACB\u554F\u7DDA\u6BB5AF\u548C\u5E73\u9762ABCD\u7684\u593E\u89D2\u70BA\u4E0B\u5217\u4F55\u8005\uFF1F\uFF08\u55AE\u9078\uFF09"
+      promptText: "\u540C\u6642\u8207\u5169\u76F4\u7DDA\u5782\u76F4\u7684\u76F4\u7DDA\uFF0C\u7A31\u70BA\u516C\u5782\u7DDA\u3002\u5728\u7A7A\u9593\u4E2D\uFF0C\u9078\u51FA\u4E0B\u5217\u6B63\u78BA\u7684\u9078\u9805\uFF1A\uFF08\u591A\u9078\uFF09"
       correctAnswer: 
       acceptableAnswers: []
       hint: 
@@ -48598,16 +48803,16 @@ MonoBehaviour:
       isCaseSensitive: 0
       allowPartialMatch: 0
       options:
-      - optionText: "(A)\u2220FAB"
+      - optionText: "(A)(A)\u82E5\u5169\u76F8\u7570\u76F4\u7DDA\u4E0D\u76F8\u4EA4\uFF0C\u5247\u5B83\u5011\u5FC5\u5E73\u884C"
         isCorrect: 0
-      - optionText: "(B)\u2220FAC"
+      - optionText: "(B)\u82E5\u5169\u76F8\u7570\u76F4\u7DDA\u4E0D\u5728\u540C\u4E00\u5E73\u9762\u4E0A\uFF0C\u5247\u5B83\u5011\u5FC5\u6B6A\u659C"
         isCorrect: 1
-      - optionText: "(C)\u2220FAD"
-        isCorrect: 0
-      - optionText: "(D)\u2220FBC"
-        isCorrect: 0
-      - optionText: "(E)\u2220EAC"
-        isCorrect: 0
+      - optionText: "(C)\u7A7A\u9593\u4E2D\u6709\u4E00\u689D\u76F4\u7DDAL\uFF0C\u5247\u6709\u7121\u9650\u591A\u689D\u76F4\u7DDA\u5782\u76F4L"
+        isCorrect: 1
+      - optionText: "(D)\u5169\u76F8\u7570\u76F4\u7DDA\u4E00\u5B9A\u6709\u516C\u5782\u7DDA"
+        isCorrect: 1
+      - optionText: "(E)\u76F8\u4EA4\u7684\u5169\u76F8\u7570\u76F4\u7DDA\u6070\u53EA\u6709\u4E00\u689D\u516C\u5782\u7DDA"
+        isCorrect: 1
       textPosition: {x: 0, y: 0, z: 0}
       inputFieldPosition: {x: 0, y: 0, z: 0}
       textRotation: {x: 0, y: 0, z: 0}
@@ -48630,8 +48835,8 @@ MonoBehaviour:
   - contentName: 
     description: 
     videoClip: {fileID: 32900000, guid: 5a0cc45f44531e44fa152f2d17081d6e, type: 3}
-    questionImage: {fileID: 0}
-    hasImage: 0
+    questionImage: {fileID: 2800000, guid: be59653ba77b18744838d2c37a975b14, type: 3}
+    hasImage: 1
     threeDObject: {fileID: 1607191795}
     questionText: 
     useCustomQuestionTextSettings: 0
@@ -48642,7 +48847,7 @@ MonoBehaviour:
     showQuestionText: 0
     questions:
     - questionType: 1
-      promptText: "\u4E0B\u5716\u662F\u4E00\u500B\u4E09\u89D2\u67F1\uFF0C\u5176\u4E2D\u2206BCF\u662F\u76F4\u89D2\u4E09\u89D2\u5F62\u3002\u8ACB\u554F\u7DDA\u6BB5AF\u548C\u5E73\u9762ABCD\u7684\u593E\u89D2\u70BA\u4E0B\u5217\u4F55\u8005\uFF1F\uFF08\u55AE\u9078\uFF09"
+      promptText: "\u4E0B\u5716\u662F\u4E00\u500B\u9577\u65B9\u9AD4ABCD-EFGH\u3002\u8ACB\u554F\u4E0B\u5217\u54EA\u4E00\u500B\u5224\u65B7\u662F\u6B63\u78BA\u7684\uFF1F\uFF08\u55AE\u9078\uFF09"
       correctAnswer: 
       acceptableAnswers: []
       hint: 
@@ -48651,68 +48856,13 @@ MonoBehaviour:
       isCaseSensitive: 0
       allowPartialMatch: 0
       options:
-      - optionText: "(A)\u2220FAB"
-        isCorrect: 0
-      - optionText: "(B)\u2220FAC"
+      - optionText: "(A)\u76F4\u7DDAAD\u8207\u76F4\u7DDADG\u5782\u76F4"
         isCorrect: 1
-      - optionText: "(C)\u2220FAD"
+      - optionText: "(B)\u76F4\u7DDAAH\u8207\u76F4\u7DDAHG\u5782\u76F4"
         isCorrect: 0
-      - optionText: "(D)\u2220FBC"
+      - optionText: "(C)\u4EE5\u4E0A\u7686\u662F"
         isCorrect: 0
-      - optionText: "(E)\u2220EAC"
-        isCorrect: 0
-      textPosition: {x: 0, y: 0, z: 0}
-      inputFieldPosition: {x: 0, y: 0, z: 0}
-      textRotation: {x: 0, y: 0, z: 0}
-      inputFieldRotation: {x: 0, y: 0, z: 0}
-      textSize: {x: 0, y: 0}
-      inputFieldSize: {x: 0, y: 0}
-      useCustomPositions: 0
-      optionSpacing: 0.75
-      optionScale: {x: 1, y: 1, z: 1}
-      useCustomQuestionTextPosition: 1
-      questionTextPosition: {x: 4.5, y: -0.2, z: 14}
-      useCustomOptionPositions: 1
-      optionStartPosition: {x: 0.5, y: -1, z: 14}
-      questionTextFontSize: 5
-    showHints: 1
-    allowRetry: 1
-    showProgress: 1
-    passingScore: 60
-    requireAllCorrect: 0
-  - contentName: 
-    description: 
-    videoClip: {fileID: 32900000, guid: 5a0cc45f44531e44fa152f2d17081d6e, type: 3}
-    questionImage: {fileID: 0}
-    hasImage: 0
-    threeDObject: {fileID: 1607191795}
-    questionText: 
-    useCustomQuestionTextSettings: 0
-    questionTextPosition: {x: 0, y: 0, z: 0}
-    questionTextRotation: {x: 0, y: 0, z: 0}
-    questionTextFontSize: 4
-    questionTextSize: {x: 10, y: 2}
-    showQuestionText: 0
-    questions:
-    - questionType: 1
-      promptText: "\u4E0B\u5716\u662F\u4E00\u500B\u4E09\u89D2\u67F1\uFF0C\u5176\u4E2D\u2206BCF\u662F\u76F4\u89D2\u4E09\u89D2\u5F62\u3002\u8ACB\u554F\u7DDA\u6BB5AF\u548C\u5E73\u9762ABCD\u7684\u593E\u89D2\u70BA\u4E0B\u5217\u4F55\u8005\uFF1F\uFF08\u55AE\u9078\uFF09"
-      correctAnswer: 
-      acceptableAnswers: []
-      hint: 
-      answerType: 0
-      tolerance: 0
-      isCaseSensitive: 0
-      allowPartialMatch: 0
-      options:
-      - optionText: "(A)\u2220FAB"
-        isCorrect: 0
-      - optionText: "(B)\u2220FAC"
-        isCorrect: 1
-      - optionText: "(C)\u2220FAD"
-        isCorrect: 0
-      - optionText: "(D)\u2220FBC"
-        isCorrect: 0
-      - optionText: "(E)\u2220EAC"
+      - optionText: "(D)\u4EE5\u4E0A\u7686\u975E"
         isCorrect: 0
       textPosition: {x: 0, y: 0, z: 0}
       inputFieldPosition: {x: 0, y: 0, z: 0}
