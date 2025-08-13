@@ -41,7 +41,7 @@ public class TutorialQuestion_Test
     public string correctAnswer;
     public List<string> acceptableAnswers = new List<string>();
     public string hint;
-    public AnswerType answerType = AnswerType.Text;
+    public AnswerType_Test answerType_Test = AnswerType_Test.Text;
     public float tolerance = 0.01f;
     public bool isCaseSensitive = false;
     public bool allowPartialMatch = false;
@@ -95,6 +95,7 @@ public class TutorialQuestion_Test
     }
 }
 
+#region Tutorial Contents Inspector
 [Serializable]
 public class TutorialContent_Test
 {
@@ -105,7 +106,7 @@ public class TutorialContent_Test
     public bool hasImage = false;
     public GameObject threeDObject;
     public string questionText;
-    
+
     [Header("Question Text 設定")]
     public bool useCustomQuestionTextSettings = false;
     public Vector3 questionTextPosition = Vector3.zero;
@@ -113,7 +114,7 @@ public class TutorialContent_Test
     public float questionTextFontSize = 4f;
     public Vector2 questionTextSize = new Vector2(10f, 2f); // Width x Height
     public bool showQuestionText = true;  // 控制是否顯示 questionText
-    
+
     public List<TutorialQuestion_Test> questions = new List<TutorialQuestion_Test>();
     public bool showHints = true;
     public bool allowRetry = true;
@@ -198,13 +199,16 @@ public class TutorialContent_Test
     }
 }
 
+#endregion
+
+#region Inspector 最下方區塊
 public class TutorialContentManager_Test : MonoBehaviour
 {
     [SerializeField] private TutorialContent_Test[] tutorialContents = new TutorialContent_Test[5];
     [SerializeField] private PressableButtonHoloLens2[] controlButtons = new PressableButtonHoloLens2[5];
     [SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private TextMeshPro questionText3D;
-    [SerializeField] private Transform threeDContainer;
+    [SerializeField] private Transform threeDContainer; //3D物件父物件
     [SerializeField] private GameObject imageDisplayObject;
     [SerializeField] private Renderer imageRenderer;
     [SerializeField] private GameObject questionCubeParent;
@@ -230,7 +234,9 @@ public class TutorialContentManager_Test : MonoBehaviour
     [SerializeField] private TextMeshPro totalScoreText; // 顯示總分的UI
     [SerializeField] private TextMeshPro currentContentScoreText; // 顯示當前內容分數的UI
 
-    private GameObject currentThreeDObject;
+    #endregion
+
+    private GameObject currentThreeDObject; //抓目前物件
     private List<TMP_InputField> inputFields = new List<TMP_InputField>();
     private List<TextMeshPro> questionPrompts = new List<TextMeshPro>();
     private List<GameObject> questionContainers = new List<GameObject>();
@@ -243,19 +249,115 @@ public class TutorialContentManager_Test : MonoBehaviour
     private Dictionary<int, bool> contentCompleted = new Dictionary<int, bool>(); // 每個內容是否已完成
     private int totalScore = 0; // 總分
 
-    void Start()
-    {
-        if (questionText3D == null && questionCubeParent != null)
-        {
-            questionText3D = questionCubeParent.GetComponentInChildren<TextMeshPro>();
-        }
+    Json_Test Test;
 
-        InitializeScoreSystem();
-        InitializeThreeDObjects();
-        InitializeButtons();
-        InitializeInteractiveButtons();
-        LoadContent(0);
+// 在 TutorialContentManager_Test 类中，替换原来的 Start() 方法：
+
+void Start()
+{
+    Debug.Log("=== 开始 Start() 方法 ===");
+    
+    // 首先清空现有的 tutorialContents，确保不会使用 Inspector 中的旧数据
+    tutorialContents = new TutorialContent_Test[0];
+    Debug.Log("已清空现有的 tutorialContents");
+    
+    // 载入 JSON 资料
+    Test = gameObject.AddComponent<Json_Test>();  // 确保添加组件
+    if (Test == null)
+    {
+        Test = new Json_Test();
+        Debug.Log("创建了新的 Json_Test 实例");
     }
+    
+    Debug.Log("开始加载 JSON...");
+    Test.LoadJson();
+    
+    Debug.Log("开始应用 JSON 数据到 TutorialManager...");
+    Test.ApplyToTutorialManager(this);
+    
+    // 验证是否成功载入资料
+    if (tutorialContents == null || tutorialContents.Length == 0)
+    {
+        Debug.LogError("JSON 加载失败！没有载入到任何教学内容，请检查以下几点：");
+        Debug.LogError("1. JSON 文件是否存在于 StreamingAssets 文件夹中");
+        Debug.LogError("2. JSON 文件格式是否正确");
+        Debug.LogError("3. 文件名是否为 'math_questions.json'");
+        
+        // 创建一个空的数组以防止错误
+        tutorialContents = new TutorialContent_Test[1];
+        tutorialContents[0] = new TutorialContent_Test
+        {
+            contentName = "错误 - 无法加载数据",
+            questionText = "请检查 JSON 文件",
+            questions = new List<TutorialQuestion_Test>()
+        };
+    }
+    else
+    {
+        Debug.Log($"✓ 成功载入 {tutorialContents.Length} 个教学内容");
+        
+        // 显示每个内容的详细信息
+        for (int i = 0; i < tutorialContents.Length; i++)
+        {
+            var content = tutorialContents[i];
+            Debug.Log($"内容 {i}: Name='{content.contentName}', QuestionText='{content.questionText}', Questions={content.questions?.Count ?? 0}");
+            
+            if (content.questions != null)
+            {
+                for (int j = 0; j < content.questions.Count; j++)
+                {
+                    Debug.Log($"  问题 {j}: Type={content.questions[j].questionType}, Prompt='{content.questions[j].promptText}'");
+                }
+            }
+        }
+    }
+
+    // 初始化 questionText3D
+    if (questionText3D == null && questionCubeParent != null)
+    {
+        questionText3D = questionCubeParent.GetComponentInChildren<TextMeshPro>();
+        Debug.Log($"找到 questionText3D: {questionText3D != null}");
+    }
+
+    Debug.Log("初始化计分系统...");
+    InitializeScoreSystem();
+    
+    Debug.Log("初始化3D物件...");
+    InitializeThreeDObjects();
+    
+    Debug.Log("初始化按钮...");
+    InitializeButtons();
+    InitializeInteractiveButtons();
+
+    Debug.Log("加载第一个内容...");
+    LoadContent(0);
+    
+    Debug.Log("=== Start() 方法完成 ===");
+}
+
+#region  添加一个公开方法来重新加载 JSON 数据（用于测试）
+public void ReloadJsonData()
+{
+    Debug.Log("=== 重新加载 JSON 数据 ===");
+    
+    if (Test == null)
+    {
+        Test = gameObject.GetComponent<Json_Test>();
+        if (Test == null)
+        {
+            Test = gameObject.AddComponent<Json_Test>();
+        }
+    }
+    
+    Test.LoadJson();
+    Test.ApplyToTutorialManager(this);
+    
+    InitializeScoreSystem();
+    LoadContent(0);
+    
+    Debug.Log("JSON 数据重新加载完成");
+}
+#endregion
 
     private void InitializeScoreSystem()
     {
@@ -311,19 +413,19 @@ public class TutorialContentManager_Test : MonoBehaviour
     private int CalculateContentScore(List<bool> results, int contentQuestionCount)
     {
         if (contentQuestionCount == 0) return 0;
-        
+
         int correctCount = results.Count(r => r);
         int totalQuestions = GetTotalQuestionCount(); // 獲取所有內容的總題目數
-        
+
         if (totalQuestions == 0) return 0;
-        
+
         // 每題分數 = 100 / 總題目數
         int scorePerQuestion = 100 / totalQuestions;
         int remainingScore = 100 % totalQuestions; // 處理無法整除的餘數
-        
+
         // 只計算答對的題目分數
         int score = correctCount * scorePerQuestion;
-        
+
         // 如果這是最後完成的內容且有餘數，將餘數加到最後
         // 這裡簡化處理：如果當前內容全對且總完成題數接近總題數，就加上餘數
         if (correctCount == contentQuestionCount && remainingScore > 0)
@@ -338,14 +440,14 @@ public class TutorialContentManager_Test : MonoBehaviour
                 }
             }
             completedQuestions += correctCount; // 加上當前答對的題數
-            
+
             // 如果這樣會達到總題數，就把餘數也給它
             if (completedQuestions >= totalQuestions - remainingScore)
             {
                 score += remainingScore;
             }
         }
-        
+
         return score;
     }
 
@@ -388,29 +490,92 @@ public class TutorialContentManager_Test : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
     public void OnButtonPressed(int buttonIndex)
+=======
+#region 按鈕控制方法
+    public void OnButtonPressedQuz() //題目+
+>>>>>>> Stashed changes
     {
         if (buttonIndex >= 0 && buttonIndex < tutorialContents.Length)
         {
+<<<<<<< Updated upstream
             LoadContent(buttonIndex);
             UpdateButtonVisual(buttonIndex);
+=======
+            currentContentIndex = (currentContentIndex + 1) % tutorialContents.Length;
+            Debug.Log("" + currentContentIndex);
+            LoadQuzOnly(currentContentIndex);
+            //UpdateButtonVisual(currentContentIndex);
+
+        }
+    }
+    public void OnButtonPressedQuzMinus() //題目-
+    {
+        if (tutorialContents.Length > 0)
+        {
+            currentContentIndex = (currentContentIndex - 1 + tutorialContents.Length) % tutorialContents.Length;
+            Debug.Log("" + currentContentIndex);
+            LoadQuzOnly(currentContentIndex);
+            //UpdateButtonVisual(currentContentIndex);
+
+        }
+    }
+    public void OnButtonPressedLes() //課程+
+    {
+        if (tutorialContents.Length > 0)
+        {
+            currentContentIndex = (currentContentIndex + 1) % tutorialContents.Length;
+            LoadContent(currentContentIndex);
+            //UpdateButtonVisual(currentContentIndex);
+
+        }
+    }
+    public void OnButtonPressedLesMinus() //課程-
+    {
+        if (tutorialContents.Length > 0)
+        {
+            currentContentIndex = (currentContentIndex - 1 + tutorialContents.Length) % tutorialContents.Length;
+            LoadContent(currentContentIndex);
+            //UpdateButtonVisual(currentContentIndex);
+
         }
     }
 
-    private void LoadContent(int contentIndex)
+    private void LoadQuzOnly(int contentIndex) //切換題目
     {
         if (contentIndex >= 0 && contentIndex < tutorialContents.Length)
         {
             currentContentIndex = contentIndex;
             TutorialContent_Test content = tutorialContents[contentIndex];
 
+            //主要是底下四個方法
+            UpdateQuestionContent(content);
+            Update3DObject(content.threeDObject);
+            ResetAnswerState();
+            UpdateScoreDisplay(); // 更新分數顯示
+>>>>>>> Stashed changes
+        }
+    }
+
+    private void LoadContent(int contentIndex) //切換單元
+    {
+        if (contentIndex >= 0 && contentIndex < tutorialContents.Length)
+        {
+            currentContentIndex = contentIndex;
+            TutorialContent_Test content = tutorialContents[contentIndex];
+
+            //主要是底下五個方法
             UpdateVideo(content.videoClip);
+
             UpdateQuestionContent(content);
             Update3DObject(content.threeDObject);
             ResetAnswerState();
             UpdateScoreDisplay(); // 更新分數顯示
         }
     }
+
+#endregion
 
     private void UpdateVideo(VideoClip newVideoClip)
     {
@@ -558,6 +723,10 @@ public class TutorialContentManager_Test : MonoBehaviour
         yOffset -= 0.5f;
     }
 
+<<<<<<< Updated upstream
+=======
+    #region 選擇題創建
+>>>>>>> Stashed changes
     private void CreateMultipleChoiceQuestion(TutorialQuestion_Test question, GameObject container, int questionIndex, ref float yOffset)
     {
         if (optionPrefab == null) return;
@@ -565,7 +734,12 @@ public class TutorialContentManager_Test : MonoBehaviour
         // 創建問題文字
         GameObject questionTextObj = new GameObject($"QuestionText_{questionIndex}");
         questionTextObj.transform.SetParent(container.transform);
+<<<<<<< Updated upstream
        
+=======
+        RectTransform textRect = questionTextObj.AddComponent<RectTransform>();
+
+>>>>>>> Stashed changes
         // 設定問題文字位置
         Vector3 questionTextPos;
         if (question.useCustomQuestionTextPosition)
@@ -578,7 +752,14 @@ public class TutorialContentManager_Test : MonoBehaviour
         }
         questionTextObj.transform.localPosition = questionTextPos;
         questionTextObj.transform.localRotation = Quaternion.identity;
+<<<<<<< Updated upstream
         questionTextObj.transform.localScale = Vector3.one;
+=======
+        // questionTextObj.transform.localScale = Vector3.one;
+        // Debug.Log(textRect.anchoredPosition);
+        textRect.sizeDelta = new Vector2(15, 5);
+        textRect.localPosition = new Vector3(1, (float)-0.2, 14);
+>>>>>>> Stashed changes
 
         TextMeshPro questionTextMesh = questionTextObj.AddComponent<TextMeshPro>();
         questionTextMesh.text = $"{questionIndex + 1}. {question.promptText}";
@@ -651,13 +832,17 @@ public class TutorialContentManager_Test : MonoBehaviour
         }
 
         inputFields.Add(null);
-       
+
         // 如果沒有使用自訂位置，更新 yOffset 為下一個問題做準備
         if (!question.useCustomOptionPositions)
         {
             yOffset -= (question.options.Count * question.optionSpacing + 0.3f);
         }
     }
+<<<<<<< Updated upstream
+=======
+    #endregion
+>>>>>>> Stashed changes
 
     private void ClearQuestionFields()
     {
@@ -807,19 +992,30 @@ public class TutorialContentManager_Test : MonoBehaviour
         // 更新分數顯示
         UpdateScoreDisplay();
         isAnswerChecked = true;
+<<<<<<< Updated upstream
+=======
+        float delay = correctCount == questions.Count ? 2f : 3f;
+        StartCoroutine(DelayedButtonPressed(delay));
+    }
+    private IEnumerator DelayedButtonPressed(float delay = 2f)
+    {
+        yield return new WaitForSeconds(delay);
+
+        OnButtonPressedQuz();
+>>>>>>> Stashed changes
     }
 
     private bool CheckSingleAnswer(string userInput, TutorialQuestion_Test question)
     {
         if (string.IsNullOrEmpty(userInput)) return false;
 
-        switch (question.answerType)
+        switch (question.answerType_Test)
         {
-            case AnswerType.Text:
+            case AnswerType_Test.Text:
                 return CheckTextAnswer(userInput, question);
-            case AnswerType.Number:
+            case AnswerType_Test.Number:
                 return CheckNumberAnswer(userInput, question);
-            case AnswerType.Expression:
+            case AnswerType_Test.Expression:
                 return CheckExpressionAnswer(userInput, question);
             default:
                 return CheckTextAnswer(userInput, question);
@@ -961,7 +1157,7 @@ public class TutorialContentManager_Test : MonoBehaviour
         }
 
         ResetAnswerState();
-        
+
         // 跳回第一個 control button
         LoadContent(0);
         UpdateButtonVisual(0);
@@ -1126,7 +1322,7 @@ public class TutorialContentManager_Test : MonoBehaviour
     {
         if (currentThreeDObject != null)
         {
-            currentThreeDObject.SetActive(false);
+            currentThreeDObject.SetActive(false); //控制在場景消失
         }
 
         if (newThreeDObject != null)
@@ -1135,9 +1331,9 @@ public class TutorialContentManager_Test : MonoBehaviour
             {
                 newThreeDObject.transform.SetParent(threeDContainer);
                 newThreeDObject.transform.localPosition = Vector3.zero;
-                newThreeDObject.transform.localRotation = Quaternion.identity;
+                newThreeDObject.transform.localRotation = Quaternion.identity; //設定3D物件位置
             }
-            newThreeDObject.SetActive(true);
+            newThreeDObject.SetActive(true); //控制在場景出現
             currentThreeDObject = newThreeDObject;
         }
     }
@@ -1253,8 +1449,9 @@ public class TutorialContentManager_Test : MonoBehaviour
     {
         var completedContents = contentCompleted.Where(kvp => kvp.Value).ToList();
         if (completedContents.Count == 0) return 0f;
-        
+
         int totalCompletedScore = completedContents.Sum(kvp => contentScores[kvp.Key]);
         return (float)totalCompletedScore / completedContents.Count;
     }
 }
+

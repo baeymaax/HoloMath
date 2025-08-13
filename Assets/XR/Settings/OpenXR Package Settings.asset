@@ -352,6 +352,49 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+<<<<<<< Updated upstream
+=======
+--- !u!114 &2796729355117411105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cf79659a011bd419c7a2a30eb74e9a, type: 3}
+  m_Name: EyeGazeInteraction Metro
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Eye Gaze Interaction Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.eyetracking
+  openxrExtensionStrings: XR_EXT_eye_gaze_interaction
+  company: Unity
+  priority: 0
+  required: 0
+--- !u!114 &2833105568700764402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 486b5e28864f9a94b979b9620ce5006d, type: 3}
+  m_Name: ConformanceAutomationFeature Metro
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Conformance Automation
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.conformance
+  openxrExtensionStrings: XR_EXT_conformance_automation
+  company: Unity
+  priority: 0
+  required: 0
+>>>>>>> Stashed changes
 --- !u!114 &3114573674242313005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,6 +462,75 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+<<<<<<< Updated upstream
+=======
+--- !u!114 &3813131523888966125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6bfdbcb316ed242b30a8798c9eb853, type: 3}
+  m_Name: KHRSimpleControllerProfile Metro
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Khronos Simple Controller Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.khrsimpleprofile
+  openxrExtensionStrings: 
+  company: Unity
+  priority: 0
+  required: 0
+--- !u!114 &4069567965808280574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
+  m_Name: Metro
+  m_EditorClassIdentifier: 
+  features:
+  - {fileID: -6570485785827062912}
+  - {fileID: 1079204133392593910}
+  - {fileID: 2796729355117411105}
+  - {fileID: -5910719859010407143}
+  - {fileID: -5673640922625000997}
+  - {fileID: -5765833714450809525}
+  - {fileID: 1051584962360333815}
+  - {fileID: -8089085625425766917}
+  - {fileID: 1479558960449145791}
+  - {fileID: -2389480077172498219}
+  - {fileID: 3813131523888966125}
+  - {fileID: 9192113452534524481}
+  - {fileID: -5642998634193069943}
+  - {fileID: -3813498306601371400}
+  - {fileID: -1719672709418425770}
+  - {fileID: -8952211116405392640}
+  - {fileID: 451471219284319388}
+  - {fileID: -2902399147966692327}
+  - {fileID: 788486694869521909}
+  - {fileID: 8335076923858548288}
+  - {fileID: 953389667990914652}
+  - {fileID: -7716281620283990584}
+  - {fileID: 8039968258130285656}
+  m_renderMode: 1
+  m_autoColorSubmissionMode: 1
+  m_colorSubmissionModes:
+    m_List: 00000000
+  m_depthSubmissionMode: 0
+  m_spacewarpMotionVectorTextureFormat: 0
+  m_optimizeBufferDiscards: 0
+  m_symmetricProjection: 0
+  m_optimizeMultiviewRenderRegions: 0
+  m_foveatedRenderingApi: 0
+>>>>>>> Stashed changes
 --- !u!114 &4708631064742853770
 MonoBehaviour:
   m_ObjectHideFlags: 0
