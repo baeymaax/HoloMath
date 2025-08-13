@@ -55,7 +55,7 @@ public class TutorialQuestion_Test
     public Vector3 textRotation = Vector3.zero;
     public Vector3 inputFieldRotation = Vector3.zero;
     public Vector2 textSize = new Vector2(200, 50);
-    public Vector2 inputFieldSize = new Vector2(200, 50);
+    public Vector3 inputFieldScale = Vector3.one;
     public bool useCustomPositions = false;
 
     [Header("選擇題排版設定")]
@@ -248,6 +248,7 @@ public class TutorialContentManager_Test : MonoBehaviour
     private Dictionary<int, int> contentScores = new Dictionary<int, int>(); // 每個內容的分數
     private Dictionary<int, bool> contentCompleted = new Dictionary<int, bool>(); // 每個內容是否已完成
     private int totalScore = 0; // 總分
+    private int buttonIndexCount = 0;
 
     Json_Test Test;
 
@@ -469,7 +470,7 @@ public void ReloadJsonData()
             int index = i;
             if (controlButtons[i] != null)
             {
-                controlButtons[i].ButtonPressed.AddListener(() => OnButtonPressed(index));
+                controlButtons[i].ButtonPressed.AddListener(() => OnButtonPressedQuz());
             }
         }
     }
@@ -490,19 +491,11 @@ public void ReloadJsonData()
         }
     }
 
-<<<<<<< Updated upstream
-    public void OnButtonPressed(int buttonIndex)
-=======
 #region 按鈕控制方法
     public void OnButtonPressedQuz() //題目+
->>>>>>> Stashed changes
     {
-        if (buttonIndex >= 0 && buttonIndex < tutorialContents.Length)
+        if (tutorialContents.Length > 0)
         {
-<<<<<<< Updated upstream
-            LoadContent(buttonIndex);
-            UpdateButtonVisual(buttonIndex);
-=======
             currentContentIndex = (currentContentIndex + 1) % tutorialContents.Length;
             Debug.Log("" + currentContentIndex);
             LoadQuzOnly(currentContentIndex);
@@ -554,7 +547,6 @@ public void ReloadJsonData()
             Update3DObject(content.threeDObject);
             ResetAnswerState();
             UpdateScoreDisplay(); // 更新分數顯示
->>>>>>> Stashed changes
         }
     }
 
@@ -633,15 +625,19 @@ public void ReloadJsonData()
 
         ClearQuestionFields();
 
-        float currentYOffset = 0f;
+        float currentYOffset = -3f;
+
         for (int i = 0; i < questions.Count; i++)
         {
             var question = questions[i];
             GameObject questionContainer = new GameObject($"Question_{i}_Container");
             questionContainer.transform.SetParent(questionPanel);
-            questionContainer.transform.localPosition = Vector3.zero;
+            
+            // 關鍵修改：為每個Container設定Y軸位置（使用遞減邏輯）
+            questionContainer.transform.localPosition = new Vector3(0, currentYOffset, 0);
             questionContainer.transform.localRotation = Quaternion.identity;
             questionContainer.transform.localScale = Vector3.one;
+
             questionContainers.Add(questionContainer);
 
             if (question.IsFillInBlank())
@@ -664,9 +660,12 @@ public void ReloadJsonData()
 
         var fieldObj = Instantiate(inputFieldPrefab, container.transform);
         var promptText = fieldObj.GetComponentInChildren<TextMeshPro>();
+
         if (promptText != null)
         {
             promptText.text = $"{questionIndex + 1}. {question.promptText}";
+            
+            // 設定中文字體
             if (chineseFont != null)
             {
                 promptText.font = chineseFont;
@@ -679,22 +678,26 @@ public void ReloadJsonData()
             {
                 promptText.fontMaterial = chineseFont.material;
             }
+
             questionPrompts.Add(promptText);
 
-            if (question.useCustomPositions)
+            #region 填空題各小題位置
+            // 使用硬編碼位置邏輯（相對於Container）
+            RectTransform textRect = promptText.GetComponent<RectTransform>();
+            if (textRect != null)
             {
-                promptText.transform.localPosition = question.textPosition;
-                promptText.transform.localRotation = Quaternion.Euler(question.textRotation);
-                RectTransform textRect = promptText.GetComponent<RectTransform>();
-                if (textRect != null)
-                {
-                    textRect.sizeDelta = question.textSize;
-                }
+                textRect.sizeDelta = new Vector2(15, 5);
+                // 相對於Container的位置，不再使用絕對位置
+                textRect.localPosition = new Vector3(1.5f, -0.2f, 14);
             }
             else
             {
-                promptText.transform.localPosition = new Vector3(0, yOffset, 0);
+                promptText.transform.localPosition = new Vector3(1.5f, -0.2f, 14);
             }
+            #endregion
+            
+            promptText.transform.localRotation = Quaternion.identity;
+            promptText.transform.localScale = Vector3.one;
         }
 
         var inputField = fieldObj.GetComponentInChildren<TMP_InputField>();
@@ -703,30 +706,32 @@ public void ReloadJsonData()
             inputField.text = "";
             inputFields.Add(inputField);
 
-            if (question.useCustomPositions)
+            #region INPUTFIELD統一位置
+            // 輸入框位置（相對於Container）
+            RectTransform inputRect = inputField.GetComponent<RectTransform>();
+            if (inputRect != null)
             {
-                inputField.transform.localPosition = question.inputFieldPosition;
-                inputField.transform.localRotation = Quaternion.Euler(question.inputFieldRotation);
-                RectTransform inputRect = inputField.GetComponent<RectTransform>();
-                if (inputRect != null)
-                {
-                    inputRect.sizeDelta = question.inputFieldSize;
-                }
+                // 相對於Container的位置
+                inputRect.localPosition = new Vector3(-6.6f, 2, 14);
+                inputField.transform.localScale = question.inputFieldScale;
             }
             else
             {
-                inputField.transform.localPosition = new Vector3(0, yOffset - 0.15f, 0);
+                inputField.transform.localPosition = new Vector3(-6.6f, 2, 14);
+                inputField.transform.localScale = question.inputFieldScale;
             }
+            #endregion
+
+            inputField.transform.localRotation = Quaternion.identity;
         }
 
         multipleChoiceSelections.Add(new HashSet<int>());
-        yOffset -= 0.5f;
+        
+        // 關鍵：為下一個Container更新Y軸位置（向下遞減）
+        yOffset -= 0.75f; // 每個填空題Container之間的間距
     }
 
-<<<<<<< Updated upstream
-=======
     #region 選擇題創建
->>>>>>> Stashed changes
     private void CreateMultipleChoiceQuestion(TutorialQuestion_Test question, GameObject container, int questionIndex, ref float yOffset)
     {
         if (optionPrefab == null) return;
@@ -734,39 +739,34 @@ public void ReloadJsonData()
         // 創建問題文字
         GameObject questionTextObj = new GameObject($"QuestionText_{questionIndex}");
         questionTextObj.transform.SetParent(container.transform);
-<<<<<<< Updated upstream
-       
-=======
         RectTransform textRect = questionTextObj.AddComponent<RectTransform>();
 
->>>>>>> Stashed changes
-        // 設定問題文字位置
+        #region 待檢驗(選擇題位置)
+        // 選擇題的問題文字位置設定（相對於Container）
         Vector3 questionTextPos;
-        if (question.useCustomQuestionTextPosition)
+        questionTextPos = new Vector3(1, 3, 14);
+
+        /*if (question.useCustomQuestionTextPosition)
         {
             questionTextPos = question.questionTextPosition;
         }
         else
         {
-            questionTextPos = new Vector3(0, yOffset, 0);
-        }
-        questionTextObj.transform.localPosition = questionTextPos;
-        questionTextObj.transform.localRotation = Quaternion.identity;
-<<<<<<< Updated upstream
-        questionTextObj.transform.localScale = Vector3.one;
-=======
-        // questionTextObj.transform.localScale = Vector3.one;
-        // Debug.Log(textRect.anchoredPosition);
+            // 相對於Container的位置
+            questionTextPos = new Vector3(1.5f, -0.2f, 14);
+        }*/
+        #endregion
+
         textRect.sizeDelta = new Vector2(15, 5);
-        textRect.localPosition = new Vector3(1, (float)-0.2, 14);
->>>>>>> Stashed changes
+        textRect.localPosition = questionTextPos;
+        questionTextObj.transform.localRotation = Quaternion.identity;
 
         TextMeshPro questionTextMesh = questionTextObj.AddComponent<TextMeshPro>();
         questionTextMesh.text = $"{questionIndex + 1}. {question.promptText}";
         questionTextMesh.fontSize = question.questionTextFontSize;
         questionTextMesh.alignment = TextAlignmentOptions.Left;
 
-        // 設定中文字體和材質
+        // 設定中文字體
         if (chineseFont != null)
         {
             questionTextMesh.font = chineseFont;
@@ -782,12 +782,6 @@ public void ReloadJsonData()
 
         questionPrompts.Add(questionTextMesh);
 
-        // 如果沒有使用自訂位置，更新 yOffset
-        if (!question.useCustomQuestionTextPosition)
-        {
-            yOffset -= 0.2f;
-        }
-
         HashSet<int> selections = new HashSet<int>();
         multipleChoiceSelections.Add(selections);
 
@@ -801,13 +795,12 @@ public void ReloadJsonData()
             Vector3 optionPosition;
             if (question.useCustomOptionPositions)
             {
-                // 使用自訂起始位置，然後根據 optionSpacing 計算每個選項的位置
                 optionPosition = question.optionStartPosition + new Vector3(0, -(optionIndex * question.optionSpacing), 0);
             }
             else
             {
-                // 使用預設位置計算
-                optionPosition = new Vector3(0, yOffset - (optionIndex * question.optionSpacing), 0);
+                // 相對於Container的位置，從問題文字下方開始排列
+                optionPosition = new Vector3(0, -0.5f - (optionIndex * question.optionSpacing), 0);
             }
 
             optionObj.transform.localPosition = optionPosition;
@@ -819,7 +812,6 @@ public void ReloadJsonData()
                 optionComponent = optionObj.AddComponent<QuizOptionComponent_Test>();
             }
 
-            // 設定選項組件的中文字體
             if (chineseFont != null || chineseFontMaterial != null)
             {
                 optionComponent.SetChineseFont(chineseFont, chineseFontMaterial);
@@ -833,16 +825,11 @@ public void ReloadJsonData()
 
         inputFields.Add(null);
 
-        // 如果沒有使用自訂位置，更新 yOffset 為下一個問題做準備
-        if (!question.useCustomOptionPositions)
-        {
-            yOffset -= (question.options.Count * question.optionSpacing + 0.3f);
-        }
+        // 關鍵：為下一個Container更新Y軸位置（向下遞減）
+        float totalHeight = 0.7f + (question.options.Count * question.optionSpacing);
+        yOffset -= totalHeight; // 根據選項數量計算Container間距
     }
-<<<<<<< Updated upstream
-=======
     #endregion
->>>>>>> Stashed changes
 
     private void ClearQuestionFields()
     {
@@ -936,13 +923,13 @@ public void ReloadJsonData()
 
         // 計算當前內容的分數 (傳入當前內容的題目數量)
         int newContentScore = CalculateContentScore(questionResults, questions.Count);
-        
+
         // 更新分數邏輯
         int oldScore = contentScores.ContainsKey(currentContentIndex) ? contentScores[currentContentIndex] : 0;
-        
+
         // 無論是否全對都更新分數（因為現在是按題計分）
         contentScores[currentContentIndex] = newContentScore;
-        
+
         // 如果全對則標記為完成
         if (correctCount == questions.Count)
         {
@@ -952,7 +939,7 @@ public void ReloadJsonData()
         {
             contentCompleted[currentContentIndex] = false;
         }
-        
+
         // 重新計算總分（累加所有內容的分數）
         totalScore = 0;
         foreach (var kvp in contentScores)
@@ -965,20 +952,20 @@ public void ReloadJsonData()
         {
             int totalQuestions = GetTotalQuestionCount();
             int scorePerQuestion = totalQuestions > 0 ? 100 / totalQuestions : 0;
-            
+
             string resultMessage = $"你答對了 {correctCount} / {questions.Count} 題！";
             if (newContentScore > 0)
             {
-                resultMessage += $"\n本次獲得 {newContentScore} 分！";
-                resultMessage += $"\n(每題 {scorePerQuestion} 分)";
+                // resultMessage += $"\n本次獲得 {newContentScore} 分！";
+                // resultMessage += $"\n(每題 {scorePerQuestion} 分)";
             }
             if (correctCount == questions.Count)
             {
-                resultMessage += "\n全部正確！";
+                // resultMessage += "\n全部正確！";
             }
             else if (correctCount > 0)
             {
-                resultMessage += $"\n答對 {correctCount} 題得到部分分數！";
+                // resultMessage += $"\n答對 {correctCount} 題得到部分分數！";
             }
             else
             {
@@ -989,11 +976,8 @@ public void ReloadJsonData()
             resultText.color = correctCount > 0 ? correctAnswerColor : wrongAnswerColor;
         }
 
-        // 更新分數顯示
         UpdateScoreDisplay();
         isAnswerChecked = true;
-<<<<<<< Updated upstream
-=======
         float delay = correctCount == questions.Count ? 2f : 3f;
         StartCoroutine(DelayedButtonPressed(delay));
     }
@@ -1002,7 +986,6 @@ public void ReloadJsonData()
         yield return new WaitForSeconds(delay);
 
         OnButtonPressedQuz();
->>>>>>> Stashed changes
     }
 
     private bool CheckSingleAnswer(string userInput, TutorialQuestion_Test question)
@@ -1160,7 +1143,7 @@ public void ReloadJsonData()
 
         // 跳回第一個 control button
         LoadContent(0);
-        UpdateButtonVisual(0);
+        ////UpdateButtonVisual(0);
     }
 
     public void ShowHints()
@@ -1277,6 +1260,7 @@ public void ReloadJsonData()
             if (rectTransform != null && content.useCustomQuestionTextSettings)
             {
                 rectTransform.sizeDelta = content.questionTextSize;
+
             }
 
             // 設定位置和旋轉
@@ -1380,7 +1364,7 @@ public void ReloadJsonData()
     public void ResetToFirstContent()
     {
         LoadContent(0);
-        UpdateButtonVisual(0);
+        //UpdateButtonVisual(0);
     }
 
     public int GetCurrentContentIndex()

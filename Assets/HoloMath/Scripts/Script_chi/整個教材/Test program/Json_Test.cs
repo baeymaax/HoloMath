@@ -45,7 +45,7 @@ public class JsonTutorialQuestion
     public Vector3 textRotation;
     public Vector3 inputFieldRotation;
     public Vector2 textSize;
-    public Vector2 inputFieldSize;
+    public Vector3 inputFieldScale;
     public bool useCustomPositions;
     public float optionSpacing;
     public Vector3 optionScale;
@@ -277,7 +277,7 @@ public class Json_Test : MonoBehaviour
                         question.textRotation = jsonQuestion.textRotation;
                         question.inputFieldRotation = jsonQuestion.inputFieldRotation;
                         question.textSize = jsonQuestion.textSize;
-                        question.inputFieldSize = jsonQuestion.inputFieldSize;
+                        question.inputFieldScale = jsonQuestion.inputFieldScale;
                         question.useCustomPositions = jsonQuestion.useCustomPositions;
                         
                         // 复制选择题设置
