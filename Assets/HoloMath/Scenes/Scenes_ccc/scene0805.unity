@@ -27097,7 +27097,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.8895347, y: 1.2008}
+  m_AnchoredPosition: {x: 0.8895347, y: 1.8}
   m_SizeDelta: {x: 6.9587, y: 2.0742}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &1044986523
@@ -40252,12 +40252,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2702133022659021030, guid: b61c79fef80497d4c8f590a782134151, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2702133022659021030, guid: b61c79fef80497d4c8f590a782134151, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 745ebfbc6471d5f4ab5ed79214c349b7, type: 2}
+      objectReference: {fileID: 2100000, guid: 0475bb4fa9359a44eab13dab7b11f14c, type: 2}
     - target: {fileID: 3258896516288921238, guid: b61c79fef80497d4c8f590a782134151, type: 3}
       propertyPath: m_text
       value: 
@@ -40267,8 +40267,36 @@ PrefabInstance:
       value: 1801810542
       objectReference: {fileID: 0}
     - target: {fileID: 3269773660961130214, guid: b61c79fef80497d4c8f590a782134151, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3269773660961130214, guid: b61c79fef80497d4c8f590a782134151, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3269773660961130214, guid: b61c79fef80497d4c8f590a782134151, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3269773660961130214, guid: b61c79fef80497d4c8f590a782134151, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3269773660961130214, guid: b61c79fef80497d4c8f590a782134151, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872806411192141636, guid: b61c79fef80497d4c8f590a782134151, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872806411192141636, guid: b61c79fef80497d4c8f590a782134151, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872806411192141636, guid: b61c79fef80497d4c8f590a782134151, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7946035780532179834, guid: b61c79fef80497d4c8f590a782134151, type: 3}
       propertyPath: m_RootOrder
@@ -48328,7 +48356,7 @@ MonoBehaviour:
       textRotation: {x: 0, y: 0, z: 0}
       inputFieldRotation: {x: 0, y: 0, z: 0}
       textSize: {x: 7.0365, y: 2.1113}
-      inputFieldSize: {x: 200, y: 50}
+      inputFieldScale: {x: 1, y: 1, z: 1}
       useCustomPositions: 1
       optionSpacing: 1
       optionScale: {x: 1, y: 1, z: 1}
@@ -48352,7 +48380,7 @@ MonoBehaviour:
       textRotation: {x: 0, y: 0, z: 0}
       inputFieldRotation: {x: 0, y: 0, z: 0}
       textSize: {x: 7.0365, y: 2.1113}
-      inputFieldSize: {x: 200, y: 50}
+      inputFieldScale: {x: 1, y: 1, z: 1}
       useCustomPositions: 1
       optionSpacing: 1
       optionScale: {x: 1, y: 1, z: 1}
@@ -48376,7 +48404,7 @@ MonoBehaviour:
       textRotation: {x: 0, y: 0, z: 0}
       inputFieldRotation: {x: 0, y: 0, z: 0}
       textSize: {x: 7.0365, y: 2.1113}
-      inputFieldSize: {x: 200, y: 50}
+      inputFieldScale: {x: 1, y: 1, z: 1}
       useCustomPositions: 1
       optionSpacing: 1
       optionScale: {x: 1, y: 1, z: 1}
@@ -48400,7 +48428,7 @@ MonoBehaviour:
       textRotation: {x: 0, y: 0, z: 0}
       inputFieldRotation: {x: 0, y: 0, z: 0}
       textSize: {x: 7.0365, y: 2.1113}
-      inputFieldSize: {x: 200, y: 50}
+      inputFieldScale: {x: 1, y: 1, z: 1}
       useCustomPositions: 1
       optionSpacing: 1
       optionScale: {x: 1, y: 1, z: 1}
@@ -48454,7 +48482,7 @@ MonoBehaviour:
       textRotation: {x: 0, y: 0, z: 0}
       inputFieldRotation: {x: 0, y: 0, z: 0}
       textSize: {x: 0, y: 0}
-      inputFieldSize: {x: 0, y: 0}
+      inputFieldScale: {x: 1, y: 1, z: 1}
       useCustomPositions: 0
       optionSpacing: 0.75
       optionScale: {x: 1, y: 1, z: 1}
@@ -48507,7 +48535,7 @@ MonoBehaviour:
       textRotation: {x: 0, y: 0, z: 0}
       inputFieldRotation: {x: 0, y: 0, z: 0}
       textSize: {x: 0, y: 0}
-      inputFieldSize: {x: 0, y: 0}
+      inputFieldScale: {x: 1, y: 1, z: 1}
       useCustomPositions: 0
       optionSpacing: 0.75
       optionScale: {x: 1, y: 1, z: 1}
@@ -48556,7 +48584,7 @@ MonoBehaviour:
       textRotation: {x: 0, y: 0, z: 0}
       inputFieldRotation: {x: 0, y: 0, z: 0}
       textSize: {x: 0, y: 0}
-      inputFieldSize: {x: 0, y: 0}
+      inputFieldScale: {x: 1, y: 1, z: 1}
       useCustomPositions: 0
       optionSpacing: 0.75
       optionScale: {x: 1, y: 1, z: 1}
@@ -48609,7 +48637,7 @@ MonoBehaviour:
       textRotation: {x: 0, y: 0, z: 0}
       inputFieldRotation: {x: 0, y: 0, z: 0}
       textSize: {x: 0, y: 0}
-      inputFieldSize: {x: 0, y: 0}
+      inputFieldScale: {x: 1, y: 1, z: 1}
       useCustomPositions: 0
       optionSpacing: 0.75
       optionScale: {x: 1, y: 1, z: 1}
@@ -48662,7 +48690,7 @@ MonoBehaviour:
       textRotation: {x: 0, y: 0, z: 0}
       inputFieldRotation: {x: 0, y: 0, z: 0}
       textSize: {x: 0, y: 0}
-      inputFieldSize: {x: 0, y: 0}
+      inputFieldScale: {x: 1, y: 1, z: 1}
       useCustomPositions: 0
       optionSpacing: 0.75
       optionScale: {x: 1, y: 1, z: 1}
@@ -48712,7 +48740,7 @@ MonoBehaviour:
       textRotation: {x: 0, y: 0, z: 0}
       inputFieldRotation: {x: 0, y: 0, z: 0}
       textSize: {x: 0, y: 0}
-      inputFieldSize: {x: 0, y: 0}
+      inputFieldScale: {x: 1, y: 1, z: 1}
       useCustomPositions: 0
       optionSpacing: 0.75
       optionScale: {x: 1, y: 1, z: 1}
@@ -48765,7 +48793,7 @@ MonoBehaviour:
       textRotation: {x: 0, y: 0, z: 0}
       inputFieldRotation: {x: 0, y: 0, z: 0}
       textSize: {x: 0, y: 0}
-      inputFieldSize: {x: 0, y: 0}
+      inputFieldScale: {x: 1, y: 1, z: 1}
       useCustomPositions: 0
       optionSpacing: 0.75
       optionScale: {x: 1, y: 1, z: 1}
@@ -48818,7 +48846,7 @@ MonoBehaviour:
       textRotation: {x: 0, y: 0, z: 0}
       inputFieldRotation: {x: 0, y: 0, z: 0}
       textSize: {x: 0, y: 0}
-      inputFieldSize: {x: 0, y: 0}
+      inputFieldScale: {x: 1, y: 1, z: 1}
       useCustomPositions: 0
       optionSpacing: 0.75
       optionScale: {x: 1, y: 1, z: 1}
@@ -48869,7 +48897,7 @@ MonoBehaviour:
       textRotation: {x: 0, y: 0, z: 0}
       inputFieldRotation: {x: 0, y: 0, z: 0}
       textSize: {x: 0, y: 0}
-      inputFieldSize: {x: 0, y: 0}
+      inputFieldScale: {x: 1, y: 1, z: 1}
       useCustomPositions: 0
       optionSpacing: 0.75
       optionScale: {x: 1, y: 1, z: 1}

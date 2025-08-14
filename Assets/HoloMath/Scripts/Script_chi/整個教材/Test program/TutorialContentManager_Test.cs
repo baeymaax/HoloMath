@@ -625,14 +625,15 @@ public void ReloadJsonData()
 
         ClearQuestionFields();
 
-        float currentYOffset = -3f;
-
+        #region 設定container(題目父物件)位置
+        float currentYOffset = -3f;      //底下currentYOffset位置初始設定在 y = -3
+        
         for (int i = 0; i < questions.Count; i++)
         {
             var question = questions[i];
             GameObject questionContainer = new GameObject($"Question_{i}_Container");
             questionContainer.transform.SetParent(questionPanel);
-            
+
             // 關鍵修改：為每個Container設定Y軸位置（使用遞減邏輯）
             questionContainer.transform.localPosition = new Vector3(0, currentYOffset, 0);
             questionContainer.transform.localRotation = Quaternion.identity;
@@ -649,7 +650,7 @@ public void ReloadJsonData()
                 CreateMultipleChoiceQuestion(question, questionContainer, i, ref currentYOffset);
             }
         }
-
+        #endregion
         if (resultText != null) resultText.text = "";
         if (hintText != null) hintText.text = "";
     }
@@ -664,7 +665,7 @@ public void ReloadJsonData()
         if (promptText != null)
         {
             promptText.text = $"{questionIndex + 1}. {question.promptText}";
-            
+
             // 設定中文字體
             if (chineseFont != null)
             {
@@ -695,7 +696,7 @@ public void ReloadJsonData()
                 promptText.transform.localPosition = new Vector3(1.5f, -0.2f, 14);
             }
             #endregion
-            
+
             promptText.transform.localRotation = Quaternion.identity;
             promptText.transform.localScale = Vector3.one;
         }
@@ -726,9 +727,11 @@ public void ReloadJsonData()
         }
 
         multipleChoiceSelections.Add(new HashSet<int>());
-        
+
+        #region contaner y軸遞減大小
         // 關鍵：為下一個Container更新Y軸位置（向下遞減）
         yOffset -= 0.75f; // 每個填空題Container之間的間距
+        #endregion
     }
 
     #region 選擇題創建
@@ -741,11 +744,9 @@ public void ReloadJsonData()
         questionTextObj.transform.SetParent(container.transform);
         RectTransform textRect = questionTextObj.AddComponent<RectTransform>();
 
-        #region 待檢驗(選擇題位置)
-        // 選擇題的問題文字位置設定（相對於Container）
+        #region 選擇題 題目位置
         Vector3 questionTextPos;
         questionTextPos = new Vector3(1, 3, 14);
-
         /*if (question.useCustomQuestionTextPosition)
         {
             questionTextPos = question.questionTextPosition;
@@ -825,9 +826,11 @@ public void ReloadJsonData()
 
         inputFields.Add(null);
 
+        /*
         // 關鍵：為下一個Container更新Y軸位置（向下遞減）
         float totalHeight = 0.7f + (question.options.Count * question.optionSpacing);
         yOffset -= totalHeight; // 根據選項數量計算Container間距
+        */
     }
     #endregion
 
