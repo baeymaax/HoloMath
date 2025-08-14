@@ -1,0 +1,541 @@
+{
+  "units": [
+    {
+      "unitName": "弧度制與角度轉換",
+      "unitDescription": "學習角度與弧度之間的轉換",
+      "unitId": 1,
+      "contents": [
+        {
+          "contentName": "",
+          "description": "",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "Angle_Anime",
+          "questionText": "將下列角度的單位，由度換成弧度，或將弧度換成角度：TESTEST ",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "FillInBlank",
+              "promptText": "30° = _____ 弧度",
+              "correctAnswer": "π/6",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            },
+            {
+              "questionType": "FillInBlank",
+              "promptText": "π/4 弧度 = _____ °",
+              "correctAnswer": "45",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Number",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            },
+            {
+              "questionType": "FillInBlank",
+              "promptText": "120° = _____ 弧度",
+              "correctAnswer": "2π/3",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Expression",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            },
+            {
+              "questionType": "FillInBlank",
+              "promptText": "5π/3 弧度 = _____ °",
+              "correctAnswer": "300",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Number",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+        
+
+
+        {
+          "contentName": "",
+          "description": "",
+          "videoClip": "Assets/HoloMath/Video/【觀念】正弦函數的圖形 [UG4JFE4IZo8].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "SinWaveVisualizer",
+          "questionText": "",
+          "questionTextFontSize": 4,
+          "questionTextSize": { "x": 10, "y": 2 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "下列關於正弦函數y=f(x)=sinx的敘述，選出所有正確的選項。",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A) f(x) 的最小值 =−1", "isCorrect": true },
+                { "optionText": "(B) f(x) 在原點遞增，且週期為 π", "isCorrect": false },
+                { "optionText": "(C) f(x) 的圖形對稱於 (0,0)", "isCorrect": true },
+                { "optionText": "(D) f(x) 的圖形對稱於 (π,0) ", "isCorrect": true },
+                { "optionText": "(E) f(x) 的圖形對稱於直線 x=-π/2", "isCorrect": true }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+
+
+        
+        {
+          "contentName": "",
+          "description": "",
+          "videoClip": "Assets/HoloMath/Video/教學影片/【觀念】正弦函數圖形的伸縮 [RERw4MG2Z8w].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "SinWaveVisualizer",
+          "questionText": "",
+          "useCustomQuestionTextSettings": true,
+          "questionTextFontSize": 4,
+          "questionTextSize": { "x": 10, "y": 2 },
+          "showQuestionText": false,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "下圖是一個三角柱，其中∆BCF是直角三角形。請問線段AF和平面ABCD的夾角為下列何者？（單選）",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A)∠FAB", "isCorrect": false },
+                { "optionText": "(B)∠FAC", "isCorrect": true },
+                { "optionText": "(C)∠FAD", "isCorrect": false },
+                { "optionText": "(D)∠FBC", "isCorrect": false },
+                { "optionText": "(E)∠EAC", "isCorrect": false }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+        
+
+
+        {
+          "contentName": "",
+          "description": "",
+          "videoClip": "Assets/HoloMath/Video/教學影片/【觀念】正弦函數圖形的平移 [x6dKDKkGgxU].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "SinWaveVisualizer",
+          "questionText": "",
+          "useCustomQuestionTextSettings": true,
+          "questionTextFontSize": 4,
+          "questionTextSize": { "x": 10, "y": 2 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "下圖是一個三角柱，其中∆BCF是直角三角形。請問線段AF和平面ABCD的夾角為下列何者？（單選）",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A)鈍角三角形", "isCorrect": false },
+                { "optionText": "(B)直角三角形", "isCorrect": false },
+                { "optionText": "(C)銳角三角形", "isCorrect": true }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 5
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+
+
+        
+        {
+          "contentName": "",
+          "description": "",
+          "videoClip": "Assets/HoloMath/Video/教學影片/【觀念】正弦函數圖形的平移 [x6dKDKkGgxU].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "SinWaveVisualizer",
+          "questionText": "",
+          "useCustomQuestionTextSettings": true,
+          "questionTextFontSize": 4,
+          "questionTextSize": { "x": 10, "y": 2 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "下圖是一個三角柱，其中∆BCF是直角三角形。請問線段AF和平面ABCD的夾角為下列何者？（單選）",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A)鈍角三角形", "isCorrect": false },
+                { "optionText": "(B)直角三角形", "isCorrect": false },
+                { "optionText": "(C)銳角三角形", "isCorrect": true }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 5
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        }
+      ]
+    },
+
+    {
+      "unitName": "Test",
+      "unitDescription": "Test",
+      "unitId": 2,
+      "contents": [
+        {
+          "contentName": "",
+          "description": "",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "Angle_Anime",
+          "questionText": "將下列角度的單位，由度換成弧度，或將弧度換成角度：",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "FillInBlank",
+              "promptText": "30° = _____ 弧度",
+              "correctAnswer": "π/6",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            },
+            {
+              "questionType": "FillInBlank",
+              "promptText": "π/4 弧度 = _____ °",
+              "correctAnswer": "45",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Number",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            },
+            {
+              "questionType": "FillInBlank",
+              "promptText": "120° = _____ 弧度",
+              "correctAnswer": "2π/3",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Expression",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            },
+            {
+              "questionType": "FillInBlank",
+              "promptText": "5π/3 弧度 = _____ °",
+              "correctAnswer": "300",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Number",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+        
+
+
+        {
+          "contentName": "",
+          "description": "",
+          "videoClip": "Assets/HoloMath/Video/【觀念】正弦函數的圖形 [UG4JFE4IZo8].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "SinWaveVisualizer",
+          "questionText": "",
+          "questionTextFontSize": 4,
+          "questionTextSize": { "x": 10, "y": 2 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "下列關於正弦函數y=f(x)=sinx的敘述，選出所有正確的選項。",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A) f(x) 的最小值 =−1", "isCorrect": true },
+                { "optionText": "(B) f(x) 在原點遞增，且週期為 π", "isCorrect": false },
+                { "optionText": "(C) f(x) 的圖形對稱於 (0,0)", "isCorrect": true },
+                { "optionText": "(D) f(x) 的圖形對稱於 (π,0) ", "isCorrect": true },
+                { "optionText": "(E) f(x) 的圖形對稱於直線 x=-π/2", "isCorrect": true }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+
+
+        
+        {
+          "contentName": "",
+          "description": "",
+          "videoClip": "Assets/HoloMath/Video/教學影片/【觀念】正弦函數圖形的伸縮 [RERw4MG2Z8w].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "SinWaveVisualizer",
+          "questionText": "",
+          "useCustomQuestionTextSettings": true,
+          "questionTextFontSize": 4,
+          "questionTextSize": { "x": 10, "y": 2 },
+          "showQuestionText": false,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "下圖是一個三角柱，其中∆BCF是直角三角形。請問線段AF和平面ABCD的夾角為下列何者？（單選）",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A)∠FAB", "isCorrect": false },
+                { "optionText": "(B)∠FAC", "isCorrect": true },
+                { "optionText": "(C)∠FAD", "isCorrect": false },
+                { "optionText": "(D)∠FBC", "isCorrect": false },
+                { "optionText": "(E)∠EAC", "isCorrect": false }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+        
+
+
+        {
+          "contentName": "",
+          "description": "",
+          "videoClip": "Assets/HoloMath/Video/教學影片/【觀念】正弦函數圖形的平移 [x6dKDKkGgxU].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "SinWaveVisualizer",
+          "questionText": "",
+          "useCustomQuestionTextSettings": true,
+          "questionTextFontSize": 4,
+          "questionTextSize": { "x": 10, "y": 2 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "下圖是一個三角柱，其中∆BCF是直角三角形。請問線段AF和平面ABCD的夾角為下列何者？（單選）",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A)鈍角三角形", "isCorrect": false },
+                { "optionText": "(B)直角三角形", "isCorrect": false },
+                { "optionText": "(C)銳角三角形", "isCorrect": true }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 5
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+
+
+        
+        {
+          "contentName": "",
+          "description": "",
+          "videoClip": "Assets/HoloMath/Video/教學影片/【觀念】正弦函數圖形的平移 [x6dKDKkGgxU].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "SinWaveVisualizer",
+          "questionText": "",
+          "useCustomQuestionTextSettings": true,
+          "questionTextFontSize": 4,
+          "questionTextSize": { "x": 10, "y": 2 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "下圖是一個三角柱，其中∆BCF是直角三角形。請問線段AF和平面ABCD的夾角為下列何者？（單選）",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A)鈍角三角形", "isCorrect": false },
+                { "optionText": "(B)直角三角形", "isCorrect": false },
+                { "optionText": "(C)銳角三角形", "isCorrect": true }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 5
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        }
+      ]
+    }
+  ]
+}

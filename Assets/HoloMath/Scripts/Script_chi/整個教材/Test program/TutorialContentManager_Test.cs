@@ -41,7 +41,7 @@ public class TutorialQuestion_Test
     public string correctAnswer;
     public List<string> acceptableAnswers = new List<string>();
     public string hint;
-    public AnswerType answerType = AnswerType.Text;
+    public AnswerType_Test answerType_Test = AnswerType_Test.Text;
     public float tolerance = 0.01f;
     public bool isCaseSensitive = false;
     public bool allowPartialMatch = false;
@@ -55,7 +55,7 @@ public class TutorialQuestion_Test
     public Vector3 textRotation = Vector3.zero;
     public Vector3 inputFieldRotation = Vector3.zero;
     public Vector2 textSize = new Vector2(200, 50);
-    public Vector2 inputFieldSize = new Vector2(200, 50);
+    public Vector3 inputFieldScale = Vector3.one;
     public bool useCustomPositions = false;
 
     [Header("選擇題排版設定")]
@@ -95,6 +95,7 @@ public class TutorialQuestion_Test
     }
 }
 
+#region Tutorial Contents Inspector
 [Serializable]
 public class TutorialContent_Test
 {
@@ -105,7 +106,7 @@ public class TutorialContent_Test
     public bool hasImage = false;
     public GameObject threeDObject;
     public string questionText;
-    
+
     [Header("Question Text 設定")]
     public bool useCustomQuestionTextSettings = false;
     public Vector3 questionTextPosition = Vector3.zero;
@@ -113,7 +114,7 @@ public class TutorialContent_Test
     public float questionTextFontSize = 4f;
     public Vector2 questionTextSize = new Vector2(10f, 2f); // Width x Height
     public bool showQuestionText = true;  // 控制是否顯示 questionText
-    
+
     public List<TutorialQuestion_Test> questions = new List<TutorialQuestion_Test>();
     public bool showHints = true;
     public bool allowRetry = true;
@@ -198,6 +199,9 @@ public class TutorialContent_Test
     }
 }
 
+#endregion
+
+#region Inspector 最下方區塊
 public class TutorialContentManager_Test : MonoBehaviour
 {
     [SerializeField] private TutorialContent_Test[] tutorialContents = new TutorialContent_Test[5];
@@ -227,10 +231,18 @@ public class TutorialContentManager_Test : MonoBehaviour
     [SerializeField] private Material chineseFontMaterial; // 拖拉 MSJH_CHT_SDF_4096Material
 
     [Header("計分系統UI")]
-    [SerializeField] private TextMeshPro totalScoreText; // 顯示總分的UI
-    [SerializeField] private TextMeshPro currentContentScoreText; // 顯示當前內容分數的UI
+    [SerializeField] private TextMeshPro totalScoreText;
+    [SerializeField] private TextMeshPro currentContentScoreText;
+    [SerializeField] private TextMeshPro unitProgressText; // 新增：顯示單元進度
 
-    private GameObject currentThreeDObject;
+    #endregion
+
+    // 新增：單元系統相關變數
+    private List<JsonTutorialUnit> units = new List<JsonTutorialUnit>();
+    private int currentUnitIndex = 0; // 當前單元索引
+    private int currentContentIndexInUnit = 0; // 當前單元內的內容索引
+
+    private GameObject currentThreeDObject; //抓目前物件
     private List<TMP_InputField> inputFields = new List<TMP_InputField>();
     private List<TextMeshPro> questionPrompts = new List<TextMeshPro>();
     private List<GameObject> questionContainers = new List<GameObject>();
@@ -242,20 +254,127 @@ public class TutorialContentManager_Test : MonoBehaviour
     private Dictionary<int, int> contentScores = new Dictionary<int, int>(); // 每個內容的分數
     private Dictionary<int, bool> contentCompleted = new Dictionary<int, bool>(); // 每個內容是否已完成
     private int totalScore = 0; // 總分
-    private int buttonIndexCount = 0;
 
-    void Start()
+    Json_Test Test;
+
+// 在 TutorialContentManager_Test 类中，替换原来的 Start() 方法：
+
+void Start()
     {
+        Debug.Log("=== 开始 Start() 方法 ===");
+        
+        // 清空现有的 tutorialContents
+        tutorialContents = new TutorialContent_Test[0];
+        Debug.Log("已清空现有的 tutorialContents");
+        
+        // 载入 JSON 资料
+        Test = gameObject.AddComponent<Json_Test>();
+        if (Test == null)
+        {
+            Test = new Json_Test();
+            Debug.Log("创建了新的 Json_Test 实例");
+        }
+        
+        Debug.Log("开始加载 JSON...");
+        Test.LoadJson();
+        
+        Debug.Log("开始应用 JSON 数据到 TutorialManager...");
+        Test.ApplyToTutorialManager(this);
+        
+        // 验证是否成功载入资料
+        if (tutorialContents == null || tutorialContents.Length == 0)
+        {
+            Debug.LogError("JSON 加载失败！");
+            // 创建一个空的数组以防止错误
+            tutorialContents = new TutorialContent_Test[1];
+            tutorialContents[0] = new TutorialContent_Test
+            {
+                contentName = "错误 - 无法加载数据",
+                questionText = "请检查 JSON 文件",
+                questions = new List<TutorialQuestion_Test>()
+            };
+        }
+        else
+        {
+            Debug.Log($"✓ 成功载入 {tutorialContents.Length} 个教学内容");
+        }
+
+        // 初始化系統
         if (questionText3D == null && questionCubeParent != null)
         {
             questionText3D = questionCubeParent.GetComponentInChildren<TextMeshPro>();
         }
-
+        
+        Debug.Log("初始化计分系统...");
         InitializeScoreSystem();
+        
+        Debug.Log("初始化3D物件...");
         InitializeThreeDObjects();
+        
+        Debug.Log("初始化按钮...");
         InitializeButtons();
         InitializeInteractiveButtons();
-        LoadContent(0);
+        
+        Debug.Log("加载第一个内容...");
+        LoadUnit(0, 0); // 載入第一個單元的第一個內容
+        
+        Debug.Log("=== Start() 方法完成 ===");
+    }
+
+#region  添加一个公开方法来重新加载 JSON 数据（用于测试）
+public void ReloadJsonData()
+{
+    Debug.Log("=== 重新加载 JSON 数据 ===");
+    
+    if (Test == null)
+    {
+        Test = gameObject.GetComponent<Json_Test>();
+        if (Test == null)
+        {
+            Test = gameObject.AddComponent<Json_Test>();
+        }
+    }
+    
+    Test.LoadJson();
+    Test.ApplyToTutorialManager(this);
+    
+    InitializeScoreSystem();
+    LoadUnit(0, 0);
+    
+    Debug.Log("JSON 数据重新加载完成");
+}
+    #endregion
+
+    // 新增方法：設置單元數據
+    public void SetUnitsData(List<JsonTutorialUnit> unitsData)
+    {
+        units = unitsData ?? new List<JsonTutorialUnit>();
+        Debug.Log($"設置了 {units.Count} 個單元");
+        
+        // 初始化單元相關的計分系統
+        InitializeUnitScoreSystem();
+    }
+
+    private void InitializeUnitScoreSystem()
+    {
+        // 為每個單元的每個內容初始化計分
+        int globalContentIndex = 0;
+        
+        for (int unitIndex = 0; unitIndex < units.Count; unitIndex++)
+        {
+            var unit = units[unitIndex];
+            if (unit.contents != null)
+            {
+                for (int contentIndex = 0; contentIndex < unit.contents.Count; contentIndex++)
+                {
+                    contentScores[globalContentIndex] = 0;
+                    contentCompleted[globalContentIndex] = false;
+                    globalContentIndex++;
+                }
+            }
+        }
+        
+        UpdateScoreDisplay();
     }
 
     private void InitializeScoreSystem()
@@ -290,7 +409,7 @@ public class TutorialContentManager_Test : MonoBehaviour
         {
             totalScoreText.text = $"總分: {totalScore}/100";
         }
-
+        
         // 更新當前內容分數顯示
         if (currentContentScoreText != null && currentContentIndex >= 0 && currentContentIndex < tutorialContents.Length)
         {
@@ -307,24 +426,32 @@ public class TutorialContentManager_Test : MonoBehaviour
                 currentContentScoreText.text = "此內容無互動題目";
             }
         }
+        
+        // 更新單元進度顯示
+        if (unitProgressText != null && units.Count > 0 && currentUnitIndex < units.Count)
+        {
+            var currentUnit = units[currentUnitIndex];
+            int unitContentCount = currentUnit.contents?.Count ?? 0;
+            unitProgressText.text = $"單元: {currentUnit.unitName} ({currentContentIndexInUnit + 1}/{unitContentCount})";
+        }
     }
 
     private int CalculateContentScore(List<bool> results, int contentQuestionCount)
     {
         if (contentQuestionCount == 0) return 0;
-        
+
         int correctCount = results.Count(r => r);
         int totalQuestions = GetTotalQuestionCount(); // 獲取所有內容的總題目數
-        
+
         if (totalQuestions == 0) return 0;
-        
+
         // 每題分數 = 100 / 總題目數
         int scorePerQuestion = 100 / totalQuestions;
         int remainingScore = 100 % totalQuestions; // 處理無法整除的餘數
-        
+
         // 只計算答對的題目分數
         int score = correctCount * scorePerQuestion;
-        
+
         // 如果這是最後完成的內容且有餘數，將餘數加到最後
         // 這裡簡化處理：如果當前內容全對且總完成題數接近總題數，就加上餘數
         if (correctCount == contentQuestionCount && remainingScore > 0)
@@ -339,14 +466,14 @@ public class TutorialContentManager_Test : MonoBehaviour
                 }
             }
             completedQuestions += correctCount; // 加上當前答對的題數
-            
+
             // 如果這樣會達到總題數，就把餘數也給它
             if (completedQuestions >= totalQuestions - remainingScore)
             {
                 score += remainingScore;
             }
         }
-        
+
         return score;
     }
 
@@ -389,76 +516,150 @@ public class TutorialContentManager_Test : MonoBehaviour
         }
     }
 
-    public void OnButtonPressedQuz()
-    {
-        if (tutorialContents.Length > 0)
-        {
-            currentContentIndex = (currentContentIndex + 1) % tutorialContents.Length;
-            Debug.Log("" + currentContentIndex);
-            LoadQuzOnly(currentContentIndex);
-            //UpdateButtonVisual(currentContentIndex);
+#region 按鈕控制方法
 
+    // QUZ相關：單元內的題目切換
+    public void OnButtonPressedQuz() // 題目+（單元內下一個內容）
+    {
+        if (units.Count > 0 && currentUnitIndex < units.Count)
+        {
+            var currentUnit = units[currentUnitIndex];
+            if (currentUnit.contents != null && currentUnit.contents.Count > 0)
+            {
+                currentContentIndexInUnit = (currentContentIndexInUnit + 1) % currentUnit.contents.Count;
+                Debug.Log($"單元 {currentUnitIndex} 內切換到內容 {currentContentIndexInUnit}");
+                LoadContentInCurrentUnit();
+            }
         }
     }
-    public void OnButtonPressedQuzMinus()
-    {
-        if (tutorialContents.Length > 0)
-        {
-            currentContentIndex = (currentContentIndex - 1 + tutorialContents.Length) % tutorialContents.Length;
-            Debug.Log("" + currentContentIndex);
-            LoadQuzOnly(currentContentIndex);
-            //UpdateButtonVisual(currentContentIndex);
 
+    public void OnButtonPressedQuzMinus() // 題目-（單元內上一個內容）
+    {
+        if (units.Count > 0 && currentUnitIndex < units.Count)
+        {
+            var currentUnit = units[currentUnitIndex];
+            if (currentUnit.contents != null && currentUnit.contents.Count > 0)
+            {
+                currentContentIndexInUnit = (currentContentIndexInUnit - 1 + currentUnit.contents.Count) % currentUnit.contents.Count;
+                Debug.Log($"單元 {currentUnitIndex} 內切換到內容 {currentContentIndexInUnit}");
+                LoadContentInCurrentUnit();
+            }
         }
     }
-    public void OnButtonPressedLes()
+
+    // LES相關：單元切換
+    public void OnButtonPressedLes() // 課程+（下一個單元）
     {
-        if (tutorialContents.Length > 0)
+        if (units.Count > 0)
         {
-            currentContentIndex = (currentContentIndex + 1) % tutorialContents.Length;
-            LoadContent(currentContentIndex);
-            //UpdateButtonVisual(currentContentIndex);
+            currentUnitIndex = (currentUnitIndex + 1) % units.Count;
+            currentContentIndexInUnit = 0; // 重置到該單元的第一個內容
+            Debug.Log($"切換到單元 {currentUnitIndex}");
+            LoadUnit(currentUnitIndex, currentContentIndexInUnit);
+        }
+    }
+
+    public void OnButtonPressedLesMinus() // 課程-（上一個單元）
+    {
+        if (units.Count > 0)
+        {
+            currentUnitIndex = (currentUnitIndex - 1 + units.Count) % units.Count;
+            currentContentIndexInUnit = 0; // 重置到該單元的第一個內容
+            Debug.Log($"切換到單元 {currentUnitIndex}");
+            LoadUnit(currentUnitIndex, currentContentIndexInUnit);
+        }
+    }
+
+    #endregion
+
+    #region 單元載入方法
+
+    // 切換單元的方法
+    private void LoadUnit(int unitIndex, int contentIndexInUnit)
+    {
+        if (unitIndex < 0 || unitIndex >= units.Count) return;
+        
+        var unit = units[unitIndex];
+        if (unit.contents == null || contentIndexInUnit < 0 || contentIndexInUnit >= unit.contents.Count) return;
+        
+        currentUnitIndex = unitIndex;
+        currentContentIndexInUnit = contentIndexInUnit;
+        
+        // 找到對應的全域內容索引
+        int globalContentIndex = GetGlobalContentIndex(unitIndex, contentIndexInUnit);
+        if (globalContentIndex >= 0 && globalContentIndex < tutorialContents.Length)
+        {
+            currentContentIndex = globalContentIndex;
+            TutorialContent_Test content = tutorialContents[globalContentIndex];
             
-
-        }
-    }
-    public void OnButtonPressedLesMinus()
-    {
-        if (tutorialContents.Length > 0)
-        {
-            currentContentIndex = (currentContentIndex - 1 + tutorialContents.Length) % tutorialContents.Length;
-            LoadContent(currentContentIndex);
-            //UpdateButtonVisual(currentContentIndex);
-
-        }
-    }
-    private void LoadQuzOnly(int contentIndex)
-    {
-        if (contentIndex >= 0 && contentIndex < tutorialContents.Length)
-        {
-            currentContentIndex = contentIndex;
-            TutorialContent_Test content = tutorialContents[contentIndex];
+            // 載入內容（包含影片）
+            UpdateVideo(content.videoClip);
             UpdateQuestionContent(content);
             Update3DObject(content.threeDObject);
             ResetAnswerState();
-            UpdateScoreDisplay(); // 更新分數顯示
+            UpdateScoreDisplay();
         }
     }
 
+    // 只切換題目的方法
+    private void LoadContentInCurrentUnit()
+    {
+        if (currentUnitIndex < 0 || currentUnitIndex >= units.Count) return;
+        
+        var unit = units[currentUnitIndex];
+        if (unit.contents == null || currentContentIndexInUnit < 0 || currentContentIndexInUnit >= unit.contents.Count) return;
+        
+        // 找到對應的全域內容索引
+        int globalContentIndex = GetGlobalContentIndex(currentUnitIndex, currentContentIndexInUnit);
+        if (globalContentIndex >= 0 && globalContentIndex < tutorialContents.Length)
+        {
+            currentContentIndex = globalContentIndex;
+            TutorialContent_Test content = tutorialContents[globalContentIndex];
+
+            // 只載入題目內容，不切換影片
+            UpdateVideo(content.videoClip);
+            UpdateQuestionContent(content);
+            Update3DObject(content.threeDObject);
+            ResetAnswerState();
+            UpdateScoreDisplay();
+        }
+    }
+
+    // 將單元索引和內容索引轉換為全域內容索引
+    private int GetGlobalContentIndex(int unitIndex, int contentIndexInUnit)
+    {
+        int globalIndex = 0;
+        
+        for (int i = 0; i < unitIndex && i < units.Count; i++)
+        {
+            var unit = units[i];
+            if (unit.contents != null)
+            {
+                globalIndex += unit.contents.Count;
+            }
+        }
+        
+        globalIndex += contentIndexInUnit;
+        return globalIndex;
+    }
+
+    // 原有的LoadContent方法保持向後相容
     private void LoadContent(int contentIndex)
     {
         if (contentIndex >= 0 && contentIndex < tutorialContents.Length)
         {
             currentContentIndex = contentIndex;
             TutorialContent_Test content = tutorialContents[contentIndex];
-
+            
             UpdateVideo(content.videoClip);
             UpdateQuestionContent(content);
             Update3DObject(content.threeDObject);
             ResetAnswerState();
-            UpdateScoreDisplay(); // 更新分數顯示
+            UpdateScoreDisplay();
         }
     }
+
+    #endregion
 
     private void UpdateVideo(VideoClip newVideoClip)
     {
@@ -468,6 +669,41 @@ public class TutorialContentManager_Test : MonoBehaviour
             videoPlayer.Prepare();
         }
     }
+
+    // 新增公開方法：獲取當前單元資訊
+    public int GetCurrentUnitIndex()
+    {
+        return currentUnitIndex;
+    }
+
+    public int GetCurrentContentIndexInUnit()
+    {
+        return currentContentIndexInUnit;
+    }
+
+    public string GetCurrentUnitName()
+    {
+        if (currentUnitIndex >= 0 && currentUnitIndex < units.Count)
+        {
+            return units[currentUnitIndex].unitName;
+        }
+        return "";
+    }
+
+    public int GetCurrentUnitContentCount()
+    {
+        if (currentUnitIndex >= 0 && currentUnitIndex < units.Count)
+        {
+            return units[currentUnitIndex].contents?.Count ?? 0;
+        }
+        return 0;
+    }
+
+    public List<JsonTutorialUnit> GetAllUnits()
+    {
+        return new List<JsonTutorialUnit>(units);
+    }
+
 
     private void UpdateQuestionContent(TutorialContent_Test content)
     {
@@ -516,15 +752,20 @@ public class TutorialContentManager_Test : MonoBehaviour
 
         ClearQuestionFields();
 
-        float currentYOffset = 0f;
+        #region 設定container(題目父物件)位置
+        float currentYOffset = -3f;      //底下currentYOffset位置初始設定在 y = -3
+        
         for (int i = 0; i < questions.Count; i++)
         {
             var question = questions[i];
             GameObject questionContainer = new GameObject($"Question_{i}_Container");
             questionContainer.transform.SetParent(questionPanel);
-            questionContainer.transform.localPosition = Vector3.zero;
+
+            // 關鍵修改：為每個Container設定Y軸位置（使用遞減邏輯）
+            questionContainer.transform.localPosition = new Vector3(0, currentYOffset, 0);
             questionContainer.transform.localRotation = Quaternion.identity;
             questionContainer.transform.localScale = Vector3.one;
+
             questionContainers.Add(questionContainer);
 
             if (question.IsFillInBlank())
@@ -536,7 +777,7 @@ public class TutorialContentManager_Test : MonoBehaviour
                 CreateMultipleChoiceQuestion(question, questionContainer, i, ref currentYOffset);
             }
         }
-
+        #endregion
         if (resultText != null) resultText.text = "";
         if (hintText != null) hintText.text = "";
     }
@@ -547,9 +788,12 @@ public class TutorialContentManager_Test : MonoBehaviour
 
         var fieldObj = Instantiate(inputFieldPrefab, container.transform);
         var promptText = fieldObj.GetComponentInChildren<TextMeshPro>();
+
         if (promptText != null)
         {
             promptText.text = $"{questionIndex + 1}. {question.promptText}";
+
+            // 設定中文字體
             if (chineseFont != null)
             {
                 promptText.font = chineseFont;
@@ -562,22 +806,26 @@ public class TutorialContentManager_Test : MonoBehaviour
             {
                 promptText.fontMaterial = chineseFont.material;
             }
+
             questionPrompts.Add(promptText);
 
-            if (question.useCustomPositions)
+            #region 填空題各小題位置
+            // 使用硬編碼位置邏輯（相對於Container）
+            RectTransform textRect = promptText.GetComponent<RectTransform>();
+            if (textRect != null)
             {
-                promptText.transform.localPosition = question.textPosition;
-                promptText.transform.localRotation = Quaternion.Euler(question.textRotation);
-                RectTransform textRect = promptText.GetComponent<RectTransform>();
-                if (textRect != null)
-                {
-                    textRect.sizeDelta = question.textSize;
-                }
+                textRect.sizeDelta = new Vector2(15, 5);
+                // 相對於Container的位置，不再使用絕對位置
+                textRect.localPosition = new Vector3(1.5f, -0.2f, 14);
             }
             else
             {
-                promptText.transform.localPosition = new Vector3(0, yOffset, 0);
+                promptText.transform.localPosition = new Vector3(1.5f, -0.2f, 14);
             }
+            #endregion
+
+            promptText.transform.localRotation = Quaternion.identity;
+            promptText.transform.localScale = Vector3.one;
         }
 
         var inputField = fieldObj.GetComponentInChildren<TMP_InputField>();
@@ -586,26 +834,34 @@ public class TutorialContentManager_Test : MonoBehaviour
             inputField.text = "";
             inputFields.Add(inputField);
 
-            if (question.useCustomPositions)
+            #region INPUTFIELD統一位置
+            // 輸入框位置（相對於Container）
+            RectTransform inputRect = inputField.GetComponent<RectTransform>();
+            if (inputRect != null)
             {
-                inputField.transform.localPosition = question.inputFieldPosition;
-                inputField.transform.localRotation = Quaternion.Euler(question.inputFieldRotation);
-                RectTransform inputRect = inputField.GetComponent<RectTransform>();
-                if (inputRect != null)
-                {
-                    inputRect.sizeDelta = question.inputFieldSize;
-                }
+                // 相對於Container的位置
+                inputRect.localPosition = new Vector3(-6.6f, 2, 14);
+                inputField.transform.localScale = question.inputFieldScale;
             }
             else
             {
-                inputField.transform.localPosition = new Vector3(0, yOffset - 0.15f, 0);
+                inputField.transform.localPosition = new Vector3(-6.6f, 2, 14);
+                inputField.transform.localScale = question.inputFieldScale;
             }
+            #endregion
+
+            inputField.transform.localRotation = Quaternion.identity;
         }
 
         multipleChoiceSelections.Add(new HashSet<int>());
-        yOffset -= 0.5f;
+
+        #region contaner y軸遞減大小
+        // 關鍵：為下一個Container更新Y軸位置（向下遞減）
+        yOffset -= 0.75f; // 每個填空題Container之間的間距
+        #endregion
     }
-#region 選擇題創建
+
+    #region 選擇題創建
     private void CreateMultipleChoiceQuestion(TutorialQuestion_Test question, GameObject container, int questionIndex, ref float yOffset)
     {
         if (optionPrefab == null) return;
@@ -614,30 +870,31 @@ public class TutorialContentManager_Test : MonoBehaviour
         GameObject questionTextObj = new GameObject($"QuestionText_{questionIndex}");
         questionTextObj.transform.SetParent(container.transform);
         RectTransform textRect = questionTextObj.AddComponent<RectTransform>();
-       
-        // 設定問題文字位置
-        // Vector3 questionTextPos;
-        // if (question.useCustomQuestionTextPosition)
-        // {
-        //     questionTextPos = question.questionTextPosition;
-        // }
-        // else
-        // {
-        //     questionTextPos = new Vector3(0, yOffset, 0);
-        // }
-        // questionTextObj.transform.localPosition = questionTextPos;
-        questionTextObj.transform.localRotation = Quaternion.identity;
-        // questionTextObj.transform.localScale = Vector3.one;
-        // Debug.Log(textRect.anchoredPosition);
+
+        #region 選擇題 題目位置
+        Vector3 questionTextPos;
+        questionTextPos = new Vector3(1, 3, 14);
+        /*if (question.useCustomQuestionTextPosition)
+        {
+            questionTextPos = question.questionTextPosition;
+        }
+        else
+        {
+            // 相對於Container的位置
+            questionTextPos = new Vector3(1.5f, -0.2f, 14);
+        }*/
+        #endregion
+
         textRect.sizeDelta = new Vector2(15, 5);
-        textRect.localPosition = new Vector3(1,(float)-0.2, 14);
+        textRect.localPosition = questionTextPos;
+        questionTextObj.transform.localRotation = Quaternion.identity;
 
         TextMeshPro questionTextMesh = questionTextObj.AddComponent<TextMeshPro>();
         questionTextMesh.text = $"{questionIndex + 1}. {question.promptText}";
         questionTextMesh.fontSize = question.questionTextFontSize;
         questionTextMesh.alignment = TextAlignmentOptions.Left;
 
-        // 設定中文字體和材質
+        // 設定中文字體
         if (chineseFont != null)
         {
             questionTextMesh.font = chineseFont;
@@ -653,12 +910,6 @@ public class TutorialContentManager_Test : MonoBehaviour
 
         questionPrompts.Add(questionTextMesh);
 
-        // 如果沒有使用自訂位置，更新 yOffset
-        if (!question.useCustomQuestionTextPosition)
-        {
-            yOffset -= 0.2f;
-        }
-
         HashSet<int> selections = new HashSet<int>();
         multipleChoiceSelections.Add(selections);
 
@@ -672,13 +923,12 @@ public class TutorialContentManager_Test : MonoBehaviour
             Vector3 optionPosition;
             if (question.useCustomOptionPositions)
             {
-                // 使用自訂起始位置，然後根據 optionSpacing 計算每個選項的位置
                 optionPosition = question.optionStartPosition + new Vector3(0, -(optionIndex * question.optionSpacing), 0);
             }
             else
             {
-                // 使用預設位置計算
-                optionPosition = new Vector3(0, yOffset - (optionIndex * question.optionSpacing), 0);
+                // 相對於Container的位置，從問題文字下方開始排列
+                optionPosition = new Vector3(0, -0.5f - (optionIndex * question.optionSpacing), 0);
             }
 
             optionObj.transform.localPosition = optionPosition;
@@ -690,7 +940,6 @@ public class TutorialContentManager_Test : MonoBehaviour
                 optionComponent = optionObj.AddComponent<QuizOptionComponent_Test>();
             }
 
-            // 設定選項組件的中文字體
             if (chineseFont != null || chineseFontMaterial != null)
             {
                 optionComponent.SetChineseFont(chineseFont, chineseFontMaterial);
@@ -703,14 +952,14 @@ public class TutorialContentManager_Test : MonoBehaviour
         }
 
         inputFields.Add(null);
-       
-        // 如果沒有使用自訂位置，更新 yOffset 為下一個問題做準備
-        if (!question.useCustomOptionPositions)
-        {
-            yOffset -= (question.options.Count * question.optionSpacing + 0.3f);
-        }
+
+        /*
+        // 關鍵：為下一個Container更新Y軸位置（向下遞減）
+        float totalHeight = 0.7f + (question.options.Count * question.optionSpacing);
+        yOffset -= totalHeight; // 根據選項數量計算Container間距
+        */
     }
-#endregion
+    #endregion
 
     private void ClearQuestionFields()
     {
@@ -859,13 +1108,13 @@ public class TutorialContentManager_Test : MonoBehaviour
 
         UpdateScoreDisplay();
         isAnswerChecked = true;
-        float delay = correctCount == questions.Count ? 2f : 3f; 
+        float delay = correctCount == questions.Count ? 2f : 3f;
         StartCoroutine(DelayedButtonPressed(delay));
     }
-        private IEnumerator DelayedButtonPressed(float delay = 2f)
+    private IEnumerator DelayedButtonPressed(float delay = 2f)
     {
         yield return new WaitForSeconds(delay);
-        
+
         OnButtonPressedQuz();
     }
 
@@ -873,13 +1122,13 @@ public class TutorialContentManager_Test : MonoBehaviour
     {
         if (string.IsNullOrEmpty(userInput)) return false;
 
-        switch (question.answerType)
+        switch (question.answerType_Test)
         {
-            case AnswerType.Text:
+            case AnswerType_Test.Text:
                 return CheckTextAnswer(userInput, question);
-            case AnswerType.Number:
+            case AnswerType_Test.Number:
                 return CheckNumberAnswer(userInput, question);
-            case AnswerType.Expression:
+            case AnswerType_Test.Expression:
                 return CheckExpressionAnswer(userInput, question);
             default:
                 return CheckTextAnswer(userInput, question);
@@ -1021,7 +1270,7 @@ public class TutorialContentManager_Test : MonoBehaviour
         }
 
         ResetAnswerState();
-        
+
         // 跳回第一個 control button
         LoadContent(0);
         ////UpdateButtonVisual(0);
@@ -1187,7 +1436,7 @@ public class TutorialContentManager_Test : MonoBehaviour
     {
         if (currentThreeDObject != null)
         {
-            currentThreeDObject.SetActive(false);
+            currentThreeDObject.SetActive(false); //控制在場景消失
         }
 
         if (newThreeDObject != null)
@@ -1196,9 +1445,9 @@ public class TutorialContentManager_Test : MonoBehaviour
             {
                 newThreeDObject.transform.SetParent(threeDContainer);
                 newThreeDObject.transform.localPosition = Vector3.zero;
-                newThreeDObject.transform.localRotation = Quaternion.identity;
+                newThreeDObject.transform.localRotation = Quaternion.identity; //設定3D物件位置
             }
-            newThreeDObject.SetActive(true);
+            newThreeDObject.SetActive(true); //控制在場景出現
             currentThreeDObject = newThreeDObject;
         }
     }
@@ -1314,8 +1563,9 @@ public class TutorialContentManager_Test : MonoBehaviour
     {
         var completedContents = contentCompleted.Where(kvp => kvp.Value).ToList();
         if (completedContents.Count == 0) return 0f;
-        
+
         int totalCompletedScore = completedContents.Sum(kvp => contentScores[kvp.Key]);
         return (float)totalCompletedScore / completedContents.Count;
     }
 }
+
