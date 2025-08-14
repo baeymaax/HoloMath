@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Thirdweb;
 
 namespace Thirdweb.Unity.Examples
 {
@@ -24,7 +25,7 @@ namespace Thirdweb.Unity.Examples
     public class PlaygroundManager : MonoBehaviour
     {
         [field: SerializeField, Header("Wallet Options")]
-        private ulong ActiveChainId = 421614;
+        private ulong ActiveChainId = 80002;
 
         [field: SerializeField]
         private bool WebglForceMetamaskExtension = false;
@@ -45,6 +46,8 @@ namespace Thirdweb.Unity.Examples
         private List<WalletPanelUI> WalletPanels;
 
         private ThirdwebChainData _chainDetails;
+        private string customContractAddress = "0x354ace99Ea67A4117196b8d976c245a1f329bDA2";
+        //? 新版不用 private string abi = "[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"studentId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"examId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"examName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"score\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"passed\",\"type\":\"bool\"}],\"name\":\"ExamRecorded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"oldScore\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newScore\",\"type\":\"uint256\"}],\"name\":\"PassingScoreUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"studentId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"email\",\"type\":\"string\"}],\"name\":\"StudentAdded\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_email\",\"type\":\"string\"},{\"internalType\":\"uint8\",\"name\":\"_age\",\"type\":\"uint8\"}],\"name\":\"addStudent\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllStudentIds\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_studentId\",\"type\":\"uint256\"}],\"name\":\"getAverageScore\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"average\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getContractStats\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"_totalStudents\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_totalExams\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_passingScore\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_studentId\",\"type\":\"uint256\"}],\"name\":\"getPassedExamsCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"passedCount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_studentId\",\"type\":\"uint256\"}],\"name\":\"getStudent\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"email\",\"type\":\"string\"},{\"internalType\":\"uint8\",\"name\":\"age\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_studentId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_examIndex\",\"type\":\"uint256\"}],\"name\":\"getStudentExam\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"examId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"examName\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"score\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxScore\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"passed\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"remarks\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_studentId\",\"type\":\"uint256\"}],\"name\":\"getStudentExamCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_studentId\",\"type\":\"uint256\"}],\"name\":\"getStudentExams\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"examId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"examName\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"score\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxScore\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"passed\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"remarks\",\"type\":\"string\"}],\"internalType\":\"struct HoloContract.ExamResult[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_studentId\",\"type\":\"uint256\"}],\"name\":\"isStudentExists\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"nextExamId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"nextStudentId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"passingScore\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_studentId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_examName\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_score\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_maxScore\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_remarks\",\"type\":\"string\"}],\"name\":\"recordExam\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"studentExams\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"examId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"examName\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"score\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxScore\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"passed\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"remarks\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"students\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"email\",\"type\":\"string\"},{\"internalType\":\"uint8\",\"name\":\"age\",\"type\":\"uint8\"},{\"internalType\":\"bool\",\"name\":\"exists\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalStudents\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_newPassingScore\",\"type\":\"uint256\"}],\"name\":\"updatePassingScore\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_studentId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_email\",\"type\":\"string\"},{\"internalType\":\"uint8\",\"name\":\"_age\",\"type\":\"uint8\"}],\"name\":\"updateStudent\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]";
 
         private void Awake()
         {
@@ -124,9 +127,46 @@ namespace Thirdweb.Unity.Examples
             currentPanel.Action1Button.onClick.RemoveAllListeners();
             currentPanel.Action1Button.onClick.AddListener(async () =>
             {
-                var address = await wallet.GetAddress();
-                address.CopyToClipboard();
-                Log(currentPanel.LogText, $"Address: {address}");
+                // *原本的方法
+                // var address = await wallet.GetAddress();
+                // address.CopyToClipboard();
+                // Log(currentPanel.LogText, $"Address: {address}");
+                try
+                {
+                    LoadingLog(currentPanel.LogText);
+
+                    // 設定要查詢的學生 ID
+                    uint studentId = 4;
+
+                    var contract = await ThirdwebManager.Instance.GetContract(address: customContractAddress, chainId: ActiveChainId);
+                    Log(currentPanel.LogText, $"Contract loaded successfully");
+
+                    // 呼叫getStudent 方法
+                    var result = await contract.Read<object[]>("getStudent", studentId);
+                    Log(currentPanel.LogText, $"Contract call completed");
+
+                    // 檢查回傳結果
+                    if (result != null && result.Length >= 4)
+                    {
+                        string id = result[0]?.ToString() ?? "N/A";
+                        string name = result[1]?.ToString() ?? "N/A";
+                        string email = result[2]?.ToString() ?? "N/A";
+                        string age = result[3]?.ToString() ?? "N/A";
+
+                        string displayText = $"Student found!\nID: {id}\nName: {name}\nEmail: {email}\nAge: {age}";
+                        Log(currentPanel.LogText, displayText);
+
+                    }
+                    else
+                    {
+                        Log(currentPanel.LogText, $"Invalid response: result is null or has insufficient data. Length: {result?.Length ?? 0}");
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    Log(currentPanel.LogText, $"Error: {e.Message}");
+                    Debug.LogError($"Full error details: {e}");
+                }
             });
 
             currentPanel.Action2Button.onClick.RemoveAllListeners();
@@ -355,6 +395,91 @@ namespace Thirdweb.Unity.Examples
                 catch (System.Exception e)
                 {
                     Log(panel.LogText, e.Message);
+                }
+            });
+
+            // Call contract
+            panel.Action2Button.onClick.RemoveAllListeners();
+            panel.Action2Button.onClick.AddListener(async () =>
+            {
+                try
+                {
+                    LoadingLog(panel.LogText);
+                    var contract = await ThirdwebManager.Instance.GetContract(address: "0x6A7a26c9a595E6893C255C9dF0b593e77518e0c3", chainId: ActiveChainId);
+                    var result = await contract.ERC1155_URI(tokenId: 1);
+                    Log(panel.LogText, $"Result (uri): {result}");
+                }
+                catch (System.Exception e)
+                {
+                    Log(panel.LogText, e.Message);
+                }
+            });
+
+            // Get ERC20 Balance
+            panel.Action3Button.onClick.RemoveAllListeners();
+            panel.Action3Button.onClick.AddListener(async () =>
+            {
+                try
+                {
+                    LoadingLog(panel.LogText);
+                    var dropErc20Contract = await ThirdwebManager.Instance.GetContract(address: "0xEBB8a39D865465F289fa349A67B3391d8f910da9", chainId: ActiveChainId);
+                    var symbol = await dropErc20Contract.ERC20_Symbol();
+                    var balance = await dropErc20Contract.ERC20_BalanceOf(ownerAddress: await ThirdwebManager.Instance.GetActiveWallet().GetAddress());
+                    var balanceEth = Utils.ToEth(wei: balance.ToString(), decimalsToDisplay: 0, addCommas: false);
+                    Log(panel.LogText, $"Balance: {balanceEth} {symbol}");
+                }
+                catch (System.Exception e)
+                {
+                    Log(panel.LogText, e.Message);
+                }
+            });
+        }
+        public void InitializeTestPanel()
+        {
+            var panel = WalletPanels.Find(walletPanel => walletPanel.Identifier == "TestPanel");
+
+            CloseAllPanels();
+
+            ClearLog(panel.LogText);
+            panel.Panel.SetActive(true);
+
+            panel.BackButton.onClick.RemoveAllListeners();
+            panel.BackButton.onClick.AddListener(InitializePanels);
+
+            panel.NextButton.onClick.RemoveAllListeners();
+            panel.NextButton.onClick.AddListener(InitializeAccountAbstractionPanel);
+
+            // Get NFT
+            panel.Action1Button.onClick.RemoveAllListeners();
+            panel.Action1Button.onClick.AddListener(async () =>
+            {
+                try
+                {
+                    LoadingLog(panel.LogText);
+                    uint studentId = 4;
+                    var contract = await ThirdwebManager.Instance.GetContract(address: customContractAddress, chainId: ActiveChainId);
+                    
+                    var result = await contract.Read<object[]>("getStudent", studentId);
+                    
+                    if (result != null && result.Length >= 4)
+                    {
+                        uint id = System.Convert.ToUInt32(result[0]);
+                        string name = result[1].ToString();
+                        string email = result[2].ToString();
+                        byte age = System.Convert.ToByte(result[3]);
+                        
+                        string displayText = $"ID: {id}\nName: {name}\nEmail: {email}\nAge: {age}";
+                        Log(panel.LogText, displayText);
+                    }
+                    else
+                    {
+                        Log(panel.LogText, "No student data found or invalid response format");
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    Log(panel.LogText, $"Error getting student: {e.Message}");
+                    Debug.LogError($"Error getting student: {e.Message}");
                 }
             });
 
