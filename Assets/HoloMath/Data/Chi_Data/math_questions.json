@@ -1,18 +1,107 @@
 {
   "units": [
+    
     {
-      "unitName": "弧度制與角度轉換",
-      "unitDescription": "學習角度與弧度之間的轉換",
+      "unitName": "弧度量",
+      "unitDescription": "CH1",
       "unitId": 1,
       "contents": [
         {
-          "contentName": "",
-          "description": "",
+          "contentName": "弧度制",
+          "description": "CH1-1",
           "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "將下列角度的單位，由度換成弧度，或將弧度換成角度：TESTEST ",
+          "questionText": "",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "1.將下列角度與弧度的換算，選出所有正確的等式：（多選）",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A) 30°=π/3弧度", "isCorrect": false },
+                { "optionText": "(B) π/4弧度=45°", "isCorrect": true },
+                { "optionText": "(C) 120°=2π/3弧度", "isCorrect": true },
+                { "optionText": "(D) 5π/3弧度=150°", "isCorrect": false }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+        {
+          "contentName": "弧度制",
+          "description": "CH1-1",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "Angle_Anime",
+          "questionText": "",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "2.將下列角度與弧度的換算，選出所有正確的等式：（多選）",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A) 1弧度=π°", "isCorrect": false },
+                { "optionText": "(B) π^2弧度=180π°", "isCorrect": true },
+                { "optionText": "(C) 1°=180/π弧度", "isCorrect": false },
+                { "optionText": "(D) π°=π^2/180弧度", "isCorrect": true }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+        {
+          "contentName": "弧度制",
+          "description": "CH1-1",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
+          "questionImage": "Assets/HoloMath/Data/questions_picture/1-1-3.png",
+          "hasImage": false,
+          "threeDObject": "Angle_Anime",
+          "questionText": "3.下圖中的角度為②/① π弧度。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -22,8 +111,8 @@
           "questions": [
             {
               "questionType": "FillInBlank",
-              "promptText": "30° = _____ 弧度",
-              "correctAnswer": "π/6",
+              "promptText": "①：_____",
+              "correctAnswer": "2",
               "acceptableAnswers": [],
               "hint": "",
               "answerType": "Text",
@@ -37,38 +126,8 @@
             },
             {
               "questionType": "FillInBlank",
-              "promptText": "π/4 弧度 = _____ °",
-              "correctAnswer": "45",
-              "acceptableAnswers": [],
-              "hint": "",
-              "answerType": "Number",
-              "tolerance": 0,
-              "isCaseSensitive": false,
-              "allowPartialMatch": false,
-              "options": [],
-              "textSize": { "x": 7.0365, "y": 2.1113 },
-              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
-              "questionTextFontSize": 4
-            },
-            {
-              "questionType": "FillInBlank",
-              "promptText": "120° = _____ 弧度",
-              "correctAnswer": "2π/3",
-              "acceptableAnswers": [],
-              "hint": "",
-              "answerType": "Expression",
-              "tolerance": 0,
-              "isCaseSensitive": false,
-              "allowPartialMatch": false,
-              "options": [],
-              "textSize": { "x": 7.0365, "y": 2.1113 },
-              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
-              "questionTextFontSize": 4
-            },
-            {
-              "questionType": "FillInBlank",
-              "promptText": "5π/3 弧度 = _____ °",
-              "correctAnswer": "300",
+              "promptText": "②：_____",
+              "correctAnswer": "3",
               "acceptableAnswers": [],
               "hint": "",
               "answerType": "Number",
@@ -88,8 +147,6 @@
           "requireAllCorrect": false
         },
         
-
-
         {
           "contentName": "",
           "description": "",
