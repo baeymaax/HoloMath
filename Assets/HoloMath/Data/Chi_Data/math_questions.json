@@ -1,5 +1,6 @@
 {
   "units": [
+    
     {
       "unitName": "弧度量",
       "unitDescription": "CH1",
@@ -49,15 +50,56 @@
           "passingScore": 60,
           "requireAllCorrect": false
         },
-        
-
-
+        {
+          "contentName": "弧度制",
+          "description": "CH1-1",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "Angle_Anime",
+          "questionText": "",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "2.將下列角度與弧度的換算，選出所有正確的等式：（多選）",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A) 1弧度=π°", "isCorrect": false },
+                { "optionText": "(B) π^2弧度=180π°", "isCorrect": true },
+                { "optionText": "(C) 1°=180/π弧度", "isCorrect": false },
+                { "optionText": "(D) π°=π^2/180弧度", "isCorrect": true }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
         {
           "contentName": "弧度制",
           "description": "CH1-1",
           "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
           "questionImage": "Assets/HoloMath/Data/questions_picture/1-1-3.png",
-          "hasImage": false,
+          "hasImage": true,
           "threeDObject": "Angle_Anime",
           "questionText": "3.下圖中的角度為②/① π弧度。（選填）",
           "useCustomQuestionTextSettings": true,
@@ -104,25 +146,211 @@
           "passingScore": 60,
           "requireAllCorrect": false
         },
-
-
-        
         {
-          "contentName": "",
-          "description": "",
-          "videoClip": "Assets/HoloMath/Video/教學影片/【觀念】正弦函數圖形的伸縮 [RERw4MG2Z8w].mp4",
+          "contentName": "弧度制",
+          "description": "CH1-1",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
           "questionImage": null,
           "hasImage": false,
-          "threeDObject": "SinWaveVisualizer",
+          "threeDObject": "Angle_Anime",
+          "questionText": "4.將下列角度的單位，由度換成弧度，或將弧度換成角度：\n (1)-π/6弧度=①②③° \n (2)-210°=-⑤π/④弧度",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "FillInBlank",
+              "promptText": "①：_____",
+              "correctAnswer": "-",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            },
+            {
+              "questionType": "FillInBlank",
+              "promptText": "②：_____",
+              "correctAnswer": "3",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            },
+            {
+              "questionType": "FillInBlank",
+              "promptText": "③：_____",
+              "correctAnswer": "0",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            },
+            {
+              "questionType": "FillInBlank",
+              "promptText": "④：_____",
+              "correctAnswer": "6",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            },
+            {
+              "questionType": "FillInBlank",
+              "promptText": "⑤：_____",
+              "correctAnswer": "7",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+
+        {
+          "contentName": "弧度與三角比",
+          "description": "CH1-2",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "Angle_Anime",
           "questionText": "",
           "useCustomQuestionTextSettings": true,
-          "questionTextFontSize": 4,
-          "questionTextSize": { "x": 10, "y": 2 },
-          "showQuestionText": false,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "FillInBlank",
+              "promptText": "1.sin⁡(5π/2)=______（填空）",
+              "correctAnswer": "1",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+        {
+          "contentName": "弧度與三角比",
+          "description": "CH1-2",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "Angle_Anime",
+          "questionText": "2.sin⁡(17π/6)+cos⁡(-5π/2)+tan⁡(7π/4)=①②/2 （選填）",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "FillInBlank",
+              "promptText": "①：_____",
+              "correctAnswer": "-",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            },
+            {
+              "questionType": "FillInBlank",
+              "promptText": "②：_____",
+              "correctAnswer": "1",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+        {
+          "contentName": "弧度與三角比",
+          "description": "CH1-2",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "Angle_Anime",
+          "questionText": "",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "下圖是一個三角柱，其中∆BCF是直角三角形。請問線段AF和平面ABCD的夾角為下列何者？（單選）",
+              "promptText": "3.令a=cos⁡(π^2)，試問下列哪一個選項是對的？（單選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -131,11 +359,11 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A)∠FAB", "isCorrect": false },
-                { "optionText": "(B)∠FAC", "isCorrect": true },
-                { "optionText": "(C)∠FAD", "isCorrect": false },
-                { "optionText": "(D)∠FBC", "isCorrect": false },
-                { "optionText": "(E)∠EAC", "isCorrect": false }
+                { "optionText": "(A) a=-1", "isCorrect": false },
+                { "optionText": "(B) -1<a≤-1/2", "isCorrect": true },
+                { "optionText": "(C) -1/2<a≤0", "isCorrect": false },
+                { "optionText": "(D) 0<a≤1/2", "isCorrect": false },
+                { "optionText": "(E) 1/2<a≤1", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -150,42 +378,51 @@
           "passingScore": 60,
           "requireAllCorrect": false
         },
-        
-
 
         {
-          "contentName": "",
-          "description": "",
-          "videoClip": "Assets/HoloMath/Video/教學影片/【觀念】正弦函數圖形的平移 [x6dKDKkGgxU].mp4",
+          "contentName": "扇形的弧長、周長與面積",
+          "description": "CH1-3",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
           "questionImage": null,
           "hasImage": false,
-          "threeDObject": "SinWaveVisualizer",
-          "questionText": "",
+          "threeDObject": "Angle_Anime",
+          "questionText": "1.已知扇形的半徑為6公分，圓心角為150°，則此扇形的弧長為_____π公分、面積為_____π平方公分。（填空）",
           "useCustomQuestionTextSettings": true,
-          "questionTextFontSize": 4,
-          "questionTextSize": { "x": 10, "y": 2 },
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
           "showQuestionText": true,
           "questions": [
             {
-              "questionType": "MultipleChoice",
-              "promptText": "下圖是一個三角柱，其中∆BCF是直角三角形。請問線段AF和平面ABCD的夾角為下列何者？（單選）",
-              "correctAnswer": "",
+              "questionType": "FillInBlank",
+              "promptText": "Ans1：_____",
+              "correctAnswer": "5",
               "acceptableAnswers": [],
               "hint": "",
               "answerType": "Text",
               "tolerance": 0,
               "isCaseSensitive": false,
               "allowPartialMatch": false,
-              "options": [
-                { "optionText": "(A)鈍角三角形", "isCorrect": false },
-                { "optionText": "(B)直角三角形", "isCorrect": false },
-                { "optionText": "(C)銳角三角形", "isCorrect": true }
-              ],
-              "optionSpacing": 0.75,
-              "optionScale": { "x": 1, "y": 1, "z": 1 },
-              "useCustomOptionPositions": true,
-              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
-              "questionTextFontSize": 5
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            },
+            {
+              "questionType": "FillInBlank",
+              "promptText": "Ans2：_____",
+              "correctAnswer": "15",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
             }
           ],
           "showHints": true,
@@ -194,25 +431,24 @@
           "passingScore": 60,
           "requireAllCorrect": false
         },
-
-
-        
         {
-          "contentName": "",
-          "description": "",
-          "videoClip": "Assets/HoloMath/Video/教學影片/【觀念】正弦函數圖形的平移 [x6dKDKkGgxU].mp4",
+          "contentName": "扇形的弧長、周長與面積",
+          "description": "CH1-3",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
           "questionImage": null,
           "hasImage": false,
-          "threeDObject": "SinWaveVisualizer",
+          "threeDObject": "Angle_Anime",
           "questionText": "",
           "useCustomQuestionTextSettings": true,
-          "questionTextFontSize": 4,
-          "questionTextSize": { "x": 10, "y": 2 },
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
           "showQuestionText": true,
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "下圖是一個三角柱，其中∆BCF是直角三角形。請問線段AF和平面ABCD的夾角為下列何者？（單選）",
+              "promptText": "2.已知一扇形面積25π，半徑r=10公尺，求圓心角θ為何？（單選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -221,15 +457,16 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A)鈍角三角形", "isCorrect": false },
-                { "optionText": "(B)直角三角形", "isCorrect": false },
-                { "optionText": "(C)銳角三角形", "isCorrect": true }
+                { "optionText": "(A) π/2 弳", "isCorrect": true },
+                { "optionText": "(B) π/3 弳", "isCorrect": false },
+                { "optionText": "(C) 3π/2 弳", "isCorrect": false },
+                { "optionText": "(D) π/6 弳", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
               "useCustomOptionPositions": true,
               "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
-              "questionTextFontSize": 5
+              "questionTextFontSize": 4
             }
           ],
           "showHints": true,
@@ -241,19 +478,20 @@
       ]
     },
 
+
     {
-      "unitName": "Test",
-      "unitDescription": "Test",
+      "unitName": "常用的三角比公式",
+      "unitDescription": "CH2",
       "unitId": 2,
       "contents": [
         {
-          "contentName": "",
-          "description": "",
+          "contentName": "和差角公式",
+          "description": "CH2-1",
           "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "將下列角度的單位，由度換成弧度，或將弧度換成角度：",
+          "questionText": "1.計算下列算式： \n (1)cos65°cos25°-sin65°sin25°=① \n (2)sin35°cos10°+cos35°sin10°=√③/② （選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -263,8 +501,8 @@
           "questions": [
             {
               "questionType": "FillInBlank",
-              "promptText": "30° = _____ 弧度",
-              "correctAnswer": "π/6",
+              "promptText": "①：_____",
+              "correctAnswer": "0",
               "acceptableAnswers": [],
               "hint": "",
               "answerType": "Text",
@@ -278,11 +516,11 @@
             },
             {
               "questionType": "FillInBlank",
-              "promptText": "π/4 弧度 = _____ °",
-              "correctAnswer": "45",
+              "promptText": "②：_____",
+              "correctAnswer": "2",
               "acceptableAnswers": [],
               "hint": "",
-              "answerType": "Number",
+              "answerType": "Text",
               "tolerance": 0,
               "isCaseSensitive": false,
               "allowPartialMatch": false,
@@ -293,11 +531,48 @@
             },
             {
               "questionType": "FillInBlank",
-              "promptText": "120° = _____ 弧度",
-              "correctAnswer": "2π/3",
+              "promptText": "③：_____",
+              "correctAnswer": "2",
               "acceptableAnswers": [],
               "hint": "",
-              "answerType": "Expression",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+        {
+          "contentName": "和差角公式",
+          "description": "CH2-1",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "Angle_Anime",
+          "questionText": "2.設0°<α<90°、0°<β<90°，且sinα=13/15、sinβ=(4√14)/15。則sin⁡(α+β)=(①√②③)/25 、 cos⁡(α+β)=④⑤/25。（選填）",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "FillInBlank",
+              "promptText": "①：_____",
+              "correctAnswer": "6",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
               "tolerance": 0,
               "isCaseSensitive": false,
               "allowPartialMatch": false,
@@ -308,11 +583,56 @@
             },
             {
               "questionType": "FillInBlank",
-              "promptText": "5π/3 弧度 = _____ °",
-              "correctAnswer": "300",
+              "promptText": "②：_____",
+              "correctAnswer": "1",
               "acceptableAnswers": [],
               "hint": "",
-              "answerType": "Number",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            },
+            {
+              "questionType": "FillInBlank",
+              "promptText": "③：_____",
+              "correctAnswer": "4",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            },
+            {
+              "questionType": "FillInBlank",
+              "promptText": "④：_____",
+              "correctAnswer": "1",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            },
+            {
+              "questionType": "FillInBlank",
+              "promptText": "⑤：_____",
+              "correctAnswer": "1",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
               "tolerance": 0,
               "isCaseSensitive": false,
               "allowPartialMatch": false,
@@ -328,42 +648,49 @@
           "passingScore": 60,
           "requireAllCorrect": false
         },
-        
-
-
         {
-          "contentName": "",
-          "description": "",
-          "videoClip": "Assets/HoloMath/Video/【觀念】正弦函數的圖形 [UG4JFE4IZo8].mp4",
+          "contentName": "和差角公式",
+          "description": "CH2-1",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
           "questionImage": null,
           "hasImage": false,
-          "threeDObject": "SinWaveVisualizer",
-          "questionText": "",
-          "questionTextFontSize": 4,
-          "questionTextSize": { "x": 10, "y": 2 },
+          "threeDObject": "Angle_Anime",
+          "questionText": "3.設兩直線L_1:4x-y=0與L_2:x-y+1=0的夾角為θ，則tanθ=②/①。（選填）",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
           "showQuestionText": true,
           "questions": [
             {
-              "questionType": "MultipleChoice",
-              "promptText": "下列關於正弦函數y=f(x)=sinx的敘述，選出所有正確的選項。",
-              "correctAnswer": "",
+              "questionType": "FillInBlank",
+              "promptText": "①：_____",
+              "correctAnswer": "5",
               "acceptableAnswers": [],
               "hint": "",
               "answerType": "Text",
               "tolerance": 0,
               "isCaseSensitive": false,
               "allowPartialMatch": false,
-              "options": [
-                { "optionText": "(A) f(x) 的最小值 =−1", "isCorrect": true },
-                { "optionText": "(B) f(x) 在原點遞增，且週期為 π", "isCorrect": false },
-                { "optionText": "(C) f(x) 的圖形對稱於 (0,0)", "isCorrect": true },
-                { "optionText": "(D) f(x) 的圖形對稱於 (π,0) ", "isCorrect": true },
-                { "optionText": "(E) f(x) 的圖形對稱於直線 x=-π/2", "isCorrect": true }
-              ],
-              "optionSpacing": 0.75,
-              "optionScale": { "x": 1, "y": 1, "z": 1 },
-              "useCustomOptionPositions": true,
-              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            },
+            {
+              "questionType": "FillInBlank",
+              "promptText": "②：_____",
+              "correctAnswer": "3",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
               "questionTextFontSize": 4
             }
           ],
@@ -373,132 +700,35 @@
           "passingScore": 60,
           "requireAllCorrect": false
         },
-
-
-        
         {
-          "contentName": "",
-          "description": "",
-          "videoClip": "Assets/HoloMath/Video/教學影片/【觀念】正弦函數圖形的伸縮 [RERw4MG2Z8w].mp4",
+          "contentName": "和差角公式",
+          "description": "CH2-1",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
           "questionImage": null,
           "hasImage": false,
-          "threeDObject": "SinWaveVisualizer",
+          "threeDObject": "Angle_Anime",
           "questionText": "",
           "useCustomQuestionTextSettings": true,
-          "questionTextFontSize": 4,
-          "questionTextSize": { "x": 10, "y": 2 },
-          "showQuestionText": false,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
           "questions": [
             {
-              "questionType": "MultipleChoice",
-              "promptText": "下圖是一個三角柱，其中∆BCF是直角三角形。請問線段AF和平面ABCD的夾角為下列何者？（單選）",
-              "correctAnswer": "",
+              "questionType": "FillInBlank",
+              "promptText": "4.已知直線y=2x，若將此直線以原點為中心，逆時針旋轉45°之後的新直線，其斜率為_____。（填空）",
+              "correctAnswer": "-3",
               "acceptableAnswers": [],
               "hint": "",
               "answerType": "Text",
               "tolerance": 0,
               "isCaseSensitive": false,
               "allowPartialMatch": false,
-              "options": [
-                { "optionText": "(A)∠FAB", "isCorrect": false },
-                { "optionText": "(B)∠FAC", "isCorrect": true },
-                { "optionText": "(C)∠FAD", "isCorrect": false },
-                { "optionText": "(D)∠FBC", "isCorrect": false },
-                { "optionText": "(E)∠EAC", "isCorrect": false }
-              ],
-              "optionSpacing": 0.75,
-              "optionScale": { "x": 1, "y": 1, "z": 1 },
-              "useCustomOptionPositions": true,
-              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
               "questionTextFontSize": 4
-            }
-          ],
-          "showHints": true,
-          "allowRetry": true,
-          "showProgress": true,
-          "passingScore": 60,
-          "requireAllCorrect": false
-        },
-        
-
-
-        {
-          "contentName": "",
-          "description": "",
-          "videoClip": "Assets/HoloMath/Video/教學影片/【觀念】正弦函數圖形的平移 [x6dKDKkGgxU].mp4",
-          "questionImage": null,
-          "hasImage": false,
-          "threeDObject": "SinWaveVisualizer",
-          "questionText": "",
-          "useCustomQuestionTextSettings": true,
-          "questionTextFontSize": 4,
-          "questionTextSize": { "x": 10, "y": 2 },
-          "showQuestionText": true,
-          "questions": [
-            {
-              "questionType": "MultipleChoice",
-              "promptText": "下圖是一個三角柱，其中∆BCF是直角三角形。請問線段AF和平面ABCD的夾角為下列何者？（單選）",
-              "correctAnswer": "",
-              "acceptableAnswers": [],
-              "hint": "",
-              "answerType": "Text",
-              "tolerance": 0,
-              "isCaseSensitive": false,
-              "allowPartialMatch": false,
-              "options": [
-                { "optionText": "(A)鈍角三角形", "isCorrect": false },
-                { "optionText": "(B)直角三角形", "isCorrect": false },
-                { "optionText": "(C)銳角三角形", "isCorrect": true }
-              ],
-              "optionSpacing": 0.75,
-              "optionScale": { "x": 1, "y": 1, "z": 1 },
-              "useCustomOptionPositions": true,
-              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
-              "questionTextFontSize": 5
-            }
-          ],
-          "showHints": true,
-          "allowRetry": true,
-          "showProgress": true,
-          "passingScore": 60,
-          "requireAllCorrect": false
-        },
-
-
-        
-        {
-          "contentName": "",
-          "description": "",
-          "videoClip": "Assets/HoloMath/Video/教學影片/【觀念】正弦函數圖形的平移 [x6dKDKkGgxU].mp4",
-          "questionImage": null,
-          "hasImage": false,
-          "threeDObject": "SinWaveVisualizer",
-          "questionText": "",
-          "useCustomQuestionTextSettings": true,
-          "questionTextFontSize": 4,
-          "questionTextSize": { "x": 10, "y": 2 },
-          "showQuestionText": true,
-          "questions": [
-            {
-              "questionType": "MultipleChoice",
-              "promptText": "下圖是一個三角柱，其中∆BCF是直角三角形。請問線段AF和平面ABCD的夾角為下列何者？（單選）",
-              "correctAnswer": "",
-              "acceptableAnswers": [],
-              "hint": "",
-              "answerType": "Text",
-              "tolerance": 0,
-              "isCaseSensitive": false,
-              "allowPartialMatch": false,
-              "options": [
-                { "optionText": "(A)鈍角三角形", "isCorrect": false },
-                { "optionText": "(B)直角三角形", "isCorrect": false },
-                { "optionText": "(C)銳角三角形", "isCorrect": true }
-              ],
-              "optionSpacing": 0.75,
-              "optionScale": { "x": 1, "y": 1, "z": 1 },
-              "useCustomOptionPositions": true,
-              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
-              "questionTextFontSize": 5
             }
           ],
           "showHints": true,
@@ -507,6 +737,10 @@
           "passingScore": 60,
           "requireAllCorrect": false
         }
+
+
+
+        
       ]
     }
   ]

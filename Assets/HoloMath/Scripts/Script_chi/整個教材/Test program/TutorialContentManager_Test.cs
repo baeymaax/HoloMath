@@ -515,6 +515,7 @@ public void ReloadJsonData()
             showHintButton.ButtonPressed.AddListener(ShowHints);
         }
     }
+    
 
 #region 按鈕控制方法
 
@@ -704,7 +705,7 @@ public void ReloadJsonData()
         return new List<JsonTutorialUnit>(units);
     }
 
-
+    #region 圖片生成相關
     private void UpdateQuestionContent(TutorialContent_Test content)
     {
         UpdateQuestionImage(content.questionImage, content.hasImage);
@@ -723,6 +724,7 @@ public void ReloadJsonData()
             UpdateInteractiveUI(false);
         }
     }
+    #endregion
 
     private void UpdateInteractiveUI(bool showInteractive)
     {
