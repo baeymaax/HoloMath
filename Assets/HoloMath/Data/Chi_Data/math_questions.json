@@ -101,7 +101,7 @@
           "questionImage": "Assets/HoloMath/Data/questions_picture/1-1-3.png",
           "hasImage": true,
           "threeDObject": "Angle_Anime",
-          "questionText": "3.下圖中的角度為②/① π弧度。（選填）",
+          "questionText": "3.下圖中的角度為(2)/(1) π弧度。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -111,7 +111,7 @@
           "questions": [
             {
               "questionType": "FillInBlank",
-              "promptText": "①：_____",
+              "promptText": "(1)：_____",
               "correctAnswer": "2",
               "acceptableAnswers": [],
               "hint": "",
@@ -126,7 +126,7 @@
             },
             {
               "questionType": "FillInBlank",
-              "promptText": "②：_____",
+              "promptText": "(2)：_____",
               "correctAnswer": "3",
               "acceptableAnswers": [],
               "hint": "",
