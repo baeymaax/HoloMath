@@ -99,7 +99,7 @@
           "description": "CH1-1",
           "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
           "questionImage": "Assets/HoloMath/Data/questions_picture/1-1-3.png",
-          "hasImage": false,
+          "hasImage": true,
           "threeDObject": "Angle_Anime",
           "questionText": "3.下圖中的角度為②/① π弧度。（選填）",
           "useCustomQuestionTextSettings": true,

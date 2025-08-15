@@ -20,7 +20,7 @@ public class JsonTutorialContent
     public string contentName;
     public string description;
     public string videoClip;
-    public object questionImage;
+    public string questionImage;
     public bool hasImage;
     public string threeDObject;
     public string questionText;
@@ -259,6 +259,62 @@ public class Json_Test : MonoBehaviour
             #else
             Debug.LogWarning("在 Build 版本中載入 Assets 中的視頻需要預先設置。");
             #endif
+        }
+
+        // *** 處理圖片 - 從字串路徑載入 Texture2D ***
+        if (jsonContent.hasImage && !string.IsNullOrEmpty(jsonContent.questionImage))
+        {
+            string imagePath = jsonContent.questionImage; // 現在是 string 類型
+            string normalizedImagePath = imagePath.Replace('\\', '/');
+            
+            Debug.Log($"嘗試載入圖片: {normalizedImagePath}");
+            
+            #if UNITY_EDITOR
+            // 在編輯器中使用 AssetDatabase 載入
+            tutorialContent.questionImage = UnityEditor.AssetDatabase.LoadAssetAtPath<Texture2D>(normalizedImagePath);
+            
+            if (tutorialContent.questionImage == null)
+            {
+                Debug.LogError($"✗ 無法載入圖片: {normalizedImagePath}");
+                Debug.LogError("請確保：");
+                Debug.LogError("1. 圖片檔案存在於指定路徑");
+                Debug.LogError("2. 圖片已正確匯入到 Unity 專案中");
+                Debug.LogError("3. 路徑格式正確（使用正斜杠 '/'）");
+                tutorialContent.hasImage = false;
+            }
+            else
+            {
+                Debug.Log($"✓ 成功載入圖片: {normalizedImagePath}");
+                Debug.Log($"圖片尺寸: {tutorialContent.questionImage.width}x{tutorialContent.questionImage.height}");
+            }
+            #else
+            // 在建置版本中，需要使用其他方法載入圖片
+            // 方案1：使用 Resources.Load（需要將圖片放在 Resources 資料夾）
+            string resourcePath = normalizedImagePath
+                .Replace("Assets/Resources/", "")
+                .Replace(".png", "")
+                .Replace(".jpg", "")
+                .Replace(".jpeg", "");
+            
+            tutorialContent.questionImage = Resources.Load<Texture2D>(resourcePath);
+            
+            if (tutorialContent.questionImage == null)
+            {
+                Debug.LogWarning($"建置版本中無法載入圖片: {resourcePath}");
+                Debug.LogWarning("請將圖片移至 Assets/Resources/ 資料夾中");
+                tutorialContent.hasImage = false;
+            }
+            else
+            {
+                Debug.Log($"✓ 從 Resources 成功載入圖片: {resourcePath}");
+            }
+            #endif
+        }
+        else
+        {
+            // 如果沒有圖片或路徑為空，確保設定正確
+            tutorialContent.questionImage = null;
+            tutorialContent.hasImage = false;
         }
         
         // 处理 3D 物件
