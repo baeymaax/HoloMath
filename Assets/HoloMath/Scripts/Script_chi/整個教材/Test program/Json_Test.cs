@@ -91,30 +91,80 @@ public class Json_Test : MonoBehaviour
         {
             // 文件路徑設定
             string filePath = Path.Combine(Application.dataPath, "HoloMath", "Data", "Chi_Data", "math_questions.json");
-            
+        
             Debug.Log($"嘗試讀取文件路径: {filePath}");
+            Debug.Log($"Application.dataPath: {Application.dataPath}");
+            Debug.Log($"完整路徑存在: {File.Exists(filePath)}");
             
+            // 檢查每一層資料夾是否存在
+            string dataPath = Path.Combine(Application.dataPath, "HoloMath");
+            Debug.Log($"HoloMath 資料夾存在: {Directory.Exists(dataPath)}");
+            
+            dataPath = Path.Combine(Application.dataPath, "HoloMath", "Data");
+            Debug.Log($"Data 資料夾存在: {Directory.Exists(dataPath)}");
+            
+            dataPath = Path.Combine(Application.dataPath, "HoloMath", "Data", "Chi_Data");
+            Debug.Log($"Chi_Data 資料夾存在: {Directory.Exists(dataPath)}");
+        
             if (!File.Exists(filePath))
             {
                 Debug.LogError($"JSON 文件不存在于路径: {filePath}");
+                
+                // 嘗試其他可能的路徑
+                string[] alternativePaths = {
+                    Path.Combine(Application.dataPath, "math_questions.json"),
+                    Path.Combine(Application.dataPath, "Data", "math_questions.json"),
+                    Path.Combine(Application.dataPath, "HoloMath", "math_questions.json"),
+                    Path.Combine(Application.streamingAssetsPath, "math_questions.json")
+                };
+                
+                foreach (string altPath in alternativePaths)
+                {
+                    Debug.Log($"檢查替代路徑: {altPath} - 存在: {File.Exists(altPath)}");
+                    if (File.Exists(altPath))
+                    {
+                        filePath = altPath;
+                        Debug.Log($"找到文件於: {filePath}");
+                        break;
+                    }
+                }
+                
+                if (!File.Exists(filePath))
+                {
+                    Debug.LogError("所有路徑都找不到 JSON 文件");
+                    return;
+                }
+            }
+        
+            string jsonContent = File.ReadAllText(filePath);
+            Debug.Log($"读取到的 JSON 内容长度: {jsonContent.Length}");
+            Debug.Log($"JSON 內容前100字元: {jsonContent.Substring(0, Math.Min(100, jsonContent.Length))}");
+        
+            // 驗證 JSON 格式
+            if (string.IsNullOrEmpty(jsonContent))
+            {
+                Debug.LogError("JSON 文件內容為空");
                 return;
             }
             
-            string jsonContent = File.ReadAllText(filePath);
-            Debug.Log($"读取到的 JSON 内容长度: {jsonContent.Length}");
+            if (!jsonContent.TrimStart().StartsWith("{"))
+            {
+                Debug.LogError("JSON 文件格式錯誤 - 不是以 { 開始");
+                return;
+            }
             
             // 解析新的JSON結構
             jsonData = JsonUtility.FromJson<JsonTutorialRoot>(jsonContent);
-            
+        
             if (jsonData != null && jsonData.units != null && jsonData.units.Count > 0)
             {
                 Debug.Log($"成功解析 JSON，共 {jsonData.units.Count} 個單元");
-                
+            
                 for (int i = 0; i < jsonData.units.Count; i++)
                 {
                     var unit = jsonData.units[i];
                     Debug.Log($"單元 {i}: {unit.unitName}, 內容數量: {unit.contents?.Count ?? 0}");
-                    
+                
                     if (unit.contents != null)
                     {
                         for (int j = 0; j < unit.contents.Count; j++)
@@ -128,6 +178,18 @@ public class Json_Test : MonoBehaviour
             else
             {
                 Debug.LogError("JSON 解析失败或数据为空");
+                if (jsonData == null)
+                {
+                    Debug.LogError("jsonData 為 null");
+                }
+                else if (jsonData.units == null)
+                {
+                    Debug.LogError("jsonData.units 為 null");
+                }
+                else
+                {
+                    Debug.LogError($"jsonData.units.Count = {jsonData.units.Count}");
+                }
             }
         }
         catch (Exception e)
@@ -175,43 +237,40 @@ public class Json_Test : MonoBehaviour
             Debug.LogWarning("没有可用的 JSON 数据来应用到 TutorialManager");
             return;
         }
-
+        
         try
         {
+            Debug.Log($"開始轉換 {jsonData.units.Count} 個單元的資料");
+            
             // 將所有單元的內容展開為原來的數組格式（暫時保持相容性）
             List<TutorialContent_Test> allContents = new List<TutorialContent_Test>();
-            
+        
             foreach (var unit in jsonData.units)
             {
+                Debug.Log($"處理單元: {unit.unitName}, 內容數量: {unit.contents?.Count ?? 0}");
+                
                 if (unit.contents != null)
                 {
                     foreach (var jsonContent in unit.contents)
                     {
+                        Debug.Log($"轉換內容: {jsonContent.contentName}");
                         var tutorialContent = ConvertJsonContentToTutorialContent(jsonContent);
                         allContents.Add(tutorialContent);
+                        Debug.Log($"成功轉換內容，題目數: {tutorialContent.questions?.Count ?? 0}");
                     }
                 }
             }
 
-            // 創建新的 tutorialContents 數組
-            TutorialContent_Test[] newContents = allContents.ToArray();
+            Debug.Log($"總共轉換了 {allContents.Count} 個內容");
 
-            // 通過反射設置 tutorialContents 字段
-            var field = typeof(TutorialContentManager_Test).GetField("tutorialContents",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            // 直接設置 List（不再使用反射）
+            // 確保 manager 的 tutorialContents 是 List 類型
+            manager.SetTutorialContents(allContents);
             
-            if (field != null)
-            {
-                field.SetValue(manager, newContents);
-                Debug.Log($"成功设置 tutorialContents，共 {newContents.Length} 个项目");
-                
-                // 同時設置單元信息到TutorialManager
-                manager.SetUnitsData(jsonData.units);
-            }
-            else
-            {
-                Debug.LogError("无法找到 tutorialContents 字段");
-            }
+            // 同時設置單元信息到TutorialManager
+            manager.SetUnitsData(jsonData.units);
+            
+            Debug.Log($"✓ 成功设置 tutorialContents，共 {allContents.Count} 个项目");
         }
         catch (Exception e)
         {

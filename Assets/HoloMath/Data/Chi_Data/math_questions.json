@@ -490,7 +490,7 @@
           "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
           "questionImage": null,
           "hasImage": false,
-          "threeDObject": "Angle_Anime",
+          "threeDObject": "SinWaveVisualizer",
           "questionText": "1.計算下列算式： \n (1)cos65°cos25°-sin65°sin25°=① \n (2)sin35°cos10°+cos35°sin10°=√③/② （選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
