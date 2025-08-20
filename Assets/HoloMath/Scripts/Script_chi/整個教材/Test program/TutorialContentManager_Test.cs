@@ -1436,6 +1436,10 @@ public class TutorialContentManager_Test : MonoBehaviour
             }
         }
     }
+    public void BackToMenu(String classroomSceneName)
+    {
+        SmoothSceneTransition.LoadScene(classroomSceneName);
+    }
 
     private void UpdateQuestionImage(Texture2D questionImage, bool hasImage)
     {
