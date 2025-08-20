@@ -204,8 +204,9 @@ public class TutorialContent_Test
 #region Inspector 最下方區塊
 public class TutorialContentManager_Test : MonoBehaviour
 {
-    [SerializeField] private TutorialContent_Test[] tutorialContents = new TutorialContent_Test[5];
-    [SerializeField] private PressableButtonHoloLens2[] controlButtons = new PressableButtonHoloLens2[5];
+    [SerializeField] private List<TutorialContent_Test> tutorialContents = new List<TutorialContent_Test>();
+    [SerializeField] private List<PressableButtonHoloLens2> controlButtons = new List<PressableButtonHoloLens2>();
+
     [SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private TextMeshPro questionText3D;
     [SerializeField] private Transform threeDContainer;
@@ -257,46 +258,67 @@ public class TutorialContentManager_Test : MonoBehaviour
 
     Json_Test Test;
 
-// 在 TutorialContentManager_Test 类中，替换原来的 Start() 方法：
+    // 在 TutorialContentManager_Test 类中，替换原来的 Start() 方法：
 
-void Start()
+    void Start()
     {
         Debug.Log("=== 开始 Start() 方法 ===");
-        
+
         // 清空现有的 tutorialContents
-        tutorialContents = new TutorialContent_Test[0];
+        tutorialContents.Clear();  // 直接使用 Clear() 清空 List
         Debug.Log("已清空现有的 tutorialContents");
-        
+
         // 载入 JSON 资料
-        Test = gameObject.AddComponent<Json_Test>();
+        Test = gameObject.GetComponent<Json_Test>(); // 先嘗試獲取現有的
         if (Test == null)
         {
-            Test = new Json_Test();
+            Test = gameObject.AddComponent<Json_Test>();
             Debug.Log("创建了新的 Json_Test 实例");
-        }
-        
-        Debug.Log("开始加载 JSON...");
-        Test.LoadJson();
-        
-        Debug.Log("开始应用 JSON 数据到 TutorialManager...");
-        Test.ApplyToTutorialManager(this);
-        
-        // 验证是否成功载入资料
-        if (tutorialContents == null || tutorialContents.Length == 0)
-        {
-            Debug.LogError("JSON 加载失败！");
-            // 创建一个空的数组以防止错误
-            tutorialContents = new TutorialContent_Test[1];
-            tutorialContents[0] = new TutorialContent_Test
-            {
-                contentName = "错误 - 无法加载数据",
-                questionText = "请检查 JSON 文件",
-                questions = new List<TutorialQuestion_Test>()
-            };
         }
         else
         {
-            Debug.Log($"✓ 成功载入 {tutorialContents.Length} 个教学内容");
+            Debug.Log("使用现有的 Json_Test 实例");
+        }
+
+        Debug.Log("开始加载 JSON...");
+        Test.LoadJson();
+
+        // 檢查 JSON 是否載入成功
+        var jsonData = Test.GetJsonData();
+        if (jsonData == null || jsonData.units == null || jsonData.units.Count == 0)
+        {
+            Debug.LogError("JSON 数据为空或无效！");
+            // 嘗試使用 Resources 方式載入
+            Debug.Log("尝试从 Resources 加载...");
+            Test.LoadJsonFromResources();
+
+            jsonData = Test.GetJsonData();
+            if (jsonData == null || jsonData.units == null || jsonData.units.Count == 0)
+            {
+                Debug.LogError("从 Resources 加载也失败！");
+                CreateDefaultContent();
+                return;
+            }
+        }
+
+        Debug.Log("开始应用 JSON 数据到 TutorialManager...");
+        Test.ApplyToTutorialManager(this);
+
+        // 验证是否成功载入资料
+        if (tutorialContents == null || tutorialContents.Count == 0)
+        {
+            Debug.LogError("JSON 应用失败！tutorialContents 仍为空");
+            CreateDefaultContent();
+        }
+        else
+        {
+            Debug.Log($"✓ 成功载入 {tutorialContents.Count} 个教学内容");
+            // 打印每個內容的詳細信息
+            for (int i = 0; i < tutorialContents.Count; i++)
+            {
+                var content = tutorialContents[i];
+                Debug.Log($"內容 {i}: {content.contentName}, 題目數: {content.questions?.Count ?? 0}");
+            }
         }
 
         // 初始化系統
@@ -304,45 +326,56 @@ void Start()
         {
             questionText3D = questionCubeParent.GetComponentInChildren<TextMeshPro>();
         }
-        
+
         Debug.Log("初始化计分系统...");
         InitializeScoreSystem();
-        
+
         Debug.Log("初始化3D物件...");
         InitializeThreeDObjects();
-        
+
         Debug.Log("初始化按钮...");
         InitializeButtons();
         InitializeInteractiveButtons();
-        
+
         Debug.Log("加载第一个内容...");
         LoadUnit(0, 0); // 載入第一個單元的第一個內容
-        
+
         Debug.Log("=== Start() 方法完成 ===");
     }
 
-#region  增加一個public方法reload Json Data(for test)
-public void ReloadJsonData()
-{
-    Debug.Log("=== 重新加载 JSON 数据 ===");
-    
-    if (Test == null)
+    private void CreateDefaultContent()
     {
-        Test = gameObject.GetComponent<Json_Test>();
+        Debug.LogWarning("创建默认内容以防止错误");
+        tutorialContents.Add(new TutorialContent_Test
+        {
+            contentName = "错误 - 无法加载数据",
+            questionText = "请检查 JSON 文件路径和格式",
+            questions = new List<TutorialQuestion_Test>()
+        });
+    }
+
+    #region  添加一个公开方法来重新加载 JSON 数据（用于测试）
+    public void ReloadJsonData()
+    {
+        Debug.Log("=== 重新加载 JSON 数据 ===");
+
         if (Test == null)
         {
-            Test = gameObject.AddComponent<Json_Test>();
+            Test = gameObject.GetComponent<Json_Test>();
+            if (Test == null)
+            {
+                Test = gameObject.AddComponent<Json_Test>();
+            }
         }
+
+        Test.LoadJson();
+        Test.ApplyToTutorialManager(this);
+
+        InitializeScoreSystem();
+        LoadUnit(0, 0);
+
+        Debug.Log("JSON 数据重新加载完成");
     }
-    
-    Test.LoadJson();
-    Test.ApplyToTutorialManager(this);
-    
-    InitializeScoreSystem();
-    LoadUnit(0, 0);
-    
-    Debug.Log("JSON 数据重新加载完成");
-}
     #endregion
 
     // 新增方法：設置單元數據
@@ -350,7 +383,7 @@ public void ReloadJsonData()
     {
         units = unitsData ?? new List<JsonTutorialUnit>();
         Debug.Log($"設置了 {units.Count} 個單元");
-        
+
         // 初始化單元相關的計分系統
         InitializeUnitScoreSystem();
     }
@@ -359,7 +392,7 @@ public void ReloadJsonData()
     {
         // 為每個單元的每個內容初始化計分
         int globalContentIndex = 0;
-        
+
         for (int unitIndex = 0; unitIndex < units.Count; unitIndex++)
         {
             var unit = units[unitIndex];
@@ -373,14 +406,14 @@ public void ReloadJsonData()
                 }
             }
         }
-        
+
         UpdateScoreDisplay();
     }
 
     private void InitializeScoreSystem()
     {
         // 初始化計分系統
-        for (int i = 0; i < tutorialContents.Length; i++)
+        for (int i = 0; i < tutorialContents.Count; i++)
         {
             contentScores[i] = 0;
             contentCompleted[i] = false;
@@ -392,7 +425,7 @@ public void ReloadJsonData()
     private int GetTotalQuestionCount()
     {
         int totalQuestions = 0;
-        for (int i = 0; i < tutorialContents.Length; i++)
+        for (int i = 0; i < tutorialContents.Count; i++)
         {
             if (tutorialContents[i].HasInteractiveQuestions())
             {
@@ -409,9 +442,9 @@ public void ReloadJsonData()
         {
             totalScoreText.text = $"總分: {totalScore}/100";
         }
-        
+
         // 更新當前內容分數顯示
-        if (currentContentScoreText != null && currentContentIndex >= 0 && currentContentIndex < tutorialContents.Length)
+        if (currentContentScoreText != null && currentContentIndex >= 0 && currentContentIndex < tutorialContents.Count)
         {
             var content = tutorialContents[currentContentIndex];
             if (content.HasInteractiveQuestions())
@@ -426,7 +459,7 @@ public void ReloadJsonData()
                 currentContentScoreText.text = "此內容無互動題目";
             }
         }
-        
+
         // 更新單元進度顯示
         if (unitProgressText != null && units.Count > 0 && currentUnitIndex < units.Count)
         {
@@ -458,7 +491,7 @@ public void ReloadJsonData()
         {
             // 計算目前已完成的總題數
             int completedQuestions = 0;
-            for (int i = 0; i < tutorialContents.Length; i++)
+            for (int i = 0; i < tutorialContents.Count; i++)
             {
                 if (contentCompleted[i] && tutorialContents[i].HasInteractiveQuestions())
                 {
@@ -479,7 +512,7 @@ public void ReloadJsonData()
 
     private void InitializeThreeDObjects()
     {
-        for (int i = 0; i < tutorialContents.Length; i++)
+        for (int i = 0; i < tutorialContents.Count; i++)
         {
             if (tutorialContents[i].threeDObject != null)
             {
@@ -490,7 +523,7 @@ public void ReloadJsonData()
 
     private void InitializeButtons()
     {
-        for (int i = 0; i < controlButtons.Length; i++)
+        for (int i = 0; i < controlButtons.Count; i++)
         {
             int index = i;
             if (controlButtons[i] != null)
@@ -515,9 +548,9 @@ public void ReloadJsonData()
             showHintButton.ButtonPressed.AddListener(ShowHints);
         }
     }
-    
 
-#region 按鈕控制方法
+
+    #region 按鈕控制方法
 
     // QUZ相關：單元內的題目切換
     public void OnButtonPressedQuz() // 題目+（單元內下一個內容）
@@ -579,20 +612,20 @@ public void ReloadJsonData()
     private void LoadUnit(int unitIndex, int contentIndexInUnit)
     {
         if (unitIndex < 0 || unitIndex >= units.Count) return;
-        
+
         var unit = units[unitIndex];
         if (unit.contents == null || contentIndexInUnit < 0 || contentIndexInUnit >= unit.contents.Count) return;
-        
+
         currentUnitIndex = unitIndex;
         currentContentIndexInUnit = contentIndexInUnit;
-        
+
         // 找到對應的全域內容索引
         int globalContentIndex = GetGlobalContentIndex(unitIndex, contentIndexInUnit);
-        if (globalContentIndex >= 0 && globalContentIndex < tutorialContents.Length)
+        if (globalContentIndex >= 0 && globalContentIndex < tutorialContents.Count)
         {
             currentContentIndex = globalContentIndex;
             TutorialContent_Test content = tutorialContents[globalContentIndex];
-            
+
             // 載入內容（包含影片）
             UpdateVideo(content.videoClip);
             UpdateQuestionContent(content);
@@ -606,13 +639,13 @@ public void ReloadJsonData()
     private void LoadContentInCurrentUnit()
     {
         if (currentUnitIndex < 0 || currentUnitIndex >= units.Count) return;
-        
+
         var unit = units[currentUnitIndex];
         if (unit.contents == null || currentContentIndexInUnit < 0 || currentContentIndexInUnit >= unit.contents.Count) return;
-        
+
         // 找到對應的全域內容索引
         int globalContentIndex = GetGlobalContentIndex(currentUnitIndex, currentContentIndexInUnit);
-        if (globalContentIndex >= 0 && globalContentIndex < tutorialContents.Length)
+        if (globalContentIndex >= 0 && globalContentIndex < tutorialContents.Count)
         {
             currentContentIndex = globalContentIndex;
             TutorialContent_Test content = tutorialContents[globalContentIndex];
@@ -630,7 +663,7 @@ public void ReloadJsonData()
     private int GetGlobalContentIndex(int unitIndex, int contentIndexInUnit)
     {
         int globalIndex = 0;
-        
+
         for (int i = 0; i < unitIndex && i < units.Count; i++)
         {
             var unit = units[i];
@@ -639,7 +672,7 @@ public void ReloadJsonData()
                 globalIndex += unit.contents.Count;
             }
         }
-        
+
         globalIndex += contentIndexInUnit;
         return globalIndex;
     }
@@ -647,11 +680,11 @@ public void ReloadJsonData()
     // 原有的LoadContent方法保持向後相容
     private void LoadContent(int contentIndex)
     {
-        if (contentIndex >= 0 && contentIndex < tutorialContents.Length)
+        if (contentIndex >= 0 && contentIndex < tutorialContents.Count)
         {
             currentContentIndex = contentIndex;
             TutorialContent_Test content = tutorialContents[contentIndex];
-            
+
             UpdateVideo(content.videoClip);
             UpdateQuestionContent(content);
             Update3DObject(content.threeDObject);
@@ -756,7 +789,7 @@ public void ReloadJsonData()
 
         #region 設定container(題目父物件)位置
         float currentYOffset = -3f;      //底下currentYOffset位置初始設定在 y = -3
-        
+
         for (int i = 0; i < questions.Count; i++)
         {
             var question = questions[i];
@@ -1014,7 +1047,7 @@ public void ReloadJsonData()
 
     public void CheckAnswers()
     {
-        if (currentContentIndex < 0 || currentContentIndex >= tutorialContents.Length) return;
+        if (currentContentIndex < 0 || currentContentIndex >= tutorialContents.Count) return;
 
         var content = tutorialContents[currentContentIndex];
         if (!content.HasInteractiveQuestions()) return;
@@ -1280,7 +1313,7 @@ public void ReloadJsonData()
 
     public void ShowHints()
     {
-        if (currentContentIndex < 0 || currentContentIndex >= tutorialContents.Length) return;
+        if (currentContentIndex < 0 || currentContentIndex >= tutorialContents.Count) return;
 
         var content = tutorialContents[currentContentIndex];
         if (!content.HasInteractiveQuestions() || !content.showHints) return;
@@ -1456,7 +1489,7 @@ public void ReloadJsonData()
 
     private void UpdateButtonVisual(int selectedIndex)
     {
-        for (int i = 0; i < controlButtons.Length; i++)
+        for (int i = 0; i < controlButtons.Count; i++)
         {
             if (controlButtons[i] != null)
             {
@@ -1506,7 +1539,7 @@ public void ReloadJsonData()
 
     public string GetCurrentContentName()
     {
-        if (currentContentIndex >= 0 && currentContentIndex < tutorialContents.Length)
+        if (currentContentIndex >= 0 && currentContentIndex < tutorialContents.Count)
         {
             return tutorialContents[currentContentIndex].contentName;
         }
@@ -1569,5 +1602,29 @@ public void ReloadJsonData()
         int totalCompletedScore = completedContents.Sum(kvp => contentScores[kvp.Key]);
         return (float)totalCompletedScore / completedContents.Count;
     }
+    public void SetTutorialContents(List<TutorialContent_Test> contents)
+    {
+        if (contents == null)
+        {
+            Debug.LogWarning("嘗試設置 null 的內容列表");
+            tutorialContents = new List<TutorialContent_Test>();
+            return;
+        }
+
+        tutorialContents = new List<TutorialContent_Test>(contents);
+        Debug.Log($"成功設置 {tutorialContents.Count} 個教學內容");
+
+        // 打印每個內容的詳細信息以供調試
+        for (int i = 0; i < tutorialContents.Count; i++)
+        {
+            var content = tutorialContents[i];
+            Debug.Log($"內容 {i}: 名稱='{content.contentName}', " +
+                    $"題目數={content.questions?.Count ?? 0}, " +
+                    $"有影片={content.videoClip != null}, " +
+                    $"有3D物件={content.threeDObject != null}");
+        }
+    }
+    
 }
+
 
