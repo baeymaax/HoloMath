@@ -321,7 +321,7 @@ void Start()
         Debug.Log("=== Start() 方法完成 ===");
     }
 
-#region  添加一个公开方法来重新加载 JSON 数据（用于测试）
+#region  增加一個public方法reload Json Data(for test)
 public void ReloadJsonData()
 {
     Debug.Log("=== 重新加载 JSON 数据 ===");
