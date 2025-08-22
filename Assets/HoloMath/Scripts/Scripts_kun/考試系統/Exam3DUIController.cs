@@ -39,6 +39,11 @@ public class Exam3DUIController : MonoBehaviour
     public bool useAnimations = true;
     public float animationSpeed = 0.5f;
 
+    [Header("UI 縮放設定")]
+    public float uiScale = 0.3f;
+    public Vector3 uiPosition = new Vector3(0, 0, 2);
+    public bool autoAdjustForMRTK = true;
+
     [Header("字體設定")]
     public TMP_FontAsset chineseFontAsset;
 
@@ -58,14 +63,17 @@ public class Exam3DUIController : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Exam3DUIController 開始初始化");
+        Debug.Log("=== Exam3DUIController 開始初始化 ===");
+
+        if (autoAdjustForMRTK)
+            AdjustUIForMRTK();
 
         Setup3DButtons();
         PrepareQuestions();
         SetupAllFonts();
         ShowWelcomePanel3D();
 
-        Debug.Log("Exam3DUIController 初始化完成");
+        Debug.Log("=== Exam3DUIController 初始化完成 ===");
     }
 
     void Update()
@@ -84,21 +92,76 @@ public class Exam3DUIController : MonoBehaviour
         HandleInput3D();
     }
 
-    #region 字體設置
+    #region UI 調整
+    void AdjustUIForMRTK()
+    {
+        Debug.Log("調整 UI 尺寸適應 MRTK");
+
+        // 調整整體縮放
+        transform.localScale = Vector3.one * uiScale;
+
+        // 調整位置
+        transform.position = uiPosition;
+
+        Debug.Log("UI 縮放調整完成 - Scale: " + transform.localScale + ", Position: " + transform.position);
+    }
+    #endregion
+
+    #region 字體和顏色設置
     void SetupAllFonts()
     {
-        Debug.Log("設置字體");
+        Debug.Log("設置字體和顏色");
 
         if (chineseFontAsset != null)
         {
-            if (titleText3D != null) { titleText3D.font = chineseFontAsset; Debug.Log("TitleText 字體設置完成"); }
-            if (subtitleText3D != null) { subtitleText3D.font = chineseFontAsset; Debug.Log("SubtitleText 字體設置完成"); }
-            if (questionText3D != null) { questionText3D.font = chineseFontAsset; Debug.Log("QuestionText 字體設置完成"); }
-            if (progressText3D != null) { progressText3D.font = chineseFontAsset; Debug.Log("ProgressText 字體設置完成"); }
-            if (timerText3D != null) { timerText3D.font = chineseFontAsset; Debug.Log("TimerText 字體設置完成"); }
-            if (finalScoreText3D != null) { finalScoreText3D.font = chineseFontAsset; Debug.Log("FinalScoreText 字體設置完成"); }
-            if (gradeText3D != null) { gradeText3D.font = chineseFontAsset; Debug.Log("GradeText 字體設置完成"); }
-            if (detailsText3D != null) { detailsText3D.font = chineseFontAsset; Debug.Log("DetailsText 字體設置完成"); }
+            if (titleText3D != null)
+            {
+                titleText3D.font = chineseFontAsset;
+                titleText3D.color = Color.black;
+                Debug.Log("TitleText 字體和顏色設置完成");
+            }
+            if (subtitleText3D != null)
+            {
+                subtitleText3D.font = chineseFontAsset;
+                subtitleText3D.color = Color.black;
+                Debug.Log("SubtitleText 字體和顏色設置完成");
+            }
+            if (questionText3D != null)
+            {
+                questionText3D.font = chineseFontAsset;
+                questionText3D.color = Color.black;
+                Debug.Log("QuestionText 字體和顏色設置完成");
+            }
+            if (progressText3D != null)
+            {
+                progressText3D.font = chineseFontAsset;
+                progressText3D.color = Color.black;
+                Debug.Log("ProgressText 字體和顏色設置完成");
+            }
+            if (timerText3D != null)
+            {
+                timerText3D.font = chineseFontAsset;
+                timerText3D.color = Color.black;
+                Debug.Log("TimerText 字體和顏色設置完成");
+            }
+            if (finalScoreText3D != null)
+            {
+                finalScoreText3D.font = chineseFontAsset;
+                finalScoreText3D.color = Color.black;
+                Debug.Log("FinalScoreText 字體和顏色設置完成");
+            }
+            if (gradeText3D != null)
+            {
+                gradeText3D.font = chineseFontAsset;
+                gradeText3D.color = Color.black;
+                Debug.Log("GradeText 字體和顏色設置完成");
+            }
+            if (detailsText3D != null)
+            {
+                detailsText3D.font = chineseFontAsset;
+                detailsText3D.color = Color.black;
+                Debug.Log("DetailsText 字體和顏色設置完成");
+            }
         }
         else
         {
@@ -210,11 +273,10 @@ public class Exam3DUIController : MonoBehaviour
             {
                 if (chineseFontAsset != null)
                     questionText3D.font = chineseFontAsset;
+                questionText3D.color = Color.black;
 
-                if (useAnimations)
-                    StartCoroutine(TypewriterEffect(questionText3D, question.questionText));
-                else
-                    questionText3D.text = question.questionText;
+                // 直接設置題目文字，不使用動畫以避免問題
+                questionText3D.text = question.questionText;
 
                 Debug.Log("題目設置完成: " + question.questionText);
             }
@@ -228,6 +290,7 @@ public class Exam3DUIController : MonoBehaviour
             {
                 if (chineseFontAsset != null)
                     progressText3D.font = chineseFontAsset;
+                progressText3D.color = Color.black;
                 string progressText = "第 " + (currentQuestionIndex + 1) + " 題 / 共 " + questions.Count + " 題";
                 progressText3D.text = progressText;
                 Debug.Log("進度設置完成: " + progressText);
@@ -237,7 +300,7 @@ public class Exam3DUIController : MonoBehaviour
                 Debug.LogError("ProgressText3D 引用遺失");
             }
 
-            CreateAnswer3DUI();
+            SetupManualInputBox();
         }
         else
         {
@@ -245,60 +308,62 @@ public class Exam3DUIController : MonoBehaviour
         }
     }
 
-    void CreateAnswer3DUI()
+    void SetupManualInputBox()
     {
-        Debug.Log("創建 3D 答案輸入框");
+        Debug.Log("設置手動輸入框");
 
         if (answerArea3D != null)
         {
-            // 清除舊的答案區域
-            foreach (Transform child in answerArea3D.transform)
+            // 尋找手動創建的輸入框
+            Transform inputBox = answerArea3D.transform.Find("ManualInputBox");
+            if (inputBox != null)
             {
-                if (child.name.Contains("AnswerInput"))
+                Debug.Log("找到 ManualInputBox");
+
+                // 確保輸入框背景是白色
+                Renderer renderer = inputBox.GetComponent<Renderer>();
+                if (renderer != null && renderer.material != null)
                 {
-                    Destroy(child.gameObject);
-                    Debug.Log("清除舊輸入框");
+                    renderer.material.color = Color.white;
+                    Debug.Log("確認輸入框背景為白色");
+                }
+
+                // 獲取文字組件
+                TextMeshPro textComponent = inputBox.GetComponentInChildren<TextMeshPro>();
+                if (textComponent != null)
+                {
+                    currentInput3D = textComponent;
+
+                    // 設置字體
+                    if (chineseFontAsset != null)
+                        currentInput3D.font = chineseFontAsset;
+
+                    // 重置答案
+                    currentAnswer = "";
+                    UpdateInputDisplay();
+
+                    Debug.Log("手動輸入框設置完成");
+                }
+                else
+                {
+                    Debug.LogError("ManualInputBox 下找不到 TextMeshPro 組件");
                 }
             }
+            else
+            {
+                Debug.LogError("找不到 ManualInputBox，請確認物件名稱正確");
 
-            // 創建輸入框背景
-            GameObject inputDisplay = GameObject.CreatePrimitive(PrimitiveType.Quad);
-            inputDisplay.name = "AnswerInputDisplay";
-            inputDisplay.transform.SetParent(answerArea3D.transform, false);
-            inputDisplay.transform.localPosition = Vector3.zero;
-            inputDisplay.transform.localScale = new Vector3(2, 0.5f, 1);
-
-            // 設置輸入框材質 - 使用簡單白色材質
-            Renderer renderer = inputDisplay.GetComponent<Renderer>();
-            Material mat = new Material(Shader.Find("Standard"));
-            mat.color = Color.white;
-            renderer.material = mat;
-
-            // 創建文字顯示
-            GameObject textObj = new GameObject("InputText3D");
-            textObj.transform.SetParent(inputDisplay.transform, false);
-            textObj.transform.localPosition = new Vector3(0, 0, -0.01f);
-
-            currentInput3D = textObj.AddComponent<TextMeshPro>();
-            currentInput3D.text = "請輸入答案...";
-            currentInput3D.fontSize = 6;
-            currentInput3D.color = Color.gray;
-            currentInput3D.alignment = TextAlignmentOptions.Center;
-
-            if (chineseFontAsset != null)
-                currentInput3D.font = chineseFontAsset;
-
-            currentAnswer = "";
-
-            // 輸入框出現動畫
-            if (useAnimations)
-                StartCoroutine(InputBoxAppearAnimation(inputDisplay));
-
-            Debug.Log("3D 輸入框創建完成");
+                // 列出 AnswerArea3D 下的所有子物件
+                Debug.Log("AnswerArea3D 下的子物件：");
+                for (int i = 0; i < answerArea3D.transform.childCount; i++)
+                {
+                    Debug.Log("- " + answerArea3D.transform.GetChild(i).name);
+                }
+            }
         }
         else
         {
-            Debug.LogError("AnswerArea3D 引用遺失，請在 Inspector 中設置");
+            Debug.LogError("AnswerArea3D 引用遺失");
         }
     }
 
@@ -337,13 +402,21 @@ public class Exam3DUIController : MonoBehaviour
             if (string.IsNullOrEmpty(currentAnswer))
             {
                 currentInput3D.text = "請輸入答案...";
-                currentInput3D.color = Color.gray;
+                currentInput3D.color = new Color(0.5f, 0.5f, 0.5f, 1f); // 灰色
+                currentInput3D.fontSize = 1.5f; // 小的提示文字
             }
             else
             {
                 currentInput3D.text = currentAnswer;
                 currentInput3D.color = Color.black;
+                currentInput3D.fontSize = 2.5f; // 適中的輸入文字
             }
+
+            Debug.Log("更新輸入顯示 - 文字: '" + currentInput3D.text + "', 字體大小: " + currentInput3D.fontSize);
+        }
+        else
+        {
+            Debug.LogError("currentInput3D 是 null，無法更新顯示");
         }
     }
 
@@ -408,29 +481,23 @@ public class Exam3DUIController : MonoBehaviour
         {
             if (chineseFontAsset != null)
                 finalScoreText3D.font = chineseFontAsset;
-
-            if (useAnimations)
-                StartCoroutine(CountUpScore(0, totalScore, finalScoreText3D));
-            else
-                finalScoreText3D.text = "總分：" + totalScore + " 分";
+            finalScoreText3D.color = Color.black;
+            finalScoreText3D.text = "總分：" + totalScore + " 分";
         }
 
         if (gradeText3D != null)
         {
             if (chineseFontAsset != null)
                 gradeText3D.font = chineseFontAsset;
-
-            string gradeText = "等級：" + grade;
-            if (useAnimations)
-                StartCoroutine(TypewriterEffect(gradeText3D, gradeText));
-            else
-                gradeText3D.text = gradeText;
+            gradeText3D.color = Color.black;
+            gradeText3D.text = "等級：" + grade;
         }
 
         if (detailsText3D != null)
         {
             if (chineseFontAsset != null)
                 detailsText3D.font = chineseFontAsset;
+            detailsText3D.color = Color.black;
 
             int correctCount = 0;
             for (int i = 0; i < answers.Count; i++)
@@ -442,10 +509,7 @@ public class Exam3DUIController : MonoBehaviour
             details += "正確率：" + percentage.ToString("F1") + "%\n";
             details += percentage >= passingScore ? "恭喜通過！" : "繼續努力！";
 
-            if (useAnimations)
-                StartCoroutine(TypewriterEffect(detailsText3D, details));
-            else
-                detailsText3D.text = details;
+            detailsText3D.text = details;
         }
     }
 
@@ -460,13 +524,13 @@ public class Exam3DUIController : MonoBehaviour
             int seconds = Mathf.FloorToInt(remainingTime % 60);
             timerText3D.text = "時間: " + minutes.ToString("00") + ":" + seconds.ToString("00");
 
-            // 時間警告顏色
+            // 顏色警告
             if (remainingTime < 60f)
                 timerText3D.color = Color.red;
             else if (remainingTime < 300f)
-                timerText3D.color = Color.yellow;
+                timerText3D.color = new Color(1f, 0.5f, 0f);
             else
-                timerText3D.color = Color.white;
+                timerText3D.color = Color.black;
         }
     }
 
@@ -495,53 +559,36 @@ public class Exam3DUIController : MonoBehaviour
     {
         Debug.Log("顯示歡迎面板");
 
-        if (useAnimations)
-            StartCoroutine(SmoothPanelTransition(welcomePanel3D, examPanel3D, resultPanel3D));
-        else
-            DirectPanelSwitch(welcomePanel3D, examPanel3D, resultPanel3D);
+        DirectPanelSwitch(welcomePanel3D, examPanel3D, resultPanel3D);
 
         // 設置歡迎文字
         if (titleText3D != null)
         {
             if (chineseFontAsset != null)
                 titleText3D.font = chineseFontAsset;
-
-            if (useAnimations)
-                StartCoroutine(TypewriterEffect(titleText3D, "HoloMath"));
-            else
-                titleText3D.text = "HoloMath";
+            titleText3D.color = Color.black;
+            titleText3D.text = "HoloMath";
         }
 
         if (subtitleText3D != null)
         {
             if (chineseFontAsset != null)
                 subtitleText3D.font = chineseFontAsset;
-
-            if (useAnimations)
-                StartCoroutine(TypewriterEffect(subtitleText3D, "3D數學測驗系統"));
-            else
-                subtitleText3D.text = "3D數學測驗系統";
+            subtitleText3D.color = Color.black;
+            subtitleText3D.text = "3D數學測驗系統";
         }
     }
 
     void ShowExamPanel3D()
     {
         Debug.Log("顯示考試面板");
-
-        if (useAnimations)
-            StartCoroutine(SmoothPanelTransition(examPanel3D, welcomePanel3D, resultPanel3D));
-        else
-            DirectPanelSwitch(examPanel3D, welcomePanel3D, resultPanel3D);
+        DirectPanelSwitch(examPanel3D, welcomePanel3D, resultPanel3D);
     }
 
     void ShowResultPanel3D()
     {
         Debug.Log("顯示結果面板");
-
-        if (useAnimations)
-            StartCoroutine(SmoothPanelTransition(resultPanel3D, welcomePanel3D, examPanel3D));
-        else
-            DirectPanelSwitch(resultPanel3D, welcomePanel3D, examPanel3D);
+        DirectPanelSwitch(resultPanel3D, welcomePanel3D, examPanel3D);
     }
 
     void DirectPanelSwitch(GameObject showPanel, GameObject hidePanel1, GameObject hidePanel2)
@@ -549,96 +596,6 @@ public class Exam3DUIController : MonoBehaviour
         SetPanel3DActive(showPanel, true);
         SetPanel3DActive(hidePanel1, false);
         SetPanel3DActive(hidePanel2, false);
-    }
-
-    System.Collections.IEnumerator SmoothPanelTransition(GameObject showPanel, GameObject hidePanel1, GameObject hidePanel2)
-    {
-        // 簡化版滑動轉場
-        if (showPanel != null)
-        {
-            Vector3 originalPos = showPanel.transform.localPosition;
-            Vector3 startPos = originalPos + Vector3.down * 2f;
-
-            SetPanel3DActive(showPanel, true);
-            SetPanel3DActive(hidePanel1, false);
-            SetPanel3DActive(hidePanel2, false);
-
-            showPanel.transform.localPosition = startPos;
-
-            float elapsed = 0f;
-            while (elapsed < animationSpeed)
-            {
-                elapsed += Time.deltaTime;
-                float t = elapsed / animationSpeed;
-                float smoothT = Mathf.SmoothStep(0, 1, t);
-
-                showPanel.transform.localPosition = Vector3.Lerp(startPos, originalPos, smoothT);
-                yield return null;
-            }
-
-            showPanel.transform.localPosition = originalPos;
-        }
-    }
-    #endregion
-
-    #region 動畫效果
-    System.Collections.IEnumerator TypewriterEffect(TextMeshPro textComponent, string fullText)
-    {
-        if (textComponent == null) yield break;
-
-        textComponent.text = "";
-        float charDelay = 0.05f;
-
-        for (int i = 0; i <= fullText.Length; i++)
-        {
-            if (textComponent != null)
-                textComponent.text = fullText.Substring(0, i);
-            yield return new WaitForSeconds(charDelay);
-        }
-    }
-
-    System.Collections.IEnumerator CountUpScore(int startScore, int endScore, TextMeshPro scoreText)
-    {
-        if (scoreText == null) yield break;
-
-        float duration = 1.5f;
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float t = elapsed / duration;
-            int currentScore = Mathf.RoundToInt(Mathf.Lerp(startScore, endScore, t));
-            if (scoreText != null)
-                scoreText.text = "總分：" + currentScore + " 分";
-            yield return null;
-        }
-
-        if (scoreText != null)
-            scoreText.text = "總分：" + endScore + " 分";
-    }
-
-    System.Collections.IEnumerator InputBoxAppearAnimation(GameObject inputBox)
-    {
-        if (inputBox == null) yield break;
-
-        Vector3 originalScale = inputBox.transform.localScale;
-        inputBox.transform.localScale = Vector3.zero;
-
-        float duration = 0.3f;
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float t = elapsed / duration;
-            float smoothT = Mathf.SmoothStep(0, 1, t);
-
-            inputBox.transform.localScale = Vector3.Lerp(Vector3.zero, originalScale, smoothT);
-            yield return null;
-        }
-
-        inputBox.transform.localScale = originalScale;
     }
     #endregion
 
@@ -653,7 +610,7 @@ public class Exam3DUIController : MonoBehaviour
     #endregion
 }
 
-// 增強版按鈕處理器 - 不改變原有材質
+// 增強版按鈕處理器
 public class EnhancedButton3DHandler : MonoBehaviour
 {
     public System.Action OnClick;
