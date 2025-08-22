@@ -6724,9 +6724,350 @@
 
 
     {
-      "unitName": "",
+      "unitName": "球面與經緯度",
       "unitDescription": "CH9",
       "unitId": 9,
+      "contents": [
+        {
+          "contentName": "空間中的球面",
+          "description": "CH9-1",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
+          "questionImage": "Assets/HoloMath/Data/questions_picture/9-1-1.png",
+          "hasImage": true,
+          "threeDObject": "Angle_Anime",
+          "questionText": "",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "如圖，空間中平面E1、E2與一球面相割，且球心O點在平面E2上，但不在E1上，請選出正確的選項：（多選）",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A) 平面E1、E2 對此球面的截痕圖形都是圓。", "isCorrect": true },
+                { "optionText": "(B) 平面E1對球O的截痕圖形為大圓。", "isCorrect": false },
+                { "optionText": "(C) 平面E2對球O的截痕圖形為大圓。", "isCorrect": true },
+                { "optionText": "(D) E1所截的圓上有兩點A、B，則在此圓上的圓弧長(弧AB) ̂兩點在球面上的最短距離。", "isCorrect": false },
+                { "optionText": "(E) E2所截的圓上有兩點C、D，則在此圓上的圓弧長(弧CD) ̂兩點在球面上的最短距離。", "isCorrect": true }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+        {
+          "contentName": "空間中的球面",
+          "description": "CH9-1",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
+          "questionImage": "Assets/HoloMath/Data/questions_picture/9-1-2.png",
+          "hasImage": true,
+          "threeDObject": "Angle_Anime",
+          "questionText": "",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "如圖，空間中一球面與平面E相割，球心O點在平面E上的投影點為A點。已知球面半徑為5，¯OA=3，哪一個選項為平面E在球面上的截痕周長？（單選）",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A) 2π", "isCorrect": false },
+                { "optionText": "(B) 4π", "isCorrect": false },
+                { "optionText": "(C) 6π", "isCorrect": false },
+                { "optionText": "(D) 8π", "isCorrect": true },
+                { "optionText": "(E) 10π", "isCorrect": false }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+        {
+          "contentName": "空間中的球面",
+          "description": "CH9-1",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
+          "questionImage": "Assets/HoloMath/Data/questions_picture/9-1-3.png",
+          "hasImage": true,
+          "threeDObject": "Angle_Anime",
+          "questionText": "",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "如圖，空間中一球面與平面E相割，且平面E通過球心O點；其截痕之圓周長為12π。已知球面上兩點A、B在平面E上，∠AOB=120°，哪一個選項為球面上兩點A、B的球面距離？（單選）",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A) 4π", "isCorrect": true },
+                { "optionText": "(B) 6π", "isCorrect": false },
+                { "optionText": "(C) 8π", "isCorrect": false },
+                { "optionText": "(D) 10π", "isCorrect": false },
+                { "optionText": "(E) 12π", "isCorrect": false }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+
+        {
+          "contentName": "地球的經緯度",
+          "description": "CH9-2",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
+          "questionImage": "Assets/HoloMath/Data/questions_picture/9-2-1.png",
+          "hasImage": true,
+          "threeDObject": "Angle_Anime",
+          "questionText": "",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "如圖所示，下列哪些選項有正確表達A、B、C三點的經緯度位置？（多選）",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A) A點：東經90°，北緯30°", "isCorrect": true },
+                { "optionText": "(B) A點：東經90°，北緯60°", "isCorrect": false },
+                { "optionText": "(C) B點：經度0°，北緯30°", "isCorrect": true },
+                { "optionText": "(D) B點：經度0°，北緯60°", "isCorrect": false },
+                { "optionText": "(E) C點：東經90°，緯度0°", "isCorrect": true }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+        {
+          "contentName": "地球的經緯度",
+          "description": "CH9-2",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "Angle_Anime",
+          "questionText": "",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "假設地球是一個完美的球體，下列哪些為球面距離？（多選）",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A) 赤道處東經120°與東經121°的經距。", "isCorrect": true },
+                { "optionText": "(B) 赤道與北緯30°的緯距。", "isCorrect": true },
+                { "optionText": "(C) 北緯30°處東經120°與東經121°的經距。", "isCorrect": false },
+                { "optionText": "(D) 南緯30°處西經120°與西經121°的經距。", "isCorrect": false },
+                { "optionText": "(E) 北緯30°與南緯30°的緯距。", "isCorrect": true }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+        {
+          "contentName": "地球的經緯度",
+          "description": "CH9-2",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "Angle_Anime",
+          "questionText": "已知北緯30°的經距為d，赤道的經距為D，則d/D的值為√(b)/(a)。（選填）",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "FillInBlank",
+              "promptText": "(a)：_____",
+              "correctAnswer": "2",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            },
+            {
+              "questionType": "FillInBlank",
+              "promptText": "(b)：_____",
+              "correctAnswer": "3",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [],
+              "textSize": { "x": 7.0365, "y": 2.1113 },
+              "inputFieldScale": { "x": 1, "y": 0.8, "z": 0.1 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+        {
+          "contentName": "地球的經緯度",
+          "description": "CH9-2",
+          "videoClip" :"Assets/HoloMath/Video/【暖身】弧度制 [O7s6b5J4FRg].mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "Angle_Anime",
+          "questionText": "",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "地球上A點位於東經121°、北緯23.5°，B點位於東經121°、南緯21.5°。已知飛機的飛行速率為1000公里/小時，從A點直飛到B點，飛最短航線（球面距離）大約需要多少小時？（已知地球半徑約6400公里，可利用計算機估計飛行距離。）（單選）",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A) 4小時", "isCorrect": false },
+                { "optionText": "(B) 5小時", "isCorrect": true },
+                { "optionText": "(C) 6小時", "isCorrect": false },
+                { "optionText": "(D) 7小時", "isCorrect": false }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 4
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        }
+      ]
+    },
+
+
+    {
+      "unitName": "",
+      "unitDescription": "CH10",
+      "unitId": 10,
+      "contents": [
+        
+      ]
+    },
+
+
+    {
+      "unitName": "",
+      "unitDescription": "CH11",
+      "unitId": 11,
       "contents": [
         
       ]
