@@ -77,9 +77,9 @@
               "allowPartialMatch": false,
               "options": [
                 { "optionText": "(A) 1弧度=π°", "isCorrect": false },
-                { "optionText": "(B) π^2弧度=180π°", "isCorrect": true },
+                { "optionText": "(B) π²弧度=180π°", "isCorrect": true },
                 { "optionText": "(C) 1°=180/π弧度", "isCorrect": false },
-                { "optionText": "(D) π°=π^2/180弧度", "isCorrect": true }
+                { "optionText": "(D) π°=π²/180弧度", "isCorrect": true }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -350,7 +350,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "令a=cos(π^2)，試問下列哪一個選項是對的？（單選）",
+              "promptText": "令a=cos(π²)，試問下列哪一個選項是對的？（單選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -1155,7 +1155,7 @@
                 { "optionText": "(B) 若f(-x)=f(x)，則f(x)為奇函數。", "isCorrect": false },
                 { "optionText": "(C) 若f(x)為奇函數，則f(x)=0。", "isCorrect": true },
                 { "optionText": "(D) 函數f(x)=sinx是奇函數。", "isCorrect": true },
-                { "optionText": "(E) 函數f(x)=x^3+x是奇函數。", "isCorrect": true }
+                { "optionText": "(E) 函數f(x)=x³+x是奇函數。", "isCorrect": true }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -1197,8 +1197,8 @@
               "allowPartialMatch": false,
               "options": [
                 { "optionText": "(A) f(x)=-x為遞減函數", "isCorrect": true },
-                { "optionText": "(B) f(x)=x^2為遞增函數", "isCorrect": false },
-                { "optionText": "(C) f(x)=x^3為遞增函數", "isCorrect": true },
+                { "optionText": "(B) f(x)=x²為遞增函數", "isCorrect": false },
+                { "optionText": "(C) f(x)=x³為遞增函數", "isCorrect": true },
                 { "optionText": "(D) 奇函數必為遞增函數", "isCorrect": false },
                 { "optionText": "(E) 偶函數必為遞減函數", "isCorrect": false }
               ],
@@ -5464,7 +5464,7 @@
           "questions": [
             {
               "questionType": "FillInBlank",
-              "promptText": "已知空間中兩向量(向量a)=(1,2,2)、(向量b)=(3x,y,2z)，若3x+2y+4z=15，則9x^2+y^2+4z^2的最小值為A，此時(向量b)=(B/3,C/3,D/3)。則A+B+C+D=_____。（填空）",
+              "promptText": "已知空間中兩向量(向量a)=(1,2,2)、(向量b)=(3x,y,2z)，若3x+2y+4z=15，則9x²+y²+4z²的最小值為A，此時(向量b)=(B/3,C/3,D/3)。則A+B+C+D=_____。（填空）",
               "correctAnswer": "50",
               "acceptableAnswers": [],
               "hint": "",
@@ -5501,7 +5501,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "已知實數x、y、z滿足4x^2+y^2+9z^2=4，求2x-y+3z的最大值與最小值，請問下列哪一選項敘述正確？（單選）",
+              "promptText": "已知實數x、y、z滿足4x²+y²+9z²=4，求2x-y+3z的最大值與最小值，請問下列哪一選項敘述正確？（單選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -5545,7 +5545,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "設實數x、y、z滿足x^2+y^2+z^2=25，已知k為常數，且〖(2x-y+kz)〗^2的最大值為225，則下列哪些選項為可能的k值？（多選）",
+              "promptText": "設實數x、y、z滿足x²+y²+z²=25，已知k為常數，且(2x-y+kz)²的最大值為225，則下列哪些選項為可能的k值？（多選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -6194,7 +6194,7 @@
                 { "optionText": "(A) (向量a)×(向量b)=((向量b)×(向量a))", "isCorrect": false },
                 { "optionText": "(B) 若(向量a)∥(向量b)，則(向量a)×(向量b)=(向量0)", "isCorrect": true },
                 { "optionText": "(C) 若(向量a)∙(向量b)=0，則(向量a)⊥(向量b)", "isCorrect": true },
-                { "optionText": "(D) |(向量a)×(向量a)|=|(向量a)|^2", "isCorrect": false },
+                { "optionText": "(D) |(向量a)×(向量a)|=|(向量a)|²", "isCorrect": false },
                 { "optionText": "(E) (向量a)∙((向量a)×(向量b))=0", "isCorrect": true }
               ],
               "optionSpacing": 0.75,
