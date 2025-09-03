@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d7cffddcbc0cc8f4ebe6e28eb9804082
+guid: 3cd0fe448cef956428297233fd17fd38
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Square
+  - Noto Sans Math
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
@@ -19,10 +19,3 @@ TrueTypeFontImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 216954
-  packageName: Fatality FPS Gaming Font
-  packageVersion: 1.0
-  assetPath: Assets/FPSFont/FPS Gaming Font/Square-Black.ttf
-  uploadId: 490185
