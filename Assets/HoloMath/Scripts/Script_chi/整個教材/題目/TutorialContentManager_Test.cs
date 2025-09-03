@@ -1036,7 +1036,7 @@ public class TutorialContentManager_Test : MonoBehaviour
             if (questionIndex < questionContainers.Count)
             {
                 var container = questionContainers[questionIndex];
-                var optionComponents = container.GetComponentsInChildren<QuizOptionComponent>();
+                var optionComponents = container.GetComponentsInChildren<QuizOptionComponent_Test>();
                 if (optionIndex < optionComponents.Length)
                 {
                     optionComponents[optionIndex].SetSelected(!wasSelected);
