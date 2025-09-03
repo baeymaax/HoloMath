@@ -39625,7 +39625,35 @@ MonoBehaviour:
     questionTextFontSize: 4
     questionTextSize: {x: 10, y: 2}
     showQuestionText: 0
-    questions: []
+    questions:
+    - questionType: 1
+      promptText: 132231
+      correctAnswer: 
+      acceptableAnswers: []
+      hint: 
+      answerType: 0
+      tolerance: 0
+      isCaseSensitive: 0
+      allowPartialMatch: 0
+      options:
+      - optionText: 1984
+        isCorrect: 1
+      - optionText: 48494
+        isCorrect: 0
+      textPosition: {x: 0, y: 0, z: 0}
+      inputFieldPosition: {x: 0, y: 0, z: 0}
+      textRotation: {x: 0, y: 0, z: 0}
+      inputFieldRotation: {x: 0, y: 0, z: 0}
+      textSize: {x: 0, y: 0}
+      inputFieldSize: {x: 0, y: 0}
+      useCustomPositions: 0
+      optionSpacing: 0
+      optionScale: {x: 0, y: 0, z: 0}
+      useCustomQuestionTextPosition: 0
+      questionTextPosition: {x: 0, y: 0, z: 0}
+      useCustomOptionPositions: 0
+      optionStartPosition: {x: 0, y: 0, z: 0}
+      questionTextFontSize: 5
     showHints: 1
     allowRetry: 1
     showProgress: 1

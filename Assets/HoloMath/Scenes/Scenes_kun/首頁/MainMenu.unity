@@ -3363,7 +3363,7 @@ MonoBehaviour:
   exitButton: {fileID: 702121137}
   titleText: {fileID: 599405818}
   welcomeText: {fileID: 0}
-  classroomSceneName: TestScene0623
+  classroomSceneName: scene0805
   buttonClickSound: {fileID: 0}
   backgroundMusic: {fileID: 0}
   titleFadeInDuration: 1.5
