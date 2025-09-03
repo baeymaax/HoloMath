@@ -4,7 +4,19 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/HoloMath/Scenes/Scenes_kun/MainMenu.unity
+    guid: 2b26e992493a06148875e33c52765b65
+  - enabled: 1
+    path: Assets/HoloMath/Scenes/Scenes_ccc/TestScene0623.unity
+    guid: a32b01906a98d044ab6446bbbd4c3ce3
+  - enabled: 1
+    path: Assets/HoloMath/Scenes/Scenes_kun/Exam.unity
+    guid: 176fd53ed76a89942b5144766ba0802f
+  - enabled: 1
+    path: Assets/HoloMath/Scenes/Scenes_ccc/scene0805.unity
+    guid: 84d642bc3218b3c4d8d6828648c7be7a
   m_configObjects:
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 628bf83874828554d80c749f15299b50, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5a0dcb3195a407141a9225992a482f14, type: 2}
