@@ -32,10 +32,10 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) 30°=π/3弧度", "isCorrect": false },
-                { "optionText": "(B) π/4弧度=45°", "isCorrect": true },
-                { "optionText": "(C) 120°=2π/3弧度", "isCorrect": true },
-                { "optionText": "(D) 5π/3弧度=150°", "isCorrect": false }
+                { "optionText": "(A) 30°=<sup>π</sup>/<sub>3</sub>弧度", "isCorrect": false },
+                { "optionText": "(B) <sup>π</sup>/<sub>4</sub>弧度=45°", "isCorrect": true },
+                { "optionText": "(C) 120°=<sup>2π</sup>/<sub>3</sub>弧度", "isCorrect": true },
+                { "optionText": "(D) <sup>5π</sup>/<sub>3</sub>弧度=150°", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -78,8 +78,8 @@
               "options": [
                 { "optionText": "(A) 1弧度=π°", "isCorrect": false },
                 { "optionText": "(B) π²弧度=180π°", "isCorrect": true },
-                { "optionText": "(C) 1°=180/π弧度", "isCorrect": false },
-                { "optionText": "(D) π°=π²/180弧度", "isCorrect": true }
+                { "optionText": "(C) 1°=<sup>180</sup>/<sub>π</sub>弧度", "isCorrect": false },
+                { "optionText": "(D) π°=<sup>π²</sup>/<sub>180</sub>弧度", "isCorrect": true }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -101,7 +101,7 @@
           "questionImage": "Assets/HoloMath/Data/questions_picture/1-1-3.png",
           "hasImage": true,
           "threeDObject": "Angle_Anime",
-          "questionText": "下圖中的角度為(b)/(a) π弧度。（選填）",
+          "questionText": "下圖中的角度為<sup>(b)</sup>/<sub>(a)</sub>π弧度。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -153,7 +153,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "將下列角度的單位，由度換成弧度，或將弧度換成角度： (1)-π/6弧度=(a)(b)(c)°  (2)-210°=-(e)π/(d)弧度",
+          "questionText": "將下列角度的單位，由度換成弧度，或將弧度換成角度： (1)<sup>-π</sup>/<sub>6</sub>弧度=(a)(b)(c)°  (2)-210°=<sup>-(e)π</sup>/<sub>(d)</sub>弧度",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -261,7 +261,7 @@
           "questions": [
             {
               "questionType": "FillInBlank",
-              "promptText": "sin(5π/2)=______（填空）",
+              "promptText": "sin(<sup>5π</sup>/<sub>2</sub>)=______（填空）",
               "correctAnswer": "1",
               "acceptableAnswers": [],
               "hint": "",
@@ -288,7 +288,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "sin(17π/6)+cos(-5π/2)+tan(7π/4)=(a)(b)/2 （選填）",
+          "questionText": "sin(<sup>17π</sup>/<sub>6</sub>)+cos(<sup>-5π</sup>/<sub>2</sub>)+tan(<sup>7π</sup>/<sub>4</sub>)=<sup>(a)(b)</sup>/<sub>2</sub> （選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -360,9 +360,9 @@
               "allowPartialMatch": false,
               "options": [
                 { "optionText": "(A) a=-1", "isCorrect": false },
-                { "optionText": "(B) -1<a≤-1/2", "isCorrect": true },
+                { "optionText": "(B) -1<a≤<sup>-1</sup>/<sub>2</sub>", "isCorrect": true },
                 { "optionText": "(C) -1/2<a≤0", "isCorrect": false },
-                { "optionText": "(D) 0<a≤1/2", "isCorrect": false },
+                { "optionText": "(D) 0<a≤<sup>1</sup>/<sub>2</sub>", "isCorrect": false },
                 { "optionText": "(E) 1/2<a≤1", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
@@ -457,10 +457,10 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) π/2 弳", "isCorrect": true },
-                { "optionText": "(B) π/3 弳", "isCorrect": false },
-                { "optionText": "(C) 3π/2 弳", "isCorrect": false },
-                { "optionText": "(D) π/6 弳", "isCorrect": false }
+                { "optionText": "(A) <sup>π</sup>/<sub>2</sub> 弳", "isCorrect": true },
+                { "optionText": "(B) <sup>π</sup>/<sub>3</sub> 弳", "isCorrect": false },
+                { "optionText": "(C) <sup>3π</sup>/<sub>2</sub> 弳", "isCorrect": false },
+                { "optionText": "(D) <sup>π</sup>/<sub>6</sub> 弳", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -491,7 +491,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "計算下列算式：  (1)cos65°cos25°-sin65°sin25°=(a)  (2)sin35°cos10°+cos35°sin10°=√(c)/(b) （選填）",
+          "questionText": "計算下列算式：  (1)cos65°cos25°-sin65°sin25°=(a)  (2)sin35°cos10°+cos35°sin10°=<sup>√(c)</sup>/<sub>(b)</sub> （選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -558,7 +558,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "設0°<α<90°、0°<β<90°，且sinα=13/15、sinβ=(4√14)/15。則sin(α+β)=((a)√(b)(c))/25 、 cos(α+β)=(d)(e)/25。（選填）",
+          "questionText": "設0°<α<90°、0°<β<90°，且sinα=<sup>13</sup>/<sub>15</sub>、sinβ=<sup>4√14</sup>/<sub>15</sub>。則sin(α+β)=<sup>((a)√(b)(c))</sup>/<sub>25</sub>、cos(α+β)=<sup>(d)(e)</sup>/<sub>25</sub>。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -655,7 +655,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "設兩直線L_1:4x-y=0與L_2:x-y+1=0的夾角為θ，則tanθ=(b)/(a)。（選填）",
+          "questionText": "設兩直線L<sub>1</sub>:4x-y=0與L<sub>2</sub>:x-y+1=0的夾角為θ，則tanθ=<sup>(b)</sup>/<sub>(a)</sub>。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -745,7 +745,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "已知π/2<θ<π，sinθ=5/13，則sin2θ=-(a)(b)(c)/169、cos2θ=(d)(e)(f)/169。（選填）",
+          "questionText": "已知<sup>π</sup>/<sub>2</sub><θ<π，sinθ=<sup>5</sup>/<sub>13</sub>，則sin2θ=<sup>-(a)(b)(c)</sup>/<sub>169</sub>、cos2θ=<sup>(d)(e)(f)</sup>/<sub>169</sub>。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -857,7 +857,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "設π<α<2π，已知cosα=-3/5，則cos α/2=((a)√5)/5、sin α/2=((b)√5)/5。（選填）",
+          "questionText": "設π<α<2π，已知cosα=<sup>-3</sup>/<sub>5</sub>，則cos <sup>α</sup>/<sub>2</sub>=<sup>(a)√5</sup>/<sub>5</sub>、sin <sup>α</sup>/<sub>2</sub>=<sup>(b)√5</sup>/<sub>5</sub>。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -963,7 +963,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "酷酷在滑雪場觀察兩條滑雪道A、B的坡度，若將地面視為x軸，酷酷發現滑雪道A的斜率為1/3，而這條滑雪道A剛好是另一條滑雪道B與地面所夾角的角平分線，如下圖。求滑雪道B的斜率為何？（單選）",
+              "promptText": "酷酷在滑雪場觀察兩條滑雪道A、B的坡度，若將地面視為x軸，酷酷發現滑雪道A的斜率為<sup>1</sup>/<sub>3</sub>，而這條滑雪道A剛好是另一條滑雪道B與地面所夾角的角平分線，如下圖。求滑雪道B的斜率為何？（單選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -972,10 +972,10 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) 1/4", "isCorrect": false },
-                { "optionText": "(B) 1/2", "isCorrect": false },
-                { "optionText": "(C) 3/4", "isCorrect": true },
-                { "optionText": "(D) 1/3", "isCorrect": false }
+                { "optionText": "(A) <sup>1</sup>/<sub>4</sub>", "isCorrect": false },
+                { "optionText": "(B) <sup>1</sup>/<sub>2</sub>", "isCorrect": false },
+                { "optionText": "(C) <sup>3</sup>/<sub>4</sub>", "isCorrect": true },
+                { "optionText": "(D) <sup>1</sup>/<sub>3</sub>", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -1017,9 +1017,9 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) 4/9", "isCorrect": false },
-                { "optionText": "(B) 9/4", "isCorrect": true },
-                { "optionText": "(C) 3/2", "isCorrect": false },
+                { "optionText": "(A) <sup>4</sup>/<sub>9</sub>", "isCorrect": false },
+                { "optionText": "(B) <sup>9</sup>/<sub>4</sub>", "isCorrect": true },
+                { "optionText": "(C) <sup>3</sup>/<sub>2</sub>", "isCorrect": false },
                 { "optionText": "(D) 3", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
@@ -1061,9 +1061,9 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) 4/9", "isCorrect": false },
-                { "optionText": "(B) 9/4", "isCorrect": true },
-                { "optionText": "(C) 3/2", "isCorrect": false },
+                { "optionText": "(A) <sup>4</sup>/<sub>9</sub>", "isCorrect": false },
+                { "optionText": "(B) <sup>9</sup>/<sub>4</sub>", "isCorrect": true },
+                { "optionText": "(C) <sup>3</sup>/<sub>2</sub>", "isCorrect": false },
                 { "optionText": "(D) 3", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
@@ -1096,7 +1096,7 @@
           "questions": [
             {
               "questionType": "FillInBlank",
-              "promptText": "在同一平面上，相距7公里的A、B兩砲台，A在B 的正東方。某次演習時，A向西偏北θ方向發射砲彈，B則向東偏北θ方向發射砲彈，其中θ為銳角，觀測回報兩砲彈皆命中9公里外的同一目標P。接著A改向西偏北θ/2方向發射砲彈，彈著點為9公里外的點Q。試問砲台B與彈著點Q的距離¯BQ為_____公里。（填空）",
+              "promptText": "在同一平面上，相距7公里的A、B兩砲台，A在B 的正東方。某次演習時，A向西偏北θ方向發射砲彈，B則向東偏北θ方向發射砲彈，其中θ為銳角，觀測回報兩砲彈皆命中9公里外的同一目標P。接著A改向西偏北<sup>θ</sup>/<sub>2</sub>方向發射砲彈，彈著點為9公里外的點Q。試問砲台B與彈著點Q的距離¯BQ為_____公里。（填空）",
               "correctAnswer": "5",
               "acceptableAnswers": [],
               "hint": "",
@@ -1246,7 +1246,7 @@
                 { "optionText": "(B) f(x)是週期函數，且週期為π", "isCorrect": false },
                 { "optionText": "(C) f(x)的圖形對稱於(0,0)", "isCorrect": true },
                 { "optionText": "(D) f(x)的圖形對稱於(π,0)", "isCorrect": true },
-                { "optionText": "(E) f(x)的圖形對稱於直線x=π/2", "isCorrect": true }
+                { "optionText": "(E) f(x)的圖形對稱於直線x=<sup>π</sup>/<sub>2</sub>", "isCorrect": true }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -1287,10 +1287,10 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) 0到π/2之間", "isCorrect": false },
-                { "optionText": "(B) π/2到π之間", "isCorrect": true },
-                { "optionText": "(C) π到3π/2之間", "isCorrect": true },
-                { "optionText": "(D) 3π/2到2π之間", "isCorrect": false },
+                { "optionText": "(A) 0到<sup>π</sup>/<sub>2</sub>之間", "isCorrect": false },
+                { "optionText": "(B) <sup>π</sup>/<sub>2</sub>到π之間", "isCorrect": true },
+                { "optionText": "(C) π到<sup>3π</sup>/<sub>2</sub>之間", "isCorrect": true },
+                { "optionText": "(D) <sup>3π</sup>/<sub>2</sub>到2π之間", "isCorrect": false },
                 { "optionText": "(E) -π到0之間", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
@@ -1368,7 +1368,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "試問y=sin(x-π/4)的圖形可由y=sinx的圖形如何平移得到？選出所有正確的選項。（多選）",
+              "promptText": "試問y=sin(x-<sup>π</sup>/<sub>4</sub>)的圖形可由y=sinx的圖形如何平移得到？選出所有正確的選項。（多選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -1377,11 +1377,11 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) 往右平移π/4單位", "isCorrect": true },
-                { "optionText": "(B) 往右平移5π/4單位", "isCorrect": false },
-                { "optionText": "(C) 往左平移π/4單位", "isCorrect": false },
-                { "optionText": "(D) 往左平移5π/4單位", "isCorrect": false },
-                { "optionText": "(E) 往左平移7π/4單位", "isCorrect": true }
+                { "optionText": "(A) 往右平移<sup>π</sup>/<sub>4</sub>單位", "isCorrect": true },
+                { "optionText": "(B) 往右平移<sup>5π</sup>/<sub>4</sub>單位", "isCorrect": false },
+                { "optionText": "(C) 往左平移<sup>π</sup>/<sub>4</sub>單位", "isCorrect": false },
+                { "optionText": "(D) 往左平移<sup>5π</sup>/<sub>4</sub>單位", "isCorrect": false },
+                { "optionText": "(E) 往左平移<sup>7π</sup>/<sub>4</sub>單位", "isCorrect": true }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -1450,7 +1450,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "下列關於函數y=f(x)=sin⁡(x+π/2)-1敘述，選出正確的選項。（多選）",
+              "promptText": "下列關於函數y=f(x)=sin⁡(x+<sup>π</sup>/<sub>2</sub>)-1敘述，選出正確的選項。（多選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -1459,8 +1459,8 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) f(x)的圖形可由y=sinx往左平移π/2，往下平移1單位得到", "isCorrect": true },
-                { "optionText": "(B) f(x)的圖形對稱於直線x=π/2", "isCorrect": false },
+                { "optionText": "(A) f(x)的圖形可由y=sinx往左平移<sup>π</sup>/<sub>2</sub>，往下平移1單位得到", "isCorrect": true },
+                { "optionText": "(B) f(x)的圖形對稱於直線x=<sup>π</sup>/<sub>2</sub>", "isCorrect": false },
                 { "optionText": "(C) f(x)的週期為2π", "isCorrect": true },
                 { "optionText": "(D) f(x)的振幅為2", "isCorrect": false },
                 { "optionText": "(E) f(x)的最大值為2", "isCorrect": false }
@@ -1593,7 +1593,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "下列關於y=f(x)=1/3 sin(5x)的敘述，選出正確的選項。（多選）",
+              "promptText": "下列關於y=f(x)=<sup>1</sup>/<sub>3</sub> sin(5x)的敘述，選出正確的選項。（多選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -1602,11 +1602,11 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) f(x)的圖形可由y=sinx鉛直伸縮為1/3倍，水平伸縮為5倍得到", "isCorrect": false },
-                { "optionText": "(B) f(x)的圖形可由y=sinx鉛直伸縮為1/3倍，水平伸縮為1/5倍得到", "isCorrect": true },
+                { "optionText": "(A) f(x)的圖形可由y=sinx鉛直伸縮為<sup>1</sup>/<sub>3</sub>倍，水平伸縮為5倍得到", "isCorrect": false },
+                { "optionText": "(B) f(x)的圖形可由y=sinx鉛直伸縮為<sup>1</sup>/<sub>3</sub>倍，水平伸縮為<sup>1</sup>/<sub>5</sub>倍得到", "isCorrect": true },
                 { "optionText": "(C) f(x)的週期為10π", "isCorrect": false },
-                { "optionText": "(D) f(x)的週期為2π/5", "isCorrect": true },
-                { "optionText": "(E) f(x)的最大值為1/3", "isCorrect": true }
+                { "optionText": "(D) f(x)的週期為<sup>2π</sup>/<sub>5</sub>", "isCorrect": true },
+                { "optionText": "(E) f(x)的最大值為<sup>1</sup>/<sub>3</sub>", "isCorrect": true }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -1629,7 +1629,7 @@
           "questionImage": "Assets/HoloMath/Data/questions_picture/3-5-1.png",
           "hasImage": true,
           "threeDObject": "Angle_Anime",
-          "questionText": "已知a>0、b>0，且下列函數圖形為y=f(x)=a sin(bx)，則a=(a)、b=(c)/(b)。（選填）",
+          "questionText": "已知a>0、b>0，且下列函數圖形為y=f(x)=a sin(bx)，則a=(a)、b=<sup>(c)</sup>/<sub>(b)</sub>。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -1696,7 +1696,7 @@
           "questionImage": "Assets/HoloMath/Data/questions_picture/3-5-2.png",
           "hasImage": true,
           "threeDObject": "Angle_Anime",
-          "questionText": "若函數f(x)=3sin(2x+θ)的部分圖形如下圖所示，其中0≤θ≤π，則θ=(b)π/(a)。（選填）",
+          "questionText": "若函數f(x)=3sin(2x+θ)的部分圖形如下圖所示，其中0≤θ≤π，則θ=<sup>(b)π</sup>/<sub>(a)</sub>。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -1748,7 +1748,7 @@
           "questionImage": "Assets/HoloMath/Data/questions_picture/3-5-3.png",
           "hasImage": true,
           "threeDObject": "Angle_Anime",
-          "questionText": "若函數f(x)= a sin(bx+h)的部分圖形如下圖，其中點P(4,3)為最高點，2與6為與x軸交點的x座標。已知a>0、b>0、-π<h<π，則a=(a)、b=π/(b) 、h=(d)π/(c)。（選填）",
+          "questionText": "若函數f(x)= a sin(bx+h)的部分圖形如下圖，其中點P(4,3)為最高點，2與6為與x軸交點的x座標。已知a>0、b>0、-π<h<π，則a=(a)、b=<sup>π</sup>/<sub>(b)</sub> 、h=<sup>(d)π</sup>/<sub>(c)</sub>。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -1830,7 +1830,7 @@
           "questionImage": "Assets/HoloMath/Data/questions_picture/3-5-4.png",
           "hasImage": true,
           "threeDObject": "Angle_Anime",
-          "questionText": "已知f(x)=a sin(bx+c)+d的部分圖形如下圖，其中點A(3π/2,2)為最高點，B(7π/2,-4)為最低點。已知a>0、b>0、-2π<c<2π，則a=(a)、b=1/(b) 、c=(d)π/(c) 、d=(e)(f)。（選填）",
+          "questionText": "已知f(x)=a sin(bx+c)+d的部分圖形如下圖，其中點A(<sup>3π</sup>/<sub>2</sub>,2)為最高點，B(<sup>7π</sup>/<sub>2</sub>,-4)為最低點。已知a>0、b>0、-2π<c<2π，則a=(a)、b=<sup>1</sup>/<sub>(b)</sub>、c=<sup>(d)π</sup>/<sub>(c)</sub>、d=(e)(f)。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -1965,7 +1965,7 @@
                 { "optionText": "(A) f(x)的最大值是1", "isCorrect": true },
                 { "optionText": "(B) f(x)週期函數，且週期為π", "isCorrect": false },
                 { "optionText": "(C) f(x)的圖形對稱於(0,1)", "isCorrect": false },
-                { "optionText": "(D) f(x)的圖形對稱於(kπ/2,0)，其中k為任意整數", "isCorrect": true },
+                { "optionText": "(D) f(x)的圖形對稱於(<sup>kπ</sup>/<sub>2</sub>,0)，其中k為任意整數", "isCorrect": true },
                 { "optionText": "(E) f(x)的圖形對稱於直線x=π", "isCorrect": true }
               ],
               "optionSpacing": 0.75,
@@ -2007,10 +2007,10 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) sin⁡ x=cos ⁡x 的解為x=π/4 、 5π/4", "isCorrect": true },
-                { "optionText": "(B) sin⁡ x=cos⁡ x 的解為x=3π/4 、 7π/4", "isCorrect": false },
-                { "optionText": "(C) 滿足sin⁡ x≤cos ⁡x 的範圍為0≤x≤π/4或5π/4≤x≤2π", "isCorrect": true },
-                { "optionText": "(D) 滿足sin⁡ x≤cos ⁡x 的範圍為0≤x≤π/4或π≤x≤7π/4", "isCorrect": false }
+                { "optionText": "(A) sinx=cosx的解為x=<sup>π</sup>/<sub>4</sub>、<sup>5π</sup>/<sub>4</sub>", "isCorrect": true },
+                { "optionText": "(B) sinx=cosx的解為x=<sup>3π</sup>/<sub>4</sub>、<sup>7π</sup>/<sub>4</sub>", "isCorrect": false },
+                { "optionText": "(C) 滿足sinx≤cosx的範圍為0≤x≤<sup>π</sup>/<sub>4</sub>或<sup>5π</sup>/<sub>4</sub>≤x≤2π", "isCorrect": true },
+                { "optionText": "(D) 滿足sinx≤cosx的範圍為0≤x≤<sup>π</sup>/<sub>4</sub>或π≤x≤<sup>7π</sup>/<sub>4</sub>", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -2042,7 +2042,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "在0≤x≤2π的範圍內，試求不等式√3/2<cos⁡x的解為何？（單選）",
+              "promptText": "在0≤x≤2π的範圍內，試求不等式<sup>√3</sup>/<sub>2</sub><cosx的解為何？（單選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -2051,10 +2051,10 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) 0≤x≤π/6或11π/6≤x≤2π", "isCorrect": false },
-                { "optionText": "(B) 0<x<π/6或11π/6<x<2π", "isCorrect": false },
-                { "optionText": "(C) 0≤x<π/6或11π/6<x≤2π", "isCorrect": true },
-                { "optionText": "(D) π/6<x<11π/6", "isCorrect": false }
+                { "optionText": "(A) 0≤x≤<sup>π</sup>/<sub>6</sub>或<sup>11π</sup>/<sub>6</sub>≤x≤2π", "isCorrect": false },
+                { "optionText": "(B) 0<x<<sup>π</sup>/<sub>6</sub>或<sup>11π</sup>/<sub>6</sub><x<2π", "isCorrect": false },
+                { "optionText": "(C) 0≤x<<sup>π</sup>/<sub>6</sub>或<sup>11π</sup>/<sub>6</sub><x≤2π", "isCorrect": true },
+                { "optionText": "(D) <sup>π</sup>/<sub>6</sub><x<<sup>11π</sup>/<sub>6</sub>", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -2087,7 +2087,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "下列關於正切函數y=f(x)=tan⁡x的敘述，選出所有正確的選項。（多選）",
+              "promptText": "下列關於正切函數y=f(x)=tanx的敘述，選出所有正確的選項。（多選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -2100,7 +2100,7 @@
                 { "optionText": "(B) f(x)的圖形對稱於原點", "isCorrect": true },
                 { "optionText": "(C) f(x)的週期為π", "isCorrect": true },
                 { "optionText": "(D) f(x)的圖形通過點(0,1)", "isCorrect": false },
-                { "optionText": "(E) f(x)在x=π/2處無定義", "isCorrect": true }
+                { "optionText": "(E) f(x)在x=<sup>π</sup>/<sub>2</sub>處無定義", "isCorrect": true }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -2132,7 +2132,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "下列關於正切函數y=f(x)=tan⁡x的敘述，選出所有正確的選項。（多選）",
+              "promptText": "下列關於正切函數y=f(x)=tanx的敘述，選出所有正確的選項。（多選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -2141,8 +2141,8 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) 對於任意整數k，直線x=kπ/2為f(x)的漸近線", "isCorrect": false },
-                { "optionText": "(B) f(x)對稱於直線x=π/2", "isCorrect": false },
+                { "optionText": "(A) 對於任意整數k，直線x=<sup>kπ</sup>/<sub>2</sub>為f(x)的漸近線", "isCorrect": false },
+                { "optionText": "(B) f(x)對稱於直線x=<sup>π</sup>/<sub>2</sub>", "isCorrect": false },
                 { "optionText": "(C) f(x)是奇函數", "isCorrect": true },
                 { "optionText": "(D) f(x)的定義域是所有實數", "isCorrect": false },
                 { "optionText": "(E) f(x)的值域是所有實數", "isCorrect": true }
@@ -2177,7 +2177,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "在π/2<x<3π/2的範圍內，不等式的解1<tan⁡x為何？（單選）",
+              "promptText": "在<sup>π</sup>/<sub>2</sub><x<<sup>3π</sup>/<sub>2</sub>的範圍內，不等式的解1<tanx為何？（單選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -2186,10 +2186,10 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) π/2<x<3π/4", "isCorrect": false },
-                { "optionText": "(B) 3π/4<x<π", "isCorrect": false },
-                { "optionText": "(C) 5π/4<x<3π/2", "isCorrect": true },
-                { "optionText": "(D) π<x<5π/4", "isCorrect": false }
+                { "optionText": "(A) <sup>π</sup>/<sub>2</sub><x<<sup>3π</sup>/<sub>4</sub>", "isCorrect": false },
+                { "optionText": "(B) <sup>3π</sup>/<sub>4</sub><x<π", "isCorrect": false },
+                { "optionText": "(C) <sup>5π</sup>/<sub>4</sub><x<<sup>3π</sup>/<sub>2</sub>", "isCorrect": true },
+                { "optionText": "(D) π<x<<sup>5π</sup>/<sub>4</sub>", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -2232,10 +2232,10 @@
               "allowPartialMatch": false,
               "options": [
                 { "optionText": "(A) π", "isCorrect": false },
-                { "optionText": "(B) 3π/4", "isCorrect": false },
-                { "optionText": "(C) 5π/4", "isCorrect": false },
-                { "optionText": "(D) -3π/4", "isCorrect": true },
-                { "optionText": "(E) -5π/4", "isCorrect": false }
+                { "optionText": "(B) <sup>3π</sup>/<sub>4</sub>", "isCorrect": false },
+                { "optionText": "(C) <sup>5π</sup>/<sub>4</sub>", "isCorrect": false },
+                { "optionText": "(D) <sup>-3π</sup>/<sub>4</sub>", "isCorrect": true },
+                { "optionText": "(E) <sup>-5π</sup>/<sub>4</sub>", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -2294,7 +2294,7 @@
           "questionImage": "Assets/HoloMath/Data/questions_picture/3-8-3.png",
           "hasImage": true,
           "threeDObject": "Angle_Anime",
-          "questionText": "若函數f(x)=3 cos⁡〖(px+θ)〗的部分圖形如下圖所示，其中p>0、0≤θ≤π，則p=1/(a) 、θ=π/(b)。（選填）",
+          "questionText": "若函數f(x)=3 cos(px+θ)的部分圖形如下圖所示，其中p>0、0≤θ≤π，則p=<sup>1</sup>/<sub>(a)</sub>、θ=<sup>π</sup>/<sub>(b)</sub>。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -2356,7 +2356,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "已知f(x)為y=sin⁡x經由伸縮、平移後得到的圖形，下圖為f(x)的函數圖形。下列選項中，哪些函數圖形與f(x)圖形相同？（多選）",
+              "promptText": "已知f(x)為y=sinx經由伸縮、平移後得到的圖形，下圖為f(x)的函數圖形。下列選項中，哪些函數圖形與f(x)圖形相同？（多選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -2365,11 +2365,11 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) y=2sin(x+π/4)", "isCorrect": true },
-                { "optionText": "(B) y=2sin(x-7π/4)", "isCorrect": true },
-                { "optionText": "(C) y=2sin(x+5π/4)", "isCorrect": false },
-                { "optionText": "(D) y=2cos(x+3π/4)", "isCorrect": false },
-                { "optionText": "(E) y=2cos(x-π/4)", "isCorrect": true }
+                { "optionText": "(A) y=2sin(x+<sup>π</sup>/<sub>4</sub>)", "isCorrect": true },
+                { "optionText": "(B) y=2sin(x-<sup>7π</sup>/<sub>4</sub>)", "isCorrect": true },
+                { "optionText": "(C) y=2sin(x+<sup>5π</sup>/<sub>4</sub>)", "isCorrect": false },
+                { "optionText": "(D) y=2cos(x+<sup>3π</sup>/<sub>4</sub>)", "isCorrect": false },
+                { "optionText": "(E) y=2cos(x-<sup>π</sup>/<sub>4</sub>)", "isCorrect": true }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -2392,7 +2392,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "某地的日照時數D(x)(單位:小時) 會隨月份x變化，日照時數約可用下列函數表示：D(x)=4 cos⁡(π/6 (x-6))+10  其中0<x≤12，x=1表示1月。 (1)該地在_____月時有最長日照，時數為_____小時。 (2)3月的日照時數為_____小時，9月的日照時數為_____小時。 (3)試問哪兩個月份日照時數為12小時？_____月、_____月。（填空）",
+          "questionText": "某地的日照時數D(x)(單位:小時) 會隨月份x變化，日照時數約可用下列函數表示：D(x)=4 cos(<sup>π</sup>/<sub>6</sub> (x-6))+10  其中0<x≤12，x=1表示1月。 (1)該地在_____月時有最長日照，時數為_____小時。 (2)3月的日照時數為_____小時，9月的日照時數為_____小時。 (3)試問哪兩個月份日照時數為12小時？_____月、_____月。（填空）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -2504,7 +2504,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "一座摩天輪的半徑為15公尺，摩天輪的圓心離地面20公尺高。摩天輪逆時針旋轉，假設設置以圓心O為原點的直角坐標系，其中最高點A位於y軸上方，最右點B位於x軸上。摩天輪上一個座艙P，在時間t秒時，其離地的高度y（單位：公尺）可由函數y=15 sin⁡(π/60 (t-2))+20來描述，其中t≥0。請問： (1)摩天輪一圈需要_____秒。 (2)璿璿現在(t=0)在座艙P，最少需要_____秒才能到達最高點A。（填空）",
+          "questionText": "一座摩天輪的半徑為15公尺，摩天輪的圓心離地面20公尺高。摩天輪逆時針旋轉，假設設置以圓心O為原點的直角坐標系，其中最高點A位於y軸上方，最右點B位於x軸上。摩天輪上一個座艙P，在時間t秒時，其離地的高度y（單位：公尺）可由函數y=15 sin(<sup>π</sup>/<sub>60</sub> (t-2))+20來描述，其中t≥0。請問： (1)摩天輪一圈需要_____秒。 (2)璿璿現在(t=0)在座艙P，最少需要_____秒才能到達最高點A。（填空）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -2584,11 +2584,11 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) y=2sin(x+π/3)", "isCorrect": true },
-                { "optionText": "(B) y=2sin(x-π/3)", "isCorrect": false },
-                { "optionText": "(C) y=2cos(x+π/6)", "isCorrect": false },
-                { "optionText": "(D) y=2cos(x-π/6)", "isCorrect": true },
-                { "optionText": "(E) y=2cos(x-π/3)", "isCorrect": false }
+                { "optionText": "(A) y=2sin(x+<sup>π</sup>/<sub>3</sub>)", "isCorrect": true },
+                { "optionText": "(B) y=2sin(x-<sup>π</sup>/<sub>3</sub>)", "isCorrect": false },
+                { "optionText": "(C) y=2cos(x+<sup>π</sup>/<sub>6</sub>)", "isCorrect": false },
+                { "optionText": "(D) y=2cos(x-<sup>π</sup>/<sub>6</sub>)", "isCorrect": true },
+                { "optionText": "(E) y=2cos(x-<sup>π</sup>/<sub>3</sub>)", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -2610,7 +2610,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "考慮函數y=3sinx-3cosx，若將其化為餘弦函數的形式，即y=rcos(x+θ)，其中r>0、-π<θ<π，則r=(a)√(b) 、θ=(c)(d)π/4。（選填）",
+          "questionText": "考慮函數y=3sinx-3cosx，若將其化為餘弦函數的形式，即y=rcos(x+θ)，其中r>0、-π<θ<π，則r=(a)√(b) 、θ=<sup>(c)(d)π</sup>/<sub>4</sub>。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -2692,7 +2692,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "考慮函數y=2sinx+2√3cosx，若將其疊合成正弦函數的形式，即y=rcos(x+θ)，其中r>0、-π<θ<π，則r=(a)、θ=π/(b)。（選填）",
+          "questionText": "考慮函數y=2sinx+2√3cosx，若將其疊合成正弦函數的形式，即y=rcos(x+θ)，其中r>0、-π<θ<π，則r=(a)、θ=<sup>π</sup>/<sub>(b)</sub>。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -2745,7 +2745,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "令y=√3cosx-sinx  (1)f(x)的最大值為(a)，最小值為(b)(c)  (2)在0≤x≤2π的範圍中，當x=(e)(f)π/(d)時，f(x)有最大值（選填）",
+          "questionText": "令y=√3cosx-sinx  (1)f(x)的最大值為(a)，最小值為(b)(c)  (2)在0≤x≤2π的範圍中，當x=<sup>(e)(f)π</sup>/<sub>(d)</sub>時，f(x)有最大值（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -2857,7 +2857,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "y=2cos(π/4-x)-3√2sinx+1的最大值為√(a)(b)+(c)。（選填）",
+          "questionText": "y=2cos(<sup>π</sup>/<sub>4</sub>-x)-3√2sinx+1的最大值為√(a)(b)+(c)。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -2925,7 +2925,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "令y=f(x)=sin(x+π/4)+cos(x-π/4)，則在0≤x≤2π的範圍時，當x=(b)π/(a)，有最小值(c)(d)。（選填）",
+          "questionText": "令y=f(x)=sin(x+<sup>π</sup>/<sub>4</sub>)+cos(x-<sup>π</sup>/<sub>4</sub>)，則在0≤x≤2π的範圍時，當x=<sup>(b)π</sup>/<sub>(a)</sub>，有最小值(c)(d)。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -3496,7 +3496,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "設L1、L2、L3是空間中的相異三直線，下列敘述何者是正確的？（多選）",
+              "promptText": "設L<sub>1</sub>、L<sub>2</sub>、L<sub>3</sub>是空間中的相異三直線，下列敘述何者是正確的？（多選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -3505,11 +3505,11 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) 若L_1∥L_2且L_2∥L_3，則L_1∥L_3", "isCorrect": true },
-                { "optionText": "(B) 若L_1⊥L_2且L_1⊥L_3，則L_2⊥L_3", "isCorrect": false },
-                { "optionText": "(C) 若L_1⊥L_2且L_2⊥L_3，則L_1⊥L_3", "isCorrect": false },
-                { "optionText": "(D) 若L_1與L_2相交於一點，且L_2與L_3相交於一點，則L_1與L_3也必相交於一點", "isCorrect": false },
-                { "optionText": "(E) 若L_1∥L_2且L_2與L_3歪斜，則L_1和L_3不可能平行", "isCorrect": true }
+                { "optionText": "(A) 若L<sub>1</sub>∥L<sub>2</sub>且L<sub>2</sub>∥L<sub>3</sub>，則L<sub>1</sub>∥L<sub>3</sub>", "isCorrect": true },
+                { "optionText": "(B) 若L<sub>1</sub>⊥L<sub>2</sub>且L<sub>1</sub>⊥L<sub>3</sub>，則L<sub>2</sub>⊥L<sub>3</sub>", "isCorrect": false },
+                { "optionText": "(C) 若L<sub>1</sub>⊥L<sub>2</sub>且L<sub>2</sub>⊥L<sub>3</sub>，則L<sub>1</sub>⊥L<sub>3</sub>", "isCorrect": false },
+                { "optionText": "(D) 若L<sub>1</sub>與L<sub>2</sub>相交於一點，且L<sub>2</sub>與L<sub>3</sub>相交於一點，則L<sub>1</sub>與L<sub>3</sub>也必相交於一點", "isCorrect": false },
+                { "optionText": "(E) 若L<sub>1</sub>∥L<sub>2</sub>且L<sub>2</sub>與L<sub>3</sub>歪斜，則L<sub>1</sub>和L<sub>3</sub>不可能平行", "isCorrect": true }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -3542,7 +3542,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "在空間中，已知兩相異直線L1、L2與平面E1、E2，下列哪些選項正確？（多選）",
+              "promptText": "在空間中，已知兩相異直線L<sub>1</sub>、L<sub>2</sub>與平面E<sub>1</sub>、E<sub>2</sub>，下列哪些選項正確？（多選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -3551,11 +3551,11 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) 若L_1∥E_1，L_2∥E_1，則L_1∥L_2", "isCorrect": false },
-                { "optionText": "(B) 若L_1∥E_1，L_2∥E_1，且L_1、L_2相交於一點，則L_1⊥L_2", "isCorrect": false },
-                { "optionText": "(C) 若L_1⊥E_1且L_1⊥E_2，則E_1⊥E_2", "isCorrect": false },
-                { "optionText": "(D) 若L_1⊥E_1且E_1∥E_2，則L_1⊥E_2", "isCorrect": true },
-                { "optionText": "(E) 若L_1⊥E_1，L_2∥L_1，則L_2⊥E_1", "isCorrect": true }
+                { "optionText": "(A) 若L<sub>1</sub>∥E<sub>1</sub>，L<sub>2</sub>∥E<sub>1</sub>，則L<sub>1</sub>∥L<sub>2</sub>", "isCorrect": false },
+                { "optionText": "(B) 若L<sub>1</sub>∥E<sub>1</sub>，L<sub>2</sub>∥E<sub>1</sub>，且L<sub>1</sub>、L<sub>2</sub>相交於一點，則L<sub>1</sub>⊥L<sub>2</sub>", "isCorrect": false },
+                { "optionText": "(C) 若L<sub>1</sub>⊥E<sub>1</sub>且L<sub>1</sub>⊥E<sub>2</sub>，則E<sub>1</sub>⊥E<sub>2</sub>", "isCorrect": false },
+                { "optionText": "(D) 若L<sub>1</sub>⊥E<sub>1</sub>且E<sub>1</sub>∥E<sub>2</sub>，則L<sub>1</sub>⊥E<sub>2</sub>", "isCorrect": true },
+                { "optionText": "(E) 若L<sub>1</sub>⊥E<sub>1</sub>，L<sub>2</sub>∥L<sub>1</sub>，則L<sub>2</sub>⊥E<sub>1</sub>", "isCorrect": true }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -3587,7 +3587,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "平面E上有相異直線L1、L2交於同一點P，如果平面外有一條直線L，且L⊥L_1，則L⊥L_2。（單選）",
+              "promptText": "平面E上有相異直線L<sub>1</sub>、L<sub>2</sub>交於同一點P，如果平面外有一條直線L，且L⊥L<sub>1</sub>，則L⊥L<sub>2</sub>。（單選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -3629,7 +3629,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "平面E上有相異直線L1、L2、L3交於同一點P，如果平面外有一條直線L，且L⊥L_1，L⊥L_2，則L⊥L_3。（單選）",
+              "promptText": "平面E上有相異直線L<sub>1</sub>、L<sub>2</sub>、L<sub>3</sub>交於同一點P，如果平面外有一條直線L，且L⊥L<sub>1</sub>，L⊥L<sub>2</sub>，則L⊥L<sub>3</sub>。（單選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -3706,7 +3706,7 @@
           "questionImage": "Assets/HoloMath/Data/questions_picture/5-3-5.png",
           "hasImage": true,
           "threeDObject": "Angle_Anime",
-          "questionText": "已知金字塔ABCDE中，(AB) ̅=(AC) ̅=(AD ) ̅=(AE) ̅=5，(BC) ̅=(CD) ̅=(DE ) ̅=(EB) ̅=3，且BCDE為正方形，試求直線(AC) ̅與底面BCDE之夾角的餘弦值。答：((a)√(b))/10 （選填）",
+          "questionText": "已知金字塔ABCDE中，(AB) ̅=(AC) ̅=(AD ) ̅=(AE) ̅=5，(BC) ̅=(CD) ̅=(DE ) ̅=(EB) ̅=3，且BCDE為正方形，試求直線(AC) ̅與底面BCDE之夾角的餘弦值。 答：<sup>(a)√(b)</sup>/<sub>10</sub>（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -3868,10 +3868,10 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) 1/8", "isCorrect": false },
-                { "optionText": "(B) -1/4", "isCorrect": false },
-                { "optionText": "(C) -1/8", "isCorrect": true },
-                { "optionText": "(D) 1/4", "isCorrect": false }
+                { "optionText": "(A) <sup>1</sup>/<sub>8</sub>", "isCorrect": false },
+                { "optionText": "(B) <sup>-1</sup>/<sub>4</sub>", "isCorrect": false },
+                { "optionText": "(C) <sup>-1</sup>/<sub>8</sub>", "isCorrect": true },
+                { "optionText": "(D) <sup>1</sup>/<sub>4</sub>", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -3893,7 +3893,7 @@
           "questionImage": "Assets/HoloMath/Data/questions_picture/5-4-3.png",
           "hasImage": true,
           "threeDObject": "Angle_Anime",
-          "questionText": "參考下圖，∆ABC與∆DBC是邊長為3的正三角形，若平面ABC與平面DBC所夾的兩面角為90°，則(AD) ̅= ((a)√(b))/2，cos∠ACD=1/(c) （選填）",
+          "questionText": "參考下圖，∆ABC與∆DBC是邊長為3的正三角形，若平面ABC與平面DBC所夾的兩面角為90°，則(AD) ̅= <sup>((a)√(b))</sup>/<sub>2</sub>，cos∠ACD=<sup>1</sup>/<sub>(c)</sub> （選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -3960,7 +3960,7 @@
           "questionImage": "Assets/HoloMath/Data/questions_picture/5-4-4.png",
           "hasImage": true,
           "threeDObject": "Angle_Anime",
-          "questionText": "有一底面為正方形的四角錐，其展開圖如下圖所示，其中兩側面的三角形邊長為3、4、5，則此角錐的體積為((a)(b)√(c))/3（選填）",
+          "questionText": "有一底面為正方形的四角錐，其展開圖如下圖所示，其中兩側面的三角形邊長為3、4、5，則此角錐的體積為<sup>((a)(b)√(c))</sup>/<sub>3</sub>（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -4176,7 +4176,7 @@
           "questionImage": "Assets/HoloMath/Data/questions_picture/5-5-4.png",
           "hasImage": true,
           "threeDObject": "Angle_Anime",
-          "questionText": "有一棵樹和地面垂直，旁邊的道路上有一隻小鳥，令樹頂為點A，樹底為點O，道路上有兩點B、C，且∠ABC=45°，平面ABC和平面OBC的兩面角為30°。若小鳥從B點飛到樹頂的鳥巢裡，且(AB) ̅=6公尺，請問小鳥實際上升的高度為幾公尺？答：((a)√(b))/2公尺 （選填）",
+          "questionText": "有一棵樹和地面垂直，旁邊的道路上有一隻小鳥，令樹頂為點A，樹底為點O，道路上有兩點B、C，且∠ABC=45°，平面ABC和平面OBC的兩面角為30°。若小鳥從B點飛到樹頂的鳥巢裡，且(AB) ̅=6公尺，請問小鳥實際上升的高度為幾公尺？答：<sup>((a)√(b))</sup>/<sub>2</sub>公尺 （選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -4324,7 +4324,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "已知A(1,4,2)、B(3,6,5)為坐標空間中相異兩點，P為y軸上的一點，且滿足¯PA=¯PB。試求P點的坐標。答：P((a),(b)(c)/4,0) （選填）",
+          "questionText": "已知A(1,4,2)、B(3,6,5)為坐標空間中相異兩點，P為y軸上的一點，且滿足¯PA=¯PB。試求P點的坐標。答：P((a),<sup>(b)(c)</sup>/<sub>4</sub>,0) （選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -4459,7 +4459,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "設(向量OA)=(1,-2,2)，(向量OB)=(3,1,-1)且(向量OC)=t(向量OA)+(向量OB)。試求|(向量OC)|的最小值。答：((a)√(b))/3 （選填）",
+          "questionText": "設(向量OA)=(1,-2,2)，(向量OB)=(3,1,-1)且(向量OC)=t(向量OA)+(向量OB)。試求|(向量OC)|的最小值。答：<sup>((a)√(b))</sup>/<sub>3</sub> （選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -4624,7 +4624,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "已知空間中有兩點A(3,-2,4)、B(9,4,-2)，P點在線段¯AB上，且滿足¯PA ∶¯PB=3∶2，則P點坐標為((a)(b)/5,(c)/5,(d)/5)。（選填）",
+          "questionText": "已知空間中有兩點A(3,-2,4)、B(9,4,-2)，P點在線段¯AB上，且滿足¯PA ∶¯PB=3∶2，則P點坐標為(<sup>(a)(b)</sup>/<sub>5</sub>,<sup>(c)</sup>/<sub>5</sub>,<sup>(d)</sup>/<sub>5</sub>)。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -4871,7 +4871,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "已知(向量a)=(2,-1,3)、(向量b)=(1,2,-2)，則(向量a)∙(向量b)=(a)(b)。其中θ為(向量a)與(向量b)之夾角，則cosθ=((c)√(d)(e))/7。（選填）",
+          "questionText": "已知(向量a)=(2,-1,3)、(向量b)=(1,2,-2)，則(向量a)∙(向量b)=(a)(b)。其中θ為(向量a)與(向量b)之夾角，則cosθ=<sup>((c)√(d)(e))</sup>/<sub>7</sub>。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -5005,7 +5005,7 @@
           "questionImage": "Assets/HoloMath/Data/questions_picture/7-1-3.png",
           "hasImage": true,
           "threeDObject": "Angle_Anime",
-          "questionText": "下圖是一個長方體，已知¯OA=¯AB=3、¯BC=6，且¯OP∶¯PA=1∶2、¯BQ∶¯QC=1∶1，則(向量PR)∙(向量PQ)=(a)(b)，cos∠QPR=20/√(c)(d)(e)。（選填）",
+          "questionText": "下圖是一個長方體，已知¯OA=¯AB=3、¯BC=6，且¯OP∶¯PA=1∶2、¯BQ∶¯QC=1∶1，則(向量PR)∙(向量PQ)=(a)(b)，cos∠QPR=<sup>20</sup>/<sub>√(c)(d)(e)</sub>。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -5155,7 +5155,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "設(向量a)=(5,2,-1)、(向量b)=(2,3,1)，則(向量a)在(向量b)上的正射影為((a)(b)/14,(c)(d)/14,(e)(f)/14)。（選填）",
+          "questionText": "設(向量a)=(5,2,-1)、(向量b)=(2,3,1)，則(向量a)在(向量b)上的正射影為(<sup>(a)(b)</sup>/<sub>14</sub>,<sup>(c)(d)</sup>/<sub>14</sub>,<sup>(e)(f)</sup>/<sub>14</sub>)。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -5277,7 +5277,7 @@
           "questions": [
             {
               "questionType": "FillInBlank",
-              "promptText": "有一位同學對一個物體施力，其力的方向可用(向量a)=(6,8,4)表示。若該物體正在沿著一個斜坡方向移動，而該斜坡方向可用向量(向量b)=(2,1,3)表示。請將這個力(向量a)分解為與(向量b)平行和垂直的兩個向量和，且這兩個向量和(向量a)共平面。與(向量b)平行的向量為(A/7,B/7,C/7)，與(向量b)垂直的向量為(X/7,Y/7,Z/7)。則A+B+C+X+Y+Z=_____。（填空）",
+              "promptText": "有一位同學對一個物體施力，其力的方向可用(向量a)=(6,8,4)表示。若該物體正在沿著一個斜坡方向移動，而該斜坡方向可用向量(向量b)=(2,1,3)表示。請將這個力(向量a)分解為與(向量b)平行和垂直的兩個向量和，且這兩個向量和(向量a)共平面。與(向量b)平行的向量為(<sup>A</sup>/<sub>7</sub>,<sup>B</sup>/<sub>7</sub>,<sup>C<sup>/<sub>7</sub>)，與(向量b)垂直的向量為(<sup>X</sup>/<sub>7</sub>,<sup>Y<sup>/<sub>7</sub>,<sup>Z</sup>/<sub>7</sub>)。則A+B+C+X+Y+Z=_____。（填空）",
               "correctAnswer": "126",
               "acceptableAnswers": [],
               "hint": "",
@@ -5304,7 +5304,7 @@
           "questionImage": "Assets/HoloMath/Data/questions_picture/7-2-3.png",
           "hasImage": true,
           "threeDObject": "Angle_Anime",
-          "questionText": "如圖，長方體OABD-DEFG中，O為原點，A(3,0,0)、C(0,5,0)、D(0,0,2)，試求(向量OB)在(向量OE)上的正射影為((a)(b)/13,0,(c)(d)/13)。（選填）",
+          "questionText": "如圖，長方體OABD-DEFG中，O為原點，A(3,0,0)、C(0,5,0)、D(0,0,2)，試求(向量OB)在(向量OE)上的正射影為(<sup>(a)(b)</sup>/<sub>13</sub>,0,<sup>(c)(d)</sup>/<sub>13</sub>)。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -5386,7 +5386,7 @@
           "questionImage": "Assets/HoloMath/Data/questions_picture/7-2-4.png",
           "hasImage": true,
           "threeDObject": "Angle_Anime",
-          "questionText": "在空間坐標系中，有一個邊長為4的正四面體ABCD，其中A在原點(0,0,0)，如下圖。點E、F、G分別為¯AB、¯AC、¯AD的中點，則(向量EF)在(向量EG)上的正射影為((a),√(b)/2,√(c)/2)。（選填）",
+          "questionText": "在空間坐標系中，有一個邊長為4的正四面體ABCD，其中A在原點(0,0,0)，如下圖。點E、F、G分別為¯AB、¯AC、¯AD的中點，則(向量EF)在(向量EG)上的正射影為((a),<sup>√(b)</sup>/<sub>2</sub>,<sup>√(c)</sup>/<sub>2</sub>)。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -5464,7 +5464,7 @@
           "questions": [
             {
               "questionType": "FillInBlank",
-              "promptText": "已知空間中兩向量(向量a)=(1,2,2)、(向量b)=(3x,y,2z)，若3x+2y+4z=15，則9x²+y²+4z²的最小值為A，此時(向量b)=(B/3,C/3,D/3)。則A+B+C+D=_____。（填空）",
+              "promptText": "已知空間中兩向量(向量a)=(1,2,2)、(向量b)=(3x,y,2z)，若3x+2y+4z=15，則9x²+y²+4z²的最小值為A，此時(向量b)=(<sup>B</sup>/<sub>3</sub>,<sup>C</sup>/<sub>3</sub>,<sup>D</sup>/<sub>3</sub>)。則A+B+C+D=_____。（填空）",
               "correctAnswer": "50",
               "acceptableAnswers": [],
               "hint": "",
@@ -5510,10 +5510,10 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) 最大值為2√3，此時x=√3/3,y=-(2√3)/3,z=(2√3)/9；最小值為-2√3，此時x=-√3/3,y=(2√3)/3,z=-(2√3)/9。", "isCorrect": true },
-                { "optionText": "(B) 最大值為√3，此時x=√3/3,y=-√3/3,z=√3/9；最小值為-√3，此時x=-√3/3,y=√3/3,z=-√3/9。", "isCorrect": false },
+                { "optionText": "(A) 最大值為2√3，此時x=<sup>√3</sup>/<sub>3</sub>,y=<sup>-(2√3)</sup>/<sub>3</sub>,z=<sup>(2√3)</sup>/<sub>9</sub>；最小值為-2√3，此時x=<sup>-√3</sup>/<sub>3</sub>,y=<sup>(2√3)</sup>/<sub>3</sub>,z=<sup>-(2√3)</sup>/<sub>9</sub>。", "isCorrect": true },
+                { "optionText": "(B) 最大值為√3，此時x=<sup>√3</sup>/<sub>3</sub>,y=<sup>-√3</sup>/<sub>3</sub>,z=<sup>√3</sup>/<sub>9</sub>；最小值為-√3，此時x=<sup>-√3</sup>/<sub>3</sub>,y=<sup>√3</sup>/<sub>3</sub>,z=<sup>-√3</sup>/<sub>9</sub>。", "isCorrect": false },
                 { "optionText": "(C) 最大值為2，此時x=1,y=-1,z=0；最小值為-2，此時x=-1,y=1,z=0。", "isCorrect": false },
-                { "optionText": "(D) 最大值為3，此時x=√3/3,y=-(2√3)/3,z=(2√3)/9；最小值為-3，此時x=-√3/3,y=(2√3)/3,z=-(2√3)/9。", "isCorrect": false }
+                { "optionText": "(D) 最大值為3，此時x=<sup>√3</sup>/<sub>3</sub>,y=<sup>-(2√3)</sup>/<sub>3</sub>,z=<sup>(2√3)</sup>/<sub>9</sub>；最小值為-3，此時x=<sup>-√3</sup>/<sub>3</sub>,y=<sup>(2√3)</sup>/<sub>3</sub>,z=<sup>-(2√3)</sup>/<sub>9</sub>。", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -5709,7 +5709,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "設(向量a)=(3,-1,2)與(向量b)=(1,4,0)，且(向量a)與(向量b)的夾角為θ。則利用向量內積求cosθ之值為(-1)/√(a)(b)(c)。則求(向量a)×(向量b)的大小為√((d)(e)(f))。（選填）",
+          "questionText": "設(向量a)=(3,-1,2)與(向量b)=(1,4,0)，且(向量a)與(向量b)的夾角為θ。則利用向量內積求cosθ之值為<sup>(-1)</sup>/<sub>√(a)(b)(c)</sub>。則求(向量a)×(向量b)的大小為√((d)(e)(f))。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -6005,8 +6005,8 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) 若(向量c)為單位向量，則(向量c)=√6/6 (2,-1,-1)或√6/6 (-2,1,1)", "isCorrect": true },
-                { "optionText": "(B) 若(向量c)為單位向量，則(向量c)=√6/6 (-2,-1,-1)或√6/6 (2,1,1)", "isCorrect": false },
+                { "optionText": "(A) 若(向量c)為單位向量，則(向量c)=<sup>√6</sup>/<sub>6</sub> (2,-1,-1)或<sup>√6</sup>/<sub>6</sub> (-2,1,1)", "isCorrect": true },
+                { "optionText": "(B) 若(向量c)為單位向量，則(向量c)=<sup>√6</sup>/<sub>6</sub> (-2,-1,-1)或<sup>√6</sup>/<sub>6</sub> (2,1,1)", "isCorrect": false },
                 { "optionText": "(C) 若|(向量c)|=6，則(向量c)=(-2√6,-√6,-√6)或(2√6,√6,√6)", "isCorrect": false },
                 { "optionText": "(D) 若|(向量c)|=6，則(向量c)=(2√6,-√6,-√6)或(-2√6,√6,√6)", "isCorrect": true }
               ],
@@ -6030,7 +6030,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "空間中有三點P(3,1,0)、Q(5,2,-2)、R(4,4,1)，則(向量PQ)×(向量PR)=((a),-4,(b))，∆PQR的面積為((c)√(d)(e))/2。（選填）",
+          "questionText": "空間中有三點P(3,1,0)、Q(5,2,-2)、R(4,4,1)，則(向量PQ)×(向量PR)=((a),-4,(b))，∆PQR的面積為<sup>((c)√(d)(e))</sup>/<sub>2</sub>。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -6146,7 +6146,7 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) (9√6)/2", "isCorrect": false },
+                { "optionText": "(A) <sup>(9√6)</sup>/<sub>2</sub>", "isCorrect": false },
                 { "optionText": "(B) 9√2", "isCorrect": false },
                 { "optionText": "(C) 3√3", "isCorrect": false },
                 { "optionText": "(D) √6", "isCorrect": true }
@@ -6397,7 +6397,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "已知在坐標空間中O(0,0,0)、A(1,2,1)、B(2,3,4)、C(t,1,2)四點共平面，則t的值為(b)/(a)。（選填）",
+          "questionText": "已知在坐標空間中O(0,0,0)、A(1,2,1)、B(2,3,4)、C(t,1,2)四點共平面，則t的值為<sup>(b)</sup>/<sub>(a)</sub>。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -6584,7 +6584,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "已知(向量u)=(2,0,1)、(向量v)=(0,-3,-3)、(向量w)=(x,y,z)為空間中三向量，且(向量w)與(向量u)×(向量v)平行。若|■(2&0&1@0&-3&3@x&y&z)|=18，則(向量w)為((a)/3, (b)(c)/3, (d)(e)/3)。（選填）",
+          "questionText": "已知(向量u)=(2,0,1)、(向量v)=(0,-3,-3)、(向量w)=(x,y,z)為空間中三向量，且(向量w)與(向量u)×(向量v)平行。若|■(2&0&1@0&-3&3@x&y&z)|=18，則(向量w)為(<sup>(a)</sup>/<sub>3</sub>, <sup>(b)(c)</sup>/<sub>3</sub>, <sup>(d)(e)</sup>/<sub>3</sub>)。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -6691,7 +6691,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "空間中四點A(0,1,2)、B(3,1,4)、C(1,2,3)、D(4,1,k)，若四面體ABCD體積為7/3，則下列哪些選項為可能的k值？（多選）",
+              "promptText": "空間中四點A(0,1,2)、B(3,1,4)、C(1,2,3)、D(4,1,k)，若四面體ABCD體積為<sup>7</sup>/<sub>3</sub>，則下列哪些選項為可能的k值？（多選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -6701,10 +6701,10 @@
               "allowPartialMatch": false,
               "options": [
                 { "optionText": "(A) 0", "isCorrect": true },
-                { "optionText": "(B) -28/3", "isCorrect": false },
-                { "optionText": "(C) -14/3", "isCorrect": false },
-                { "optionText": "(D) 28/3", "isCorrect": true },
-                { "optionText": "(E) 14/3", "isCorrect": false }
+                { "optionText": "(B) <sup>-28</sup>/<sub>3</sub>", "isCorrect": false },
+                { "optionText": "(C) <sup>-14</sup>/<sub>3</sub>", "isCorrect": false },
+                { "optionText": "(D) <sup>28</sup>/<sub>3</sub>", "isCorrect": true },
+                { "optionText": "(E) <sup>14</sup>/<sub>3</sub>", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -6961,7 +6961,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "已知北緯30°的經距為d，赤道的經距為D，則d/D的值為√(b)/(a)。（選填）",
+          "questionText": "已知北緯30°的經距為d，赤道的經距為D，則d/D的值為<sup>√(b)</sup>/<sub>(a)</sub>。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -7868,7 +7868,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "兩平行面E_1:2x+2y+z-7=0與E_2:4x+4y+2z-1=0的距離為(b)(c)/(a)。（選填）",
+          "questionText": "兩平行面E_1:2x+2y+z-7=0與E_2:4x+4y+2z-1=0的距離為<sup>(b)(c)</sup>/<sub>(a)</sub>。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -8096,10 +8096,10 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) (x-1)/2=(y-3)/2=(z+2)/(-1)", "isCorrect": false },
-                { "optionText": "(B) (x-1)/2=(y-3)/(-2)=(z-2)/(-1)", "isCorrect": false },
-                { "optionText": "(C) (x-1)/2=(y-3)/(-2)=(z+2)/(-1)", "isCorrect": true },
-                { "optionText": "(D) (x-3)/2=(y-1)/2=(z+3)/(-1)", "isCorrect": false }
+                { "optionText": "(A) <sup>(x-1)</sup>/<sub>2</sub>=<sup>(y-3)</sup>/<sub>2</sub>=<sup>(z+2)</sup>/<sub>(-1)</sub>", "isCorrect": false },
+                { "optionText": "(B) <sup>(x-1)</sup>/<sub>2</sub>=<sup>(y-3)</sup>/<sub>(-2)</sub>=<sup>(z-2)</sup>/<sub>(-1)</sub>", "isCorrect": false },
+                { "optionText": "(C) <sup>(x-1)</sup>/<sub>2</sub>=<sup>(y-3)</sup>/<sub>(-2)</sub>=<sup>(z+2)</sup>/<sub>(-1)</sub>", "isCorrect": true },
+                { "optionText": "(D) <sup>(x-3)</sup>/<sub>2</sub>=<sup>(y-1)</sup>/<sub>2</sub>=<sup>(z+3)</sup>/<sub>(-1)</sub>", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -8131,7 +8131,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "求直線(x-1)/1=(4-y)/2=(z+1)/(-1)的參數式為何？（單選）",
+              "promptText": "求直線<sup>(x-1)</sup>/<sub>1</sub>=<sup>(4-y)</sup>/<sub>2</sub>=<sup>(z+1)</sup>/<sub>(-1)</sub>的參數式為何？（單選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -8276,10 +8276,10 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) (x-1)/(-10)=(y+2)/7=z/9", "isCorrect": true },
-                { "optionText": "(B) (x-1)/10=(y+2)/7=z/9", "isCorrect": false },
-                { "optionText": "(C) (x-1)/(-10)=(y-2)/7=z/9", "isCorrect": false },
-                { "optionText": "(D) (x+1)/(-10)=(y+2)/(-7)=z/9", "isCorrect": false }
+                { "optionText": "(A) <sup>(x-1)</sup>/<sub>(-10)</sub>=<sup>(y+2)</sup>/<sub>7</sub>=<sup>z</sup>/</sup>9</sup>", "isCorrect": true },
+                { "optionText": "(B) <sup>(x-1)</sup>/<sub>10</sub>=<sup>(y+2)</sup>/<sub>7</sub>=<sup>z</sup>/</sup>9</sup>", "isCorrect": false },
+                { "optionText": "(C) <sup>(x-1)</sup>/<sub>(-10)</sub>=<sup>(y-2)</sup>/<sub>7</sub>=<sup>z</sup>/</sup>9</sup>", "isCorrect": false },
+                { "optionText": "(D) <sup>(x+1)</sup>/<sub>(-10)</sub>=<sup>(y+2)</sup>/<sub>(-7)</sub>=<sup>z</sup>/</sup>9</sup>", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -8302,7 +8302,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "直線L:(x+2)/1=(y-1)/2=z/3與平面E:x+2y-z=6和的交點座標為((a),(b),(c))。（選填）",
+          "questionText": "直線L:<sup>(x+2)</sup>/<sub>1</sub>=<sup>(y-1)</sup>/<sub>2</sub>=<sup>z</sup>/<sub>3</sub>與平面E:x+2y-z=6和的交點座標為((a),(b),(c))。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -8379,7 +8379,7 @@
           "questions": [
             {
               "questionType": "FillInBlank",
-              "promptText": "設直線L:(x-2)/3=(y-5)/1=(z-2)/(-4)落在平面E:ax-y+bz=5上，a、b為實數，則a+b之值為_____。（填空）",
+              "promptText": "設直線L:<sup>(x-2)</sup>/<sub>3</sub>=<sup>(y-5)</sup>/<sub>1</sub>=<sup>(z-2)</sup>/<sub>(-4)</sub>落在平面E:ax-y+bz=5上，a、b為實數，則a+b之值為_____。（填空）",
               "correctAnswer": "5",
               "acceptableAnswers": [],
               "hint": "",
@@ -8416,7 +8416,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "求通過點A(1,3,4)，且包含直線L:(x+1)/4=(y+1)/(-1)=(z-1)/(-3)之平面E的方程式為何？（單選）",
+              "promptText": "求通過點A(1,3,4)，且包含直線L:<sup>(x+1)</sup>/<sub>4</sub>=<sup>(y+1)</sup>/<sub>(-1)</sub>=<sup>(z-1)</sup>/<sub>(-3)</sub>之平面E的方程式為何？（單選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -8641,7 +8641,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "已知直線L:(x-1)/2=y/2=(z-2)/1、L_1:(x-3)/(-2)=(y-1)/(-2)=(z+1)/(-1)、L_2:(x+1)/4=(y+2)/4=(z-1)/2，試判斷下列敘述哪些正確：（多選）",
+              "promptText": "已知直線L:<sup>(x-1)</sup>/<sub>2</sub>=<sup>y</sup>/<sub>2</sub>=<sup>(z-2)</sup>/<sub>1</sub>、L_1:<sup>(x-3)</sup>/<sub>(-2)</sub>=<sup>(y-1)</sup>/<sub>(-2)</sub>=<sup>(z+1)</sup>/<sub>(-1)</sub>、L_2:<sup>(x+1)</sup>/<sub>4</sub>=<sup>(y+2)</sup>/<sub>4</sub>=<sup>(z-1)</sup>/<sub>2</sub>，試判斷下列敘述哪些正確：（多選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -8677,7 +8677,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "已知直線L_1:(x-1)/1=(y+1)/(-1)=z/(-2)與L_2:(x+1)/a=(y-y_0)/b=(z-z_0)/4重合，則a=_____、b=_____、y_0=_____、z_0=_____。（填空）",
+          "questionText": "已知直線L_1:<sup>(x-1)</sup>/<sub>1</sub>=<sup>(y+1)</sup>/<sub>(-1)</sub>=<sup>z</sup>/<sub>(-2)</sub>與L_2:<sup>(x+1)</sup>/<sub>a</sub>=<sup>(y-y_0)</sup>/<sub>b</sub>=<sup>(z-z_0)</sup>/<sub>4</sub>重合，則a=_____、b=_____、y_0=_____、z_0=_____。（填空）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -8760,7 +8760,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "兩直線L_1:(x+2)/1=(y-2)/(-1)=(z+5)/2與L_2:(x-2)/2=(y-1)/1=(z+2)/(-1)的交點座標為((a),(b),(c)(d))。（選填）",
+          "questionText": "兩直線L_1:<sup>(x+2)</sup>/<sub>1</sub>=<sup>(y-2)</sup>/<sub>(-1)<sub>=<sup>(z+5)</sup>/<sub>2</sub>與L_2:<sup>(x-2)</sup>/<sub>2</sub>=<sup>(y-1)</sup>/<sub>1</sub>=<sup>(z+2)</sup>/<sub>(-1)</sub>的交點座標為((a),(b),(c)(d))。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -8852,7 +8852,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "已知兩直線L_1:(x-1)/2=(y+1)/1=(z-2)/(-1)與L_2:(x-2)/1=(y-1)/(-1)=(z+1)/2相交於一點，則包含L_1與L_2之平面E的方程式為何？（單選）",
+              "promptText": "已知兩直線L_1:<sup>(x-1)</sup>/<sub>2</sub>=<sup>(y+1)</sup>/<sub>1</sub>=<sup>(z-2)</sup>/<sub>(-1)</sub>與L_2:<sup>(x-2)</sup>/<sub>1</sub>=<sup>(y-1)</sup>/<sub>(-1)</sub>=<sup>(z+1)</sup>/<sub>2</sub>相交於一點，則包含L_1與L_2之平面E的方程式為何？（單選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -8887,7 +8887,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "設點P(-5,0,-8)，直線L:(x-3)/1=(y-2)/(-2)=(z+1)/2。自P點作直線L的垂線與直線L交於H，則H點坐標為((a),(b),(c)(d))，點P到直線L的距離為(e)。（選填）",
+          "questionText": "設點P(-5,0,-8)，直線L:<sup>(x-3)</sup>/<sub>1</sub>=<sup>(y-2)</sup>/<sub>(-2)</sub>=<sup>(z+1)</sup>/<sub>2<sub>。自P點作直線L的垂線與直線L交於H，則H點坐標為((a),(b),(c)(d))，點P到直線L的距離為(e)。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -8984,7 +8984,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "已知點P(1,1,-2)，直線L:(x-5)/2=(y-6)/(-3)=(z-3)/(-2)，且Q點是點P對直線L的對稱點，則Q點的坐標為((a)(b),(c),(d))。（選填）",
+          "questionText": "已知點P(1,1,-2)，直線L:<sup>(x-5)</sup>/<sub>2</sub>=<sup>(y-6)</sup>/<sub>(-3)</sub>=<sup>(z-3)</sup>/<sub>(-2)</sub>，且Q點是點P對直線L的對稱點，則Q點的坐標為((a)(b),(c),(d))。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -9077,7 +9077,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "已知兩歪斜線L_1:x/3=(y-4)/(-2)=(z-2)/(-1)、L_2:(x-3)/2=(y+1)/(-1)=(z+2)/(-1)，求兩線之公垂線方程式與公垂線段長。（單選）",
+              "promptText": "已知兩歪斜線L_1:<sup>x</sup>/<sub>3</sub>=<sup>(y-4)</sup>/<sub>(-2)</sub>=<sup>(z-2)</sup>/<sub>(-1)</sub>、L_2:<sup>(x-3)</sup>/<sub>2</sub>=<sup>(y+1)</sup>/<sub>(-1)</sub>=<sup>(z+2)</sup>/<sub>(-1)</sub>，求兩線之公垂線方程式與公垂線段長。（單選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -9086,10 +9086,10 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) 公垂線：(x+1)/1=y/1=(z-1)/1 ；長度2√3", "isCorrect": false },
-                { "optionText": "(B) 公垂線：(x-1)/1=y/1=(z+1)/1 ；長度2√3", "isCorrect": true },
-                { "optionText": "(C) 公垂線：(x-1)/1=y/1=(z+1)/1 ；長度2", "isCorrect": false },
-                { "optionText": "(D) 公垂線：(x-1)/3=y/2=(z+1)/(-1) ；長度2√3", "isCorrect": false }
+                { "optionText": "(A) 公垂線：<sup>(x+1)</sup>/<sub>1</sub>=<sup>y</sup>/<sub>1</sub>=<sup>(z-1)</sup>/<sub>1</sub> ；長度2√3", "isCorrect": false },
+                { "optionText": "(B) 公垂線：<sup>(x-1)</sup>/<sub>1</sub>=<sup>y</sup>/<sub>1</sub>=<sup>(z+1)</sup>/<sub>1</sub> ；長度2√3", "isCorrect": true },
+                { "optionText": "(C) 公垂線：<sup>(x-1)</sup>/<sub>1</sub>=<sup>y</sup>/<sub>1</sub>=<sup>(z+1)</sup>/<sub>1</sub> ；長度2", "isCorrect": false },
+                { "optionText": "(D) 公垂線：<sup>(x-1)</sup>/<sub>3</sub>=<sup>y</sup>/<sub>2</sub>=<sup>(z+1)</sup>/<sub>(-1)</sub> ；長度2√3", "isCorrect": false }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
