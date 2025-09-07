@@ -1075,7 +1075,7 @@ public class TutorialContentManager_Test : MonoBehaviour
                     var userSelections = multipleChoiceSelections[i];
                     var correctAnswers = questions[i].GetCorrectAnswerIndices();
                     isCorrect = userSelections.SetEquals(correctAnswers);
-                    UpdateMultipleChoiceVisuals(i, isCorrect, correctAnswers);
+                    //UpdateMultipleChoiceVisuals(i, isCorrect, correctAnswers);
                 }
             }
 
@@ -1249,7 +1249,7 @@ public class TutorialContentManager_Test : MonoBehaviour
         }
     }
 
-    private void UpdateMultipleChoiceVisuals(int questionIndex, bool isCorrect, HashSet<int> correctAnswers)
+    /*private void UpdateMultipleChoiceVisuals(int questionIndex, bool isCorrect, HashSet<int> correctAnswers)
     {
         if (questionIndex < questionContainers.Count)
         {
@@ -1272,7 +1272,7 @@ public class TutorialContentManager_Test : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
     public void RetryQuestions()
     {
@@ -1299,7 +1299,7 @@ public class TutorialContentManager_Test : MonoBehaviour
                 foreach (var optionComponent in optionComponents)
                 {
                     optionComponent.SetSelected(false);
-                    optionComponent.ResetColor();
+                    //optionComponent.ResetColor();
                 }
             }
         }

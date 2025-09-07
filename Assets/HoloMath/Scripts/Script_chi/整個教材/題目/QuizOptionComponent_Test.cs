@@ -12,7 +12,7 @@ public class QuizOptionComponent_Test : MonoBehaviour
     [SerializeField] private GameObject selectionFrame;
     [SerializeField] private Renderer backgroundRenderer;
     [SerializeField] private Image backgroundImage;
-
+    
     [Header("Font Settings")]
     [SerializeField] private TMP_FontAsset chineseFont; // 繁體中文字體
     [SerializeField] private Material chineseFontMaterial; // MSJH_CHT_SDF_4096Material
@@ -28,20 +28,29 @@ public class QuizOptionComponent_Test : MonoBehaviour
     {
         if (optionTextMesh == null)
             optionTextMesh = GetComponentInChildren<TextMeshPro>();
+
         if (interactableButton == null)
         {
+            GameObject newButton = GameObject.Find("Choicebtn");
+            if (newButton != null)
+                interactableButton = newButton.GetComponent<Interactable>();
+
             interactableButton = GetComponent<Interactable>();
             if (interactableButton == null)
                 interactableButton = GetComponentInChildren<Interactable>();
             if (interactableButton == null)
                 interactableButton = GetComponentInParent<Interactable>();
         }
+
         if (selectionFrame == null)
             selectionFrame = transform.Find("SelectionFrame")?.gameObject;
+
         if (backgroundRenderer == null)
             backgroundRenderer = GetComponent<Renderer>();
+
         if (backgroundImage == null)
             backgroundImage = GetComponent<Image>();
+
         if (backgroundRenderer != null)
         {
             originalColor = backgroundRenderer.material.color;
@@ -65,9 +74,10 @@ public class QuizOptionComponent_Test : MonoBehaviour
         {
             interactableButton.OnClick.AddListener(OnButtonPressed);
         }
+
+        // 確保選取框架一開始就是隱藏的，並保持隱藏狀態
         if (selectionFrame != null)
             selectionFrame.SetActive(false);
-        SetBackgroundColor(normalColor);
     }
 
     private void SetupChineseFont()
@@ -122,11 +132,16 @@ public class QuizOptionComponent_Test : MonoBehaviour
     public void SetSelected(bool selected)
     {
         isSelected = selected;
+        // 註解掉選取框架的顯示/隱藏，讓它一直保持隱藏
+        /*
         if (selectionFrame != null)
         {
             selectionFrame.SetActive(selected);
         }
-        SetBackgroundColor(selected ? selectedColor : normalColor);
+        */
+        
+        // 註解掉背景顏色變化
+        //SetBackgroundColor(selected ? selectedColor : normalColor);
     }
 
     public bool IsSelected()
@@ -139,17 +154,17 @@ public class QuizOptionComponent_Test : MonoBehaviour
         SetSelected(!isSelected);
     }
 
-    public void SetResultColor(Color color)
+    /*public void SetResultColor(Color color)
     {
         SetBackgroundColor(color);
-    }
+    }*/
 
-    public void ResetColor()
+    /*public void ResetColor()
     {
         SetBackgroundColor(isSelected ? selectedColor : normalColor);
-    }
+    }*/
 
-    private void SetBackgroundColor(Color color)
+    /*private void SetBackgroundColor(Color color)
     {
         if (backgroundRenderer != null)
         {
@@ -159,7 +174,7 @@ public class QuizOptionComponent_Test : MonoBehaviour
         {
             backgroundImage.color = color;
         }
-    }
+    }*/
 
     private void OnButtonPressed()
     {
@@ -175,7 +190,7 @@ public class QuizOptionComponent_Test : MonoBehaviour
         }
     }
 
-    public void SetColorTheme(Color normal, Color selected)
+    /*public void SetColorTheme(Color normal, Color selected)
     {
         normalColor = normal;
         selectedColor = selected;
@@ -183,5 +198,5 @@ public class QuizOptionComponent_Test : MonoBehaviour
         {
             SetBackgroundColor(normalColor);
         }
-    }
+    }*/
 }
