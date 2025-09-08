@@ -3551,11 +3551,11 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) 若L_1∥E_1，L_2∥E_1，則L_1∥L_2", "isCorrect": false },
-                { "optionText": "(B) 若L_1∥E_1，L_2∥E_1，且L_1、L_2相交於一點，則L_1⊥L_2", "isCorrect": false },
-                { "optionText": "(C) 若L_1⊥E_1且L_1⊥E_2，則E_1⊥E_2", "isCorrect": false },
-                { "optionText": "(D) 若L_1⊥E_1且E_1∥E_2，則L_1⊥E_2", "isCorrect": true },
-                { "optionText": "(E) 若L_1⊥E_1，L_2∥L_1，則L_2⊥E_1", "isCorrect": true }
+                { "optionText": "(A) 若L<sub>1</sub>∥E<sub>1</sub>，L<sub>2</sub>∥E<sub>1</sub>，則L<sub>1</sub>∥L<sub>2</sub>", "isCorrect": false },
+                { "optionText": "(B) 若L<sub>1</sub>∥E<sub>1</sub>，L<sub>2</sub>∥E<sub>1</sub>，且L<sub>1</sub>、L<sub>2</sub>相交於一點，則L<sub>1</sub>⊥L<sub>2</sub>", "isCorrect": false },
+                { "optionText": "(C) 若L<sub>1</sub>⊥E<sub>1</sub>且L<sub>1</sub>⊥E<sub>2</sub>，則E<sub>1</sub>⊥E<sub>2</sub>", "isCorrect": false },
+                { "optionText": "(D) 若L<sub>1</sub>⊥E<sub>1</sub>且E<sub>1</sub>∥E<sub>2</sub>，則L<sub>1</sub>⊥E<sub>2</sub>", "isCorrect": true },
+                { "optionText": "(E) 若L<sub>1</sub>⊥E<sub>1</sub>，L<sub>2</sub>∥L<sub>1</sub>，則L<sub>2</sub>⊥E<sub>1</sub>", "isCorrect": true }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -3587,7 +3587,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "平面E上有相異直線L1、L2交於同一點P，如果平面外有一條直線L，且L⊥L_1，則L⊥L_2。（單選）",
+              "promptText": "平面E上有相異直線L<sub>1</sub>、L<sub>2</sub>交於同一點P，如果平面外有一條直線L，且L⊥L<sub>1</sub>，則L⊥L<sub>2</sub>。（單選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -3629,7 +3629,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "平面E上有相異直線L1、L2、L3交於同一點P，如果平面外有一條直線L，且L⊥L_1，L⊥L_2，則L⊥L_3。（單選）",
+              "promptText": "平面E上有相異直線L<sub>1</sub>、L<sub>2</sub>、L<sub>3</sub>交於同一點P，如果平面外有一條直線L，且L⊥L<sub>1</sub>，L⊥L<sub>2</sub>，則L⊥L<sub>3</sub>。（單選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -6745,7 +6745,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "如圖，空間中平面E1、E2與一球面相割，且球心O點在平面E2上，但不在E1上，請選出正確的選項：（多選）",
+              "promptText": "如圖，空間中平面E<sub>1</sub>、E<sub>2</sub>與一球面相割，且球心O點在平面E<sub>2</sub>上，但不在E<sub>1</sub>上，請選出正確的選項：（多選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -6754,11 +6754,11 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) 平面E1、E2 對此球面的截痕圖形都是圓。", "isCorrect": true },
-                { "optionText": "(B) 平面E1對球O的截痕圖形為大圓。", "isCorrect": false },
-                { "optionText": "(C) 平面E2對球O的截痕圖形為大圓。", "isCorrect": true },
-                { "optionText": "(D) E1所截的圓上有兩點A、B，則在此圓上的圓弧長(弧AB) ̂兩點在球面上的最短距離。", "isCorrect": false },
-                { "optionText": "(E) E2所截的圓上有兩點C、D，則在此圓上的圓弧長(弧CD) ̂兩點在球面上的最短距離。", "isCorrect": true }
+                { "optionText": "(A) 平面E<sub>1</sub>、E<sub>2</sub> 對此球面的截痕圖形都是圓。", "isCorrect": true },
+                { "optionText": "(B) 平面E<sub>1</sub>對球O的截痕圖形為大圓。", "isCorrect": false },
+                { "optionText": "(C) 平面E<sub>2</sub>對球O的截痕圖形為大圓。", "isCorrect": true },
+                { "optionText": "(D) E<sub>1</sub>所截的圓上有兩點A、B，則在此圓上的圓弧長(弧AB) ̂兩點在球面上的最短距離。", "isCorrect": false },
+                { "optionText": "(E) E<sub>2</sub>所截的圓上有兩點C、D，則在此圓上的圓弧長(弧CD) ̂兩點在球面上的最短距離。", "isCorrect": true }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -7201,7 +7201,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "在空間中，試在以下空格中填入正確的數字：（填空）(1)E_1:3x+y-z=5的法向量 (向量n_1 )=(3,_____,_____)  (2)E_2:-y+4z=7的法向量(向量n_2)=(_____,1,_____)  (3)E_3:z=9的法向量(向量n_3)=(_____,_____,27)",
+          "questionText": "在空間中，試在以下空格中填入正確的數字：（填空）(1)E<sub>1</sub>:3x+y-z=5的法向量 (向量n<sub>1</sub> )=(3,_____,_____)  (2)E<sub>2</sub>:-y+4z=7的法向量(向量n<sub>2</sub>)=(_____,1,_____)  (3)E<sub>3</sub>:z=9的法向量(向量n<sub>3</sub>)=(_____,_____,27)",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -7675,7 +7675,7 @@
           "questions": [
             {
               "questionType": "FillInBlank",
-              "promptText": "兩平面E_1:3x+y-2z=5、E_2:x+y+2z=7的夾角為_____度。（填空）",
+              "promptText": "兩平面E<sub>1</sub>:3x+y-2z=5、E<sub>2</sub>:x+y+2z=7的夾角為_____度。（填空）",
               "correctAnswer": "90",
               "acceptableAnswers": [],
               "hint": "",
@@ -7712,7 +7712,7 @@
           "questions": [
             {
               "questionType": "FillInBlank",
-              "promptText": "已知空間中兩平面E_1:2x-3y+z=9、E_2:x+2y+kz=11的其中一個夾角為120度，k為整數，求k=_____。（填空）",
+              "promptText": "已知空間中兩平面E<sub>1</sub>:2x-3y+z=9、E<sub>2</sub>:x+2y+kz=11的其中一個夾角為120度，k為整數，求k=_____。（填空）",
               "correctAnswer": "-3",
               "acceptableAnswers": [],
               "hint": "",
@@ -7868,7 +7868,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "兩平行面E_1:2x+2y+z-7=0與E_2:4x+4y+2z-1=0的距離為<sup>(b)(c)</sup>/<sub>(a)</sub>。（選填）",
+          "questionText": "兩平行面E<sub>1</sub>:2x+2y+z-7=0與E<sub>2</sub>:4x+4y+2z-1=0的距離為<sup>(b)(c)</sup>/<sub>(a)</sub>。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -7945,7 +7945,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "已知兩平行面E_1:3x-2y-6z=1和E_2:3x-2y-6z=k的距離1，則下列哪些選項為可能的k值？（多選）",
+              "promptText": "已知兩平行面E<sub>1</sub>:3x-2y-6z=1和E<sub>2</sub>:3x-2y-6z=k的距離1，則下列哪些選項為可能的k值？（多選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -8176,7 +8176,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "判斷下列兩平面的關係，選出所有正確敘述： 甲、E_1:2x+y-4z=-6、E_2:10x+5y-20z=-24  乙、E_1:x+5y-3z=7、E_2:3x-15y+8z=11  丙、E_1:-9x+6y-3z=-12、E_2:3x-2y+z=4（多選）",
+              "promptText": "判斷下列兩平面的關係，選出所有正確敘述： 甲、E<sub>1</sub>:2x+y-4z=-6、E<sub>2</sub>:10x+5y-20z=-24  乙、E<sub>1</sub>:x+5y-3z=7、E<sub>2</sub>:3x-15y+8z=11  丙、E<sub>1</sub>:-9x+6y-3z=-12、E<sub>2</sub>:3x-2y+z=4（多選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -8650,12 +8650,12 @@
               "isCaseSensitive": false,
               "allowPartialMatch": false,
               "options": [
-                { "optionText": "(A) L與L_1平行", "isCorrect": true },
-                { "optionText": "(B) L與L_1歪斜", "isCorrect": false },
-                { "optionText": "(C) L與L_1交於一點", "isCorrect": false },
-                { "optionText": "(D) L與L_2平行", "isCorrect": false },
-                { "optionText": "(E) L與L_2歪斜", "isCorrect": false },
-                { "optionText": "(F) L與L_2重合", "isCorrect": true }
+                { "optionText": "(A) L與L<sub>1</sub>平行", "isCorrect": true },
+                { "optionText": "(B) L與L<sub>1</sub>歪斜", "isCorrect": false },
+                { "optionText": "(C) L與L<sub>1</sub>交於一點", "isCorrect": false },
+                { "optionText": "(D) L與L<sub>2</sub>平行", "isCorrect": false },
+                { "optionText": "(E) L與L<sub>2</sub>歪斜", "isCorrect": false },
+                { "optionText": "(F) L與L<sub>2</sub>重合", "isCorrect": true }
               ],
               "optionSpacing": 0.75,
               "optionScale": { "x": 1, "y": 1, "z": 1 },
@@ -8677,7 +8677,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "已知直線L_1:<sup>(x-1)</sup>/<sub>1</sub>=<sup>(y+1)</sup>/<sub>(-1)</sub>=<sup>z</sup>/<sub>(-2)</sub>與L_2:<sup>(x+1)</sup>/<sub>a</sub>=<sup>(y-y_0)</sup>/<sub>b</sub>=<sup>(z-z_0)</sup>/<sub>4</sub>重合，則a=_____、b=_____、y_0=_____、z_0=_____。（填空）",
+          "questionText": "已知直線L<sub>1</sub>:<sup>(x-1)</sup>/<sub>1</sub>=<sup>(y+1)</sup>/<sub>(-1)</sub>=<sup>z</sup>/<sub>(-2)</sub>與L<sub>2</sub>:<sup>(x+1)</sup>/<sub>a</sub>=<sup>(y-y_0)</sup>/<sub>b</sub>=<sup>(z-z_0)</sup>/<sub>4</sub>重合，則a=_____、b=_____、y_0=_____、z_0=_____。（填空）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -8760,7 +8760,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "兩直線L_1:<sup>(x+2)</sup>/<sub>1</sub>=<sup>(y-2)</sup>/<sub>(-1)<sub>=<sup>(z+5)</sup>/<sub>2</sub>與L_2:<sup>(x-2)</sup>/<sub>2</sub>=<sup>(y-1)</sup>/<sub>1</sub>=<sup>(z+2)</sup>/<sub>(-1)</sub>的交點座標為((a),(b),(c)(d))。（選填）",
+          "questionText": "兩直線L<sub>1</sub>:<sup>(x+2)</sup>/<sub>1</sub>=<sup>(y-2)</sup>/<sub>(-1)<sub>=<sup>(z+5)</sup>/<sub>2</sub>與L<sub>2</sub>:<sup>(x-2)</sup>/<sub>2</sub>=<sup>(y-1)</sup>/<sub>1</sub>=<sup>(z+2)</sup>/<sub>(-1)</sub>的交點座標為((a),(b),(c)(d))。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -8852,7 +8852,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "已知兩直線L_1:<sup>(x-1)</sup>/<sub>2</sub>=<sup>(y+1)</sup>/<sub>1</sub>=<sup>(z-2)</sup>/<sub>(-1)</sub>與L_2:<sup>(x-2)</sup>/<sub>1</sub>=<sup>(y-1)</sup>/<sub>(-1)</sub>=<sup>(z+1)</sup>/<sub>2</sub>相交於一點，則包含L_1與L_2之平面E的方程式為何？（單選）",
+              "promptText": "已知兩直線L<sub>1</sub>:<sup>(x-1)</sup>/<sub>2</sub>=<sup>(y+1)</sup>/<sub>1</sub>=<sup>(z-2)</sup>/<sub>(-1)</sub>與L<sub>2</sub>:<sup>(x-2)</sup>/<sub>1</sub>=<sup>(y-1)</sup>/<sub>(-1)</sub>=<sup>(z+1)</sup>/<sub>2</sub>相交於一點，則包含L<sub>1</sub>與L<sub>2</sub>之平面E的方程式為何？（單選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -9077,7 +9077,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "已知兩歪斜線L_1:<sup>x</sup>/<sub>3</sub>=<sup>(y-4)</sup>/<sub>(-2)</sub>=<sup>(z-2)</sup>/<sub>(-1)</sub>、L_2:<sup>(x-3)</sup>/<sub>2</sub>=<sup>(y+1)</sup>/<sub>(-1)</sub>=<sup>(z+2)</sup>/<sub>(-1)</sub>，求兩線之公垂線方程式與公垂線段長。（單選）",
+              "promptText": "已知兩歪斜線L<sub>1</sub>:<sup>x</sup>/<sub>3</sub>=<sup>(y-4)</sup>/<sub>(-2)</sub>=<sup>(z-2)</sup>/<sub>(-1)</sub>、L<sub>2</sub>:<sup>(x-3)</sup>/<sub>2</sub>=<sup>(y+1)</sup>/<sub>(-1)</sub>=<sup>(z+2)</sup>/<sub>(-1)</sub>，求兩線之公垂線方程式與公垂線段長。（單選）",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
@@ -9111,7 +9111,7 @@
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
-          "questionText": "坐標空間中有兩不相交直線L_1:{█(x=1+t@y=1-t@z=2+t)┤(t為實數)、L_2:{█(x=2+2s@y=5+s@z=6-s)┤(s為實數)。一直線L_3與L_1、L_2皆相交且垂直。若P、Q兩點分別在L_1、L_2上且與L_3之距離皆為3，則P、Q兩點距離為(a)√(b)。（選填）",
+          "questionText": "坐標空間中有兩不相交直線L<sub>1</sub>:{█(x=1+t@y=1-t@z=2+t)┤(t為實數)、L<sub>2</sub>:{█(x=2+2s@y=5+s@z=6-s)┤(s為實數)。一直線L<sub>3</sub>與L<sub>1</sub>、L<sub>2</sub>皆相交且垂直。若P、Q兩點分別在L<sub>1</sub>、L<sub>2</sub>上且與L<sub>3</sub>之距離皆為3，則P、Q兩點距離為(a)√(b)。（選填）",
           "useCustomQuestionTextSettings": true,
           "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
           "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
@@ -9156,8 +9156,6 @@
           "passingScore": 60,
           "requireAllCorrect": false
         }
-
-
       ]
     }
   ]
