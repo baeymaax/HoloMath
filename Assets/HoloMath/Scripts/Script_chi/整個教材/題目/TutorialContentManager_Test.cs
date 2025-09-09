@@ -69,7 +69,7 @@ public class TutorialQuestion_Test
     public Vector3 optionStartPosition = Vector3.zero;
    
     [Header("選擇題文字設定")]
-    public float questionTextFontSize = 4f;
+    public float questionTextFontSize = 5f;
 
     public bool IsMultipleChoice()
     {
@@ -111,7 +111,7 @@ public class TutorialContent_Test
     public bool useCustomQuestionTextSettings = false;
     public Vector3 questionTextPosition = Vector3.zero;
     public Vector3 questionTextRotation = Vector3.zero;
-    public float questionTextFontSize = 4f;
+    public float questionTextFontSize = 5f;
     public Vector2 questionTextSize = new Vector2(10f, 2f); // Width x Height
     public bool showQuestionText = true;  // 控制是否顯示 questionText
 
@@ -788,7 +788,7 @@ public class TutorialContentManager_Test : MonoBehaviour
         ClearQuestionFields();
 
         #region 設定container(題目父物件)位置
-        float currentYOffset = -3f;      //底下currentYOffset位置初始設定在 y = -3
+        float currentYOffset = -2f;      //底下currentYOffset位置初始設定在 y = -3
 
         for (int i = 0; i < questions.Count; i++)
         {
@@ -908,7 +908,7 @@ public class TutorialContentManager_Test : MonoBehaviour
 
         #region 選擇題 題目位置
         Vector3 questionTextPos;
-        questionTextPos = new Vector3(1, 3, 14);
+        questionTextPos = new Vector3(1, 3.3f, 14);
         /*if (question.useCustomQuestionTextPosition)
         {
             questionTextPos = question.questionTextPosition;
@@ -925,7 +925,7 @@ public class TutorialContentManager_Test : MonoBehaviour
         questionTextObj.transform.localRotation = Quaternion.identity;
 
         TextMeshPro questionTextMesh = questionTextObj.AddComponent<TextMeshPro>();
-        questionTextMesh.text = $"{questionIndex + 1}. {question.promptText}";
+        questionTextMesh.text = question.promptText;
         questionTextMesh.fontSize = question.questionTextFontSize;
         questionTextMesh.alignment = TextAlignmentOptions.Left;
 
