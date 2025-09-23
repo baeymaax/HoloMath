@@ -7,6 +7,8 @@ using TMPro;
 using Microsoft.MixedReality.Toolkit.UI;
 using System.Linq;
 using System;
+using Org.BouncyCastle.Math.EC;
+using Nethereum.Model;
 
 public enum QuestionType_Test
 {
@@ -205,27 +207,27 @@ public class TutorialContent_Test
 public class TutorialContentManager_Test : MonoBehaviour
 {
     [SerializeField] private List<TutorialContent_Test> tutorialContents = new List<TutorialContent_Test>();
-    [SerializeField] private List<PressableButtonHoloLens2> controlButtons = new List<PressableButtonHoloLens2>();
+    private List<GameObject> controlButtons = new List<GameObject>();
 
-    [SerializeField] private VideoPlayer videoPlayer;
-    [SerializeField] private TextMeshPro questionText3D;
-    [SerializeField] private Transform threeDContainer;
-    [SerializeField] private GameObject imageDisplayObject;
-    [SerializeField] private Renderer imageRenderer;
-    [SerializeField] private GameObject questionCubeParent;
-    [SerializeField] private Transform questionPanel;
-    [SerializeField] private GameObject inputFieldPrefab;
-    [SerializeField] private GameObject optionPrefab;
-    [SerializeField] private PressableButtonHoloLens2 checkAnswerButton;
-    [SerializeField] private PressableButtonHoloLens2 retryButton;
-    [SerializeField] private PressableButtonHoloLens2 showHintButton;
-    [SerializeField] private TextMeshPro resultText;
-    [SerializeField] private TextMeshPro hintText;
-    [SerializeField] private int currentContentIndex = 0;
-    [SerializeField] private Color normalButtonColor = Color.white;
-    [SerializeField] private Color selectedButtonColor = Color.cyan;
-    [SerializeField] private Color correctAnswerColor = Color.green;
-    [SerializeField] private Color wrongAnswerColor = Color.red;
+    private VideoPlayer videoPlayer;
+    private TextMeshPro questionText3D;
+    private Transform threeDContainer;
+    private GameObject imageDisplayObject;
+    private Renderer imageRenderer;
+    private GameObject questionCubeParent;
+    private Transform questionPanel;
+    private GameObject inputFieldPrefab;
+    private GameObject optionPrefab;
+    private PressableButtonHoloLens2 checkAnswerButton;
+    private PressableButtonHoloLens2 retryButton;
+    private PressableButtonHoloLens2 showHintButton;
+    private TextMeshPro resultText;
+    private TextMeshPro hintText;
+    private int currentContentIndex = 0;
+    private Color normalButtonColor = Color.white;
+    private Color selectedButtonColor = Color.cyan;
+    private Color correctAnswerColor = Color.green;
+    private Color wrongAnswerColor = Color.red;
 
     [Header("中文字體設定")]
     [SerializeField] private TMP_FontAsset chineseFont; // 拖拉你的中文字體
@@ -259,7 +261,52 @@ public class TutorialContentManager_Test : MonoBehaviour
     Json_Test Test;
 
     // 在 TutorialContentManager_Test 类中，替换原来的 Start() 方法：
+    public void findAllGameobject()
+    {
+        imageDisplayObject = GameObject.Find("picture");
+        for (int i = 1; i <= 5; i++)
+        {
+            GameObject questionBtn = GameObject.Find("QuestionBtn" + i);
+            {
+                Debug.Log("QuestionBtn" + i);
+            }
+            controlButtons.Add(questionBtn);
+        }
+        videoPlayer = GameObject.Find("VideoScreen").GetComponent<VideoPlayer>();
+        threeDContainer = GameObject.Find("AnimeObject").GetComponent<Transform>();
+        imageDisplayObject = GameObject.Find("picture");
+        imageRenderer = imageDisplayObject.GetComponent<Renderer>();
+        questionCubeParent = GameObject.Find("Tool_board");
 
+        GameObject questionPanelObj = GameObject.Find("QuestionPanel");
+        questionPanel = questionPanelObj.GetComponent<Transform>();
+
+        inputFieldPrefab = GameObject.Find("InputFieldPrefab");
+        optionPrefab = GameObject.Find("OptionPrefab_Test");
+
+        GameObject checkBtn = GameObject.Find("Check_answerBTN");
+        checkAnswerButton = checkBtn.GetComponent<PressableButtonHoloLens2>();
+
+        GameObject retryBtn = GameObject.Find("Retry_answerBTN");
+        retryButton = retryBtn.GetComponent<PressableButtonHoloLens2>();
+
+        GameObject hintBtn = GameObject.Find("Hint_answerBTN");
+        showHintButton = hintBtn.GetComponent<PressableButtonHoloLens2>();
+
+        GameObject resultTextObj = GameObject.Find("ResultText");
+        resultText = resultTextObj.GetComponent<TextMeshPro>();
+
+        GameObject hintTextObj = GameObject.Find("HintText");
+        hintText = hintTextObj.GetComponent<TextMeshPro>();
+
+        // chineseFont = Resources.Load<TMP_FontAsset>("MSJH_CHT_SDF_4096");
+        // chineseFontMaterial = Resources.Load<Material>("MSJH_CHT_SDF_4096 Material");
+        GameObject scoreTextObj = GameObject.Find("TotalScore");
+        totalScoreText = scoreTextObj.GetComponent<TextMeshPro>();
+
+        
+        
+    }
     void Start()
     {
         Debug.Log("=== 开始 Start() 方法 ===");
@@ -320,7 +367,8 @@ public class TutorialContentManager_Test : MonoBehaviour
                 Debug.Log($"內容 {i}: {content.contentName}, 題目數: {content.questions?.Count ?? 0}");
             }
         }
-
+        
+        findAllGameobject();
         // 初始化系統
         if (questionText3D == null && questionCubeParent != null)
         {
@@ -520,7 +568,7 @@ public class TutorialContentManager_Test : MonoBehaviour
             }
         }
     }
-
+#region Button
     private void InitializeButtons()
     {
         for (int i = 0; i < controlButtons.Count; i++)
@@ -528,11 +576,47 @@ public class TutorialContentManager_Test : MonoBehaviour
             int index = i;
             if (controlButtons[i] != null)
             {
-                controlButtons[i].ButtonPressed.AddListener(() => OnButtonPressedQuz());
+                // 獲取 Interactable 組件
+                Microsoft.MixedReality.Toolkit.UI.Interactable interactable = controlButtons[i].GetComponent<Microsoft.MixedReality.Toolkit.UI.Interactable>();
+                
+                if (interactable != null)
+                {
+                    // 使用 OnClick 事件
+                    interactable.OnClick.AddListener(() => OnButtonPressed(index));
+                    Debug.Log($"成功綁定 Interactable 按鈕 {i}");
+                }
+                else
+                {
+                    Debug.LogError($"按鈕 {i} 沒有 Interactable 組件");
+                }
             }
         }
     }
-
+    private void OnButtonPressed(int buttonIndex)
+    {
+        switch (buttonIndex)
+        {
+            case 0:
+                OnButtonPressedQuz();
+                break;
+            case 1:
+                OnButtonPressedQuzMinus();
+                break;
+            case 2:
+                OnButtonPressedLes();
+                break;
+            case 3:
+                OnButtonPressedLesMinus();
+                break;
+            case 4:
+                BackToMenu("MainMenu");
+                break;
+            default:
+                Debug.LogWarning($"未定義按鈕索引: {buttonIndex}");
+                break;
+        }
+    }
+#endregion
     private void InitializeInteractiveButtons()
     {
         if (checkAnswerButton != null)
