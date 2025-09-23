@@ -87,28 +87,18 @@ public class Json_Test : MonoBehaviour
 
     public void LoadJson()
     {
-        try
-        {
             // 文件路徑設定
             string filePath = Path.Combine(Application.dataPath, "HoloMath", "Data", "Chi_Data", "math_questions.json");
-        
-            Debug.Log($"嘗試讀取文件路径: {filePath}");
-            Debug.Log($"Application.dataPath: {Application.dataPath}");
-            Debug.Log($"完整路徑存在: {File.Exists(filePath)}");
             
             // 檢查每一層資料夾是否存在
             string dataPath = Path.Combine(Application.dataPath, "HoloMath");
-            Debug.Log($"HoloMath 資料夾存在: {Directory.Exists(dataPath)}");
             
             dataPath = Path.Combine(Application.dataPath, "HoloMath", "Data");
-            Debug.Log($"Data 資料夾存在: {Directory.Exists(dataPath)}");
             
             dataPath = Path.Combine(Application.dataPath, "HoloMath", "Data", "Chi_Data");
-            Debug.Log($"Chi_Data 資料夾存在: {Directory.Exists(dataPath)}");
         
             if (!File.Exists(filePath))
             {
-                Debug.LogError($"JSON 文件不存在于路径: {filePath}");
                 
                 // 嘗試其他可能的路徑
                 string[] alternativePaths = {
@@ -120,36 +110,29 @@ public class Json_Test : MonoBehaviour
                 
                 foreach (string altPath in alternativePaths)
                 {
-                    Debug.Log($"檢查替代路徑: {altPath} - 存在: {File.Exists(altPath)}");
                     if (File.Exists(altPath))
                     {
                         filePath = altPath;
-                        Debug.Log($"找到文件於: {filePath}");
                         break;
                     }
                 }
                 
                 if (!File.Exists(filePath))
                 {
-                    Debug.LogError("所有路徑都找不到 JSON 文件");
                     return;
                 }
             }
         
             string jsonContent = File.ReadAllText(filePath);
-            Debug.Log($"读取到的 JSON 内容长度: {jsonContent.Length}");
-            Debug.Log($"JSON 內容前100字元: {jsonContent.Substring(0, Math.Min(100, jsonContent.Length))}");
         
             // 驗證 JSON 格式
             if (string.IsNullOrEmpty(jsonContent))
             {
-                Debug.LogError("JSON 文件內容為空");
                 return;
             }
             
             if (!jsonContent.TrimStart().StartsWith("{"))
             {
-                Debug.LogError("JSON 文件格式錯誤 - 不是以 { 開始");
                 return;
             }
             
@@ -158,110 +141,59 @@ public class Json_Test : MonoBehaviour
         
             if (jsonData != null && jsonData.units != null && jsonData.units.Count > 0)
             {
-                Debug.Log($"成功解析 JSON，共 {jsonData.units.Count} 個單元");
             
                 for (int i = 0; i < jsonData.units.Count; i++)
                 {
                     var unit = jsonData.units[i];
-                    Debug.Log($"單元 {i}: {unit.unitName}, 內容數量: {unit.contents?.Count ?? 0}");
                 
                     if (unit.contents != null)
                     {
                         for (int j = 0; j < unit.contents.Count; j++)
                         {
                             var content = unit.contents[j];
-                            Debug.Log($"  內容 {j}: {content.contentName}, 題目數量: {content.questions?.Count ?? 0}");
                         }
                     }
                 }
             }
-            else
-            {
-                Debug.LogError("JSON 解析失败或数据为空");
-                if (jsonData == null)
-                {
-                    Debug.LogError("jsonData 為 null");
-                }
-                else if (jsonData.units == null)
-                {
-                    Debug.LogError("jsonData.units 為 null");
-                }
-                else
-                {
-                    Debug.LogError($"jsonData.units.Count = {jsonData.units.Count}");
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"加载 JSON 时出错: {e.Message}\n{e.StackTrace}");
-        }
+        
     }
 
     public void LoadJsonFromResources()
     {
-        try
-        {
             TextAsset jsonFile = Resources.Load<TextAsset>("HoloMath/Data/math_questions");
             
             if (jsonFile == null)
             {
-                Debug.LogError("無法從 Resources 載入 JSON 文件");
                 return;
             }
             
             string jsonContent = jsonFile.text;
-            Debug.Log($"从 Resources 读取到的 JSON 内容长度: {jsonContent.Length}");
             
             jsonData = JsonUtility.FromJson<JsonTutorialRoot>(jsonContent);
-            
-            if (jsonData != null && jsonData.units != null && jsonData.units.Count > 0)
-            {
-                Debug.Log($"成功解析 JSON，共 {jsonData.units.Count} 個單元");
-            }
-            else
-            {
-                Debug.LogError("JSON 解析失败或数据为空");
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"从 Resources 加载 JSON 时出错: {e.Message}\n{e.StackTrace}");
-        }
     }
 
     public void ApplyToTutorialManager(TutorialContentManager_Test manager)
     {
         if (jsonData == null || jsonData.units == null || jsonData.units.Count == 0)
         {
-            Debug.LogWarning("没有可用的 JSON 数据来应用到 TutorialManager");
             return;
         }
-        
-        try
-        {
-            Debug.Log($"開始轉換 {jsonData.units.Count} 個單元的資料");
             
             // 將所有單元的內容展開為原來的數組格式（暫時保持相容性）
             List<TutorialContent_Test> allContents = new List<TutorialContent_Test>();
         
             foreach (var unit in jsonData.units)
             {
-                Debug.Log($"處理單元: {unit.unitName}, 內容數量: {unit.contents?.Count ?? 0}");
                 
                 if (unit.contents != null)
                 {
                     foreach (var jsonContent in unit.contents)
                     {
-                        Debug.Log($"轉換內容: {jsonContent.contentName}");
                         var tutorialContent = ConvertJsonContentToTutorialContent(jsonContent);
                         allContents.Add(tutorialContent);
-                        Debug.Log($"成功轉換內容，題目數: {tutorialContent.questions?.Count ?? 0}");
                     }
                 }
             }
-
-            Debug.Log($"總共轉換了 {allContents.Count} 個內容");
 
             // 直接設置 List（不再使用反射）
             // 確保 manager 的 tutorialContents 是 List 類型
@@ -270,12 +202,6 @@ public class Json_Test : MonoBehaviour
             // 同時設置單元信息到TutorialManager
             manager.SetUnitsData(jsonData.units);
             
-            Debug.Log($"✓ 成功设置 tutorialContents，共 {allContents.Count} 个项目");
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"应用 JSON 数据到 TutorialManager 时出错: {e.Message}\n{e.StackTrace}");
-        }
     }
 
     private TutorialContent_Test ConvertJsonContentToTutorialContent(JsonTutorialContent jsonContent)
@@ -310,13 +236,6 @@ public class Json_Test : MonoBehaviour
             
             #if UNITY_EDITOR
             tutorialContent.videoClip = UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.Video.VideoClip>(normalizedPath);
-            
-            if (tutorialContent.videoClip == null)
-            {
-                Debug.LogError($"✗ 無法載入視頻: {normalizedPath}");
-            }
-            #else
-            Debug.LogWarning("在 Build 版本中載入 Assets 中的視頻需要預先設置。");
             #endif
         }
 
@@ -326,7 +245,6 @@ public class Json_Test : MonoBehaviour
             string imagePath = jsonContent.questionImage; // 現在是 string 類型
             string normalizedImagePath = imagePath.Replace('\\', '/');
             
-            Debug.Log($"嘗試載入圖片: {normalizedImagePath}");
             
             #if UNITY_EDITOR
             // 在編輯器中使用 AssetDatabase 載入
@@ -334,17 +252,7 @@ public class Json_Test : MonoBehaviour
             
             if (tutorialContent.questionImage == null)
             {
-                Debug.LogError($"✗ 無法載入圖片: {normalizedImagePath}");
-                Debug.LogError("請確保：");
-                Debug.LogError("1. 圖片檔案存在於指定路徑");
-                Debug.LogError("2. 圖片已正確匯入到 Unity 專案中");
-                Debug.LogError("3. 路徑格式正確（使用正斜杠 '/'）");
                 tutorialContent.hasImage = false;
-            }
-            else
-            {
-                Debug.Log($"✓ 成功載入圖片: {normalizedImagePath}");
-                Debug.Log($"圖片尺寸: {tutorialContent.questionImage.width}x{tutorialContent.questionImage.height}");
             }
             #else
             // 在建置版本中，需要使用其他方法載入圖片
@@ -359,13 +267,7 @@ public class Json_Test : MonoBehaviour
             
             if (tutorialContent.questionImage == null)
             {
-                Debug.LogWarning($"建置版本中無法載入圖片: {resourcePath}");
-                Debug.LogWarning("請將圖片移至 Assets/Resources/ 資料夾中");
                 tutorialContent.hasImage = false;
-            }
-            else
-            {
-                Debug.Log($"✓ 從 Resources 成功載入圖片: {resourcePath}");
             }
             #endif
         }
@@ -380,10 +282,6 @@ public class Json_Test : MonoBehaviour
         if (!string.IsNullOrEmpty(jsonContent.threeDObject))
         {
             tutorialContent.threeDObject = GameObject.Find(jsonContent.threeDObject);
-            if (tutorialContent.threeDObject == null)
-            {
-                Debug.LogWarning($"无法找到 3D 物件: {jsonContent.threeDObject}");
-            }
         }
         
         // 转换问题
@@ -460,7 +358,6 @@ public class Json_Test : MonoBehaviour
             case "MultipleChoice":
                 return QuestionType_Test.MultipleChoice;
             default:
-                Debug.LogWarning($"未知的问题类型: {typeString}");
                 return QuestionType_Test.FillInBlank;
         }
     }
@@ -476,7 +373,6 @@ public class Json_Test : MonoBehaviour
             case "Expression":
                 return AnswerType_Test.Expression;
             default:
-                Debug.LogWarning($"未知的答案类型: {typeString}");
                 return AnswerType_Test.Text;
         }
     }
