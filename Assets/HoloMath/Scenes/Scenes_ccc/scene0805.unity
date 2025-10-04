@@ -5837,7 +5837,7 @@ Camera:
   m_GameObject: {fileID: 180453587}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -9296,7 +9296,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: fdcc792cd580f964c811f81babd3b24b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15972,11 +15972,6 @@ Transform:
   - {fileID: 2025598303}
   m_Father: {fileID: 1386002753}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &543340785 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1131677846512122640, guid: b61c79fef80497d4c8f590a782134151, type: 3}
-  m_PrefabInstance: {fileID: 1468193110}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &543340786 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7946035780532179834, guid: b61c79fef80497d4c8f590a782134151, type: 3}
@@ -32388,7 +32383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d9acc7968244a8886f3af591305bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeProfile: {fileID: 11400000, guid: 7e7c962b9eb9dfa44993d5b2f2576752, type: 2}
+  activeProfile: {fileID: 11400000, guid: c8f199e224e5b24419171e4819392eb1, type: 2}
 --- !u!4 &1102557074
 Transform:
   m_ObjectHideFlags: 0
@@ -53854,31 +53849,6 @@ MonoBehaviour:
     showProgress: 1
     passingScore: 60
     requireAllCorrect: 0
-  controlButtons:
-  - {fileID: 1258558242}
-  - {fileID: 598809283}
-  - {fileID: 1196847803}
-  - {fileID: 701249474}
-  - {fileID: 1324896293}
-  videoPlayer: {fileID: 333897644}
-  questionText3D: {fileID: 1044986524}
-  threeDContainer: {fileID: 1524619479}
-  imageDisplayObject: {fileID: 1602897626}
-  imageRenderer: {fileID: 1602897629}
-  questionCubeParent: {fileID: 1403856090669145}
-  questionPanel: {fileID: 54320004}
-  inputFieldPrefab: {fileID: 543340785}
-  optionPrefab: {fileID: 2061697515219847801}
-  checkAnswerButton: {fileID: 1360931054}
-  retryButton: {fileID: 2035234440}
-  showHintButton: {fileID: 587168459}
-  resultText: {fileID: 528354397}
-  hintText: {fileID: 194362143}
-  currentContentIndex: 0
-  normalButtonColor: {r: 1, g: 1, b: 1, a: 1}
-  selectedButtonColor: {r: 0, g: 1, b: 1, a: 1}
-  correctAnswerColor: {r: 0, g: 1, b: 0, a: 1}
-  wrongAnswerColor: {r: 1, g: 0, b: 0, a: 1}
   chineseFont: {fileID: 11400000, guid: 3af1c0d69ff042647a7fb2fe915c697f, type: 2}
   chineseFontMaterial: {fileID: -9165364820383737309, guid: 3af1c0d69ff042647a7fb2fe915c697f, type: 2}
   totalScoreText: {fileID: 759262452}
@@ -65105,11 +65075,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: a46ca7e9679828448a0ea64aa99a68a4, type: 3}
---- !u!1 &2061697515219847801 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1385945648261709781, guid: a46ca7e9679828448a0ea64aa99a68a4, type: 3}
-  m_PrefabInstance: {fileID: 1855791657380848820}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2252577491772061200 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4616946391652716519, guid: a46ca7e9679828448a0ea64aa99a68a4, type: 3}
