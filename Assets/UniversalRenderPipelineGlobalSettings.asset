@@ -32,48 +32,13 @@ MonoBehaviour:
   m_EnableRenderGraph: 0
   m_Settings:
     m_SettingsList:
-      m_List:
-      - rid: 6444078798419525632
-      - rid: 6444078798419525633
-      - rid: 6444078798419525634
-      - rid: 6444078798419525635
-      - rid: 6444078798419525636
-      - rid: 6444078798419525637
-      - rid: 6444078798419525638
-      - rid: 6444078798419525639
-      - rid: 6444078798419525640
-      - rid: 6444078798419525641
-      - rid: 6444078798419525642
-      - rid: 6444078798419525643
-      - rid: 6444078798419525644
-      - rid: 6444078798419525645
-      - rid: 6444078798419525646
-      - rid: 6444078798419525647
-      - rid: 6444078798419525648
-      - rid: 6444078798419525649
-      - rid: 6444078798419525650
-      - rid: 6444078798419525651
-      - rid: 6444078798419525652
-      - rid: 6444078798419525653
-      - rid: 6444078798419525654
-      - rid: 6444078798419525655
-      - rid: 6444078798419525656
-      - rid: 6444078798419525657
-      - rid: 6444078798419525658
-      - rid: 6444078798419525659
+      m_List: []
     m_RuntimeSettings:
       m_List: []
   m_AssetVersion: 8
   m_ObsoleteDefaultVolumeProfile: {fileID: 0}
   m_RenderingLayerNames:
-  - Light Layer default
-  - Light Layer 1
-  - Light Layer 2
-  - Light Layer 3
-  - Light Layer 4
-  - Light Layer 5
-  - Light Layer 6
-  - Light Layer 7
+  - Default
   m_ValidRenderingLayers: 0
   lightLayerName0: Light Layer default
   lightLayerName1: Light Layer 1
