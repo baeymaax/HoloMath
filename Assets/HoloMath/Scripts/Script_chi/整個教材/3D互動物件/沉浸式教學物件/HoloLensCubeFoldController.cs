@@ -39,6 +39,7 @@ public class HoloLensCubeFoldController : MonoBehaviour, IMixedRealityPointerHan
     [Header("3D UI Elements")]
     public GameObject foldButton3D;
     public GameObject unfoldButton3D;
+    public GameObject clearLinesButton3D;  // 新增：清除線段按鈕
     public TextMeshPro statusText3D;
     public TextMeshPro mathAnswerText3D;
 
@@ -314,18 +315,77 @@ public class HoloLensCubeFoldController : MonoBehaviour, IMixedRealityPointerHan
     [ContextMenu("Clear All Drawn Lines")]
     public void ClearAllDrawnLines()
     {
+        int clearedCount = drawnLines.Count;
+
         foreach (var line in drawnLines)
         {
             if (line.lineRenderer != null)
             {
-                DestroyImmediate(line.lineRenderer.gameObject);
+                if (Application.isPlaying)
+                {
+                    Destroy(line.lineRenderer.gameObject);
+                }
+                else
+                {
+                    DestroyImmediate(line.lineRenderer.gameObject);
+                }
             }
         }
-       
+
         drawnLines.Clear();
         ResetVertexSelection();
         UpdateLineCountDisplay();
-        Debug.Log("已清除所有已繪製的線段");
+
+        // 更新狀態顯示
+        if (statusText3D != null)
+        {
+            string state = isUnfolded ? "展開狀態" : "立方體狀態";
+            statusText3D.text = $"{state}\n已清除 {clearedCount} 條線段";
+
+            // 2秒後恢復正常顯示
+            if (Application.isPlaying)
+            {
+                StartCoroutine(ResetStatusTextDelayed(2f));
+            }
+        }
+
+        Debug.Log($"已清除所有已繪製的線段，共 {clearedCount} 條");
+    }
+
+    // 新增：延遲恢復狀態文字的協程
+    private IEnumerator ResetStatusTextDelayed(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        UpdateStatusDisplay();
+    }
+
+    public void ClearLastDrawnLine()
+    {
+        if (drawnLines.Count == 0)
+        {
+            Debug.Log("沒有可清除的線段");
+            return;
+        }
+
+        var lastLine = drawnLines[drawnLines.Count - 1];
+
+        if (lastLine.lineRenderer != null)
+        {
+            if (Application.isPlaying)
+            {
+                Destroy(lastLine.lineRenderer.gameObject);
+            }
+            else
+            {
+                DestroyImmediate(lastLine.lineRenderer.gameObject);
+            }
+        }
+
+        drawnLines.RemoveAt(drawnLines.Count - 1);
+        ResetVertexSelection();
+        UpdateLineCountDisplay();
+
+        Debug.Log($"已清除最後一條線段：{lastLine.lineName}");
     }
 
     void UpdateInteractiveLines()
@@ -647,6 +707,7 @@ public class HoloLensCubeFoldController : MonoBehaviour, IMixedRealityPointerHan
     {
         SetupButton(foldButton3D, () => StartFolding(true));
         SetupButton(unfoldButton3D, () => StartFolding(false));
+        SetupButton(clearLinesButton3D, () => ClearAllDrawnLines());  // 新增
     }
 
     void SetupButton(GameObject button, System.Action onClickAction)
