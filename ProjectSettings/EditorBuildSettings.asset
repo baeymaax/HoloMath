@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/HoloMath/Scenes/Scenes_kun/MainMenu.unity
     guid: 2b26e992493a06148875e33c52765b65
-  - enabled: 1
+  - enabled: 0
     path: Assets/HoloMath/Scenes/Scenes_ccc/TestScene0623.unity
     guid: a32b01906a98d044ab6446bbbd4c3ce3
-  - enabled: 1
+  - enabled: 0
     path: Assets/HoloMath/Scenes/Scenes_kun/Exam.unity
     guid: 176fd53ed76a89942b5144766ba0802f
   - enabled: 1

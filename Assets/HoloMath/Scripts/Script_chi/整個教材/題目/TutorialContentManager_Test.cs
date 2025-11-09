@@ -979,13 +979,13 @@ public class TutorialContentManager_Test : MonoBehaviour
         }*/
         #endregion
 
-        textRect.sizeDelta = new Vector2(15, 5);
+        textRect.sizeDelta = new Vector2(6, 2);
         textRect.localPosition = questionTextPos;
         questionTextObj.transform.localRotation = Quaternion.identity;
 
         TextMeshPro questionTextMesh = questionTextObj.AddComponent<TextMeshPro>();
         questionTextMesh.text = question.promptText;
-        questionTextMesh.fontSize = question.questionTextFontSize;
+        questionTextMesh.fontSize = 2;
         questionTextMesh.alignment = TextAlignmentOptions.Left;
 
         // 設定中文字體
