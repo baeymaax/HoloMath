@@ -233,9 +233,19 @@ public class Json_Test : MonoBehaviour
         if (!string.IsNullOrEmpty(jsonContent.videoClip))
         {
             string normalizedPath = jsonContent.videoClip.Replace('\\', '/');
-            
+
             #if UNITY_EDITOR
             tutorialContent.videoClip = UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.Video.VideoClip>(normalizedPath);
+            if (tutorialContent.videoClip == null)
+            {
+                Debug.LogWarning($"無法載入影片: {normalizedPath}");
+            }
+            else
+            {
+                Debug.Log($"成功載入影片: {normalizedPath} -> {tutorialContent.videoClip.name}");
+            }
+            #else
+            Debug.LogWarning($"非編輯器模式,無法載入影片: {normalizedPath}");
             #endif
         }
 

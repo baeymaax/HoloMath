@@ -1,6 +1,100 @@
 {
   "units": [
-    
+    {
+      "unitName": "總審用",
+      "unitDescription": "CH0",
+      "unitId": 0,
+      "contents": [
+        {
+          "contentName": "弧度制",
+          "description": "CH0-1",
+          "videoClip" :"Assets/HoloMath/Video/5-1空間中的點線面.mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "Angle_Anime",
+          "questionText": "",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "上圖是正方體的平面展開圖，請問在這個正方體中，(1) 線段 CH 與 AF 的關係為何?",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A) 平行", "isCorrect": false },
+                { "optionText": "(B) 垂直", "isCorrect": false },
+                { "optionText": "(C) 相交", "isCorrect": false },
+                { "optionText": "(D) 互為斜線（歪斜）", "isCorrect": true }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 5
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        },
+        {
+          "contentName": "弧度制",
+          "description": "CH0-1",
+          "videoClip" :"Assets/HoloMath/Video/5-1空間中的點線面.mp4",
+          "questionImage": null,
+          "hasImage": false,
+          "threeDObject": "Angle_Anime",
+          "questionText": "",
+          "useCustomQuestionTextSettings": true,
+          "questionTextPosition": { "x": 0.5, "y": 1.8, "z": 0 },
+          "questionTextRotation": { "x": 0, "y": 180, "z": 0 },
+          "questionTextFontSize": 2.5,
+          "questionTextSize": { "x": 8, "y": 1 },
+          "showQuestionText": true,
+          "questions": [
+            {
+              "questionType": "MultipleChoice",
+              "promptText": "(2) 線段 DE 與下列哪一條線段平行？",
+              "correctAnswer": "",
+              "acceptableAnswers": [],
+              "hint": "",
+              "answerType": "Text",
+              "tolerance": 0,
+              "isCaseSensitive": false,
+              "allowPartialMatch": false,
+              "options": [
+                { "optionText": "(A) AB", "isCorrect": false },
+                { "optionText": "(B) CF", "isCorrect": true },
+                { "optionText": "(C) HG", "isCorrect": false },
+                { "optionText": "(D) FG", "isCorrect": false }
+              ],
+              "optionSpacing": 0.75,
+              "optionScale": { "x": 1, "y": 1, "z": 1 },
+              "useCustomOptionPositions": true,
+              "optionStartPosition": { "x": 0.5, "y": 2.5, "z": 14 },
+              "questionTextFontSize": 5
+            }
+          ],
+          "showHints": true,
+          "allowRetry": true,
+          "showProgress": true,
+          "passingScore": 60,
+          "requireAllCorrect": false
+        }
+      ]
+    },
     {
       "unitName": "弧度量",
       "unitDescription": "CH1",

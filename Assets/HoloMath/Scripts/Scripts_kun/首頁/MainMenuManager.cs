@@ -33,8 +33,16 @@ public class MainMenuManager : MonoBehaviour
     {
         InitializeMenu();
         SetupButtonEvents();
-        StartMenuAnimations(); // 只有標題和按鈕動畫
+        // 只有標題和按鈕動畫
+        StartCoroutine(DelayedSceneChange());
     }
+    private IEnumerator DelayedSceneChange(float delay = 2f)
+    {
+        StartMenuAnimations(); 
+        yield return new WaitForSeconds(delay);
+        StartLearning();
+    }
+
 
     void InitializeMenu()
     {
@@ -206,10 +214,7 @@ public class MainMenuManager : MonoBehaviour
     public void StartLearning()
     {
         PlayButtonSound();
-
-        // 按鈕點擊動畫
-        if (startLearningButton != null)
-            StartCoroutine(ButtonClickAnimation(startLearningButton));
+        StartCoroutine(ButtonClickAnimation(startLearningButton));
 
         // 使用過場動畫跳轉
         SmoothSceneTransition.LoadScene(classroomSceneName);

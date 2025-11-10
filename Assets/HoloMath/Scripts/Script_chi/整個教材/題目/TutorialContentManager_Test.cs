@@ -370,7 +370,7 @@ public class TutorialContentManager_Test : MonoBehaviour
         InitializeButtons();
         InitializeInteractiveButtons();
 
-        LoadUnit(0, 0); // 載入第一個單元的第一個內容
+        // LoadUnit(0, 0); // 載入第一個單元的第一個內容
 
     }
 
@@ -595,7 +595,7 @@ public class TutorialContentManager_Test : MonoBehaviour
                 break;
         }
     }
-#endregion
+    #endregion
     private void InitializeInteractiveButtons()
     {
         if (checkAnswerButton != null)
@@ -614,6 +614,18 @@ public class TutorialContentManager_Test : MonoBehaviour
 
 
     #region 按鈕控制方法
+    public void OnButtonCheckQuz() // 題目+（單元內下一個內容）
+    {
+        if (units.Count > 0 && currentUnitIndex < units.Count)
+        {
+            var currentUnit = units[currentUnitIndex];
+            if (currentUnit.contents != null && currentUnit.contents.Count > 0)
+            {
+                currentContentIndexInUnit = (currentContentIndexInUnit + 1) % currentUnit.contents.Count;
+                LoadContentInCurrentUnitNoVideo();
+            }
+        }
+    }
 
     // QUZ相關：單元內的題目切換
     public void OnButtonPressedQuz() // 題目+（單元內下一個內容）
@@ -670,23 +682,61 @@ public class TutorialContentManager_Test : MonoBehaviour
     // 切換單元的方法
     private void LoadUnit(int unitIndex, int contentIndexInUnit)
     {
-        if (unitIndex < 0 || unitIndex >= units.Count) return;
+        if (unitIndex < 0 || unitIndex >= units.Count)
+        {
+            Debug.LogError($"LoadUnit: 無效的 unitIndex {unitIndex}, units.Count = {units.Count}");
+            return;
+        }
 
         var unit = units[unitIndex];
-        if (unit.contents == null || contentIndexInUnit < 0 || contentIndexInUnit >= unit.contents.Count) return;
+        if (unit.contents == null || contentIndexInUnit < 0 || contentIndexInUnit >= unit.contents.Count)
+        {
+            Debug.LogError($"LoadUnit: 無效的 contentIndexInUnit {contentIndexInUnit}, unit.contents.Count = {unit.contents?.Count ?? 0}");
+            return;
+        }
 
         currentUnitIndex = unitIndex;
         currentContentIndexInUnit = contentIndexInUnit;
 
         // 找到對應的全域內容索引
         int globalContentIndex = GetGlobalContentIndex(unitIndex, contentIndexInUnit);
+        Debug.Log($"LoadUnit: Unit[{unitIndex}] Content[{contentIndexInUnit}] -> Global[{globalContentIndex}]");
+
         if (globalContentIndex >= 0 && globalContentIndex < tutorialContents.Count)
         {
             currentContentIndex = globalContentIndex;
             TutorialContent_Test content = tutorialContents[globalContentIndex];
 
+            Debug.Log($"LoadUnit: ContentName = {content.contentName}, VideoClip = {(content.videoClip != null ? content.videoClip.name : "NULL")}");
+
             // 載入內容（包含影片）
             UpdateVideo(content.videoClip);
+            UpdateQuestionContent(content);
+            Update3DObject(content.threeDObject);
+            ResetAnswerState();
+            UpdateScoreDisplay();
+        }
+        else
+        {
+            Debug.LogError($"LoadUnit: 無效的 globalContentIndex {globalContentIndex}, tutorialContents.Count = {tutorialContents.Count}");
+        }
+    }
+    private void LoadContentInCurrentUnitNoVideo()
+    {
+        if (currentUnitIndex < 0 || currentUnitIndex >= units.Count) return;
+
+        var unit = units[currentUnitIndex];
+        if (unit.contents == null || currentContentIndexInUnit < 0 || currentContentIndexInUnit >= unit.contents.Count) return;
+
+        // 找到對應的全域內容索引
+        int globalContentIndex = GetGlobalContentIndex(currentUnitIndex, currentContentIndexInUnit);
+        if (globalContentIndex >= 0 && globalContentIndex < tutorialContents.Count)
+        {
+            currentContentIndex = globalContentIndex;
+            TutorialContent_Test content = tutorialContents[globalContentIndex];
+
+            // 只載入題目內容，不切換影片
+            // UpdateVideo(content.videoClip);
             UpdateQuestionContent(content);
             Update3DObject(content.threeDObject);
             ResetAnswerState();
@@ -756,11 +806,21 @@ public class TutorialContentManager_Test : MonoBehaviour
 
     private void UpdateVideo(VideoClip newVideoClip)
     {
-        if (videoPlayer != null && newVideoClip != null)
+        if (videoPlayer == null)
         {
-            videoPlayer.clip = newVideoClip;
-            videoPlayer.Prepare();
+            Debug.LogWarning("UpdateVideo: videoPlayer 是 null");
+            return;
         }
+
+        if (newVideoClip == null)
+        {
+            Debug.LogWarning("UpdateVideo: newVideoClip 是 null");
+            return;
+        }
+
+        Debug.Log($"UpdateVideo: 切換影片到 {newVideoClip.name}");
+        videoPlayer.clip = newVideoClip;
+        videoPlayer.Prepare();
     }
 
     // 新增公開方法：獲取當前單元資訊
@@ -1209,7 +1269,7 @@ public class TutorialContentManager_Test : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        OnButtonPressedQuz();
+        OnButtonCheckQuz();
     }
 
     private bool CheckSingleAnswer(string userInput, TutorialQuestion_Test question)
@@ -1499,6 +1559,10 @@ public class TutorialContentManager_Test : MonoBehaviour
     {
         SmoothSceneTransition.LoadScene(classroomSceneName);
     }
+    public void ToggleBtn(GameObject gameObject)
+    {
+        gameObject.SetActive(!gameObject.activeSelf);
+    }
 
     private void UpdateQuestionImage(Texture2D questionImage, bool hasImage)
     {
@@ -1681,7 +1745,41 @@ public class TutorialContentManager_Test : MonoBehaviour
             var content = tutorialContents[i];
         }
     }
-    
+
+    // ===== 新增：用于测验系统的公开方法 =====
+
+    /// <summary>
+    /// 获取所有教材内容（供测验系统使用）
+    /// </summary>
+    public List<TutorialContent_Test> GetAllTutorialContents()
+    {
+        return new List<TutorialContent_Test>(tutorialContents);
+    }
+
+    /// <summary>
+    /// 获取当前用户填空题答案（供测验系统使用）
+    /// </summary>
+    public string GetCurrentUserAnswer(int questionIndex)
+    {
+        if (questionIndex >= 0 && questionIndex < inputFields.Count && inputFields[questionIndex] != null)
+        {
+            return inputFields[questionIndex].text.Trim();
+        }
+        return "";
+    }
+
+    /// <summary>
+    /// 获取当前用户选择题选项（供测验系统使用）
+    /// </summary>
+    public List<int> GetCurrentUserSelections(int questionIndex)
+    {
+        if (questionIndex >= 0 && questionIndex < multipleChoiceSelections.Count)
+        {
+            return new List<int>(multipleChoiceSelections[questionIndex]);
+        }
+        return new List<int>();
+    }
+
 }
 
 

@@ -23,7 +23,7 @@ public class HoloLensCubeFoldController : MonoBehaviour, IMixedRealityPointerHan
    
     [Header("Interactive Line Drawing")]
     public Material interactiveLineMaterial;
-    public float interactiveLineWidth = 0.03f;
+    public float interactiveLineWidth = 0.012f;
     public Color selectedVertexColor = Color.yellow;
     public Color normalVertexColor = Color.white;
    
@@ -568,7 +568,7 @@ public class HoloLensCubeFoldController : MonoBehaviour, IMixedRealityPointerHan
         Vector3 foldedALocal = currentBasePosition + new Vector3(0f, 0f, -0.5f);
         Vector3 centerLocal = foldedALocal + new Vector3(0.5f, 0.5f, 0.5f);
         Vector3 cubeCenter = verticesContainer.TransformPoint(centerLocal);
-        float halfEdge = 0.5f;
+        float halfEdge = 0.2f;
 
         Vector3[] foldedPositions = new Vector3[8];
         foldedPositions[0] = cubeCenter + new Vector3(-halfEdge, -halfEdge, -halfEdge);
