@@ -8,7 +8,7 @@
         {
           "contentName": "弧度制",
           "description": "CH0-1",
-          "videoClip" :"Assets/HoloMath/Video/5-1空間中的點線面.mp4",
+          "videoClip" :"Assets/HoloMath/Video/總審CH0-1.mp4",
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",
@@ -52,7 +52,7 @@
         {
           "contentName": "弧度制",
           "description": "CH0-1",
-          "videoClip" :"Assets/HoloMath/Video/5-1空間中的點線面.mp4",
+          "videoClip" :"Assets/HoloMath/Video/總審CH0-1.mp4",
           "questionImage": null,
           "hasImage": false,
           "threeDObject": "Angle_Anime",

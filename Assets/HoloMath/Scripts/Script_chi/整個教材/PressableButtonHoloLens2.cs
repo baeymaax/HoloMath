@@ -75,7 +75,7 @@ namespace Microsoft.MixedReality.Toolkit.UI
                 initialCompressableButtonVisualsLocalScale = compressableButtonVisuals.transform.localScale;
             }
 
-            if (highlightPlate != null)
+            if (highlightPlate != null && highlightPlate.sharedMaterial != null)
             {
                 // Cache the initial highlight plate state.
                 fluentLightIntensityID = Shader.PropertyToID("_FluentLightIntensity");
