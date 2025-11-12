@@ -106,7 +106,7 @@ public class TutorialContent_Test
     public VideoClip videoClip;
     public Texture2D questionImage;
     public bool hasImage = false;
-    public GameObject threeDObject;
+    public String threeDObject;
     public string questionText;
 
     [Header("Question Text 設定")]
@@ -185,7 +185,7 @@ public class TutorialContent_Test
         }
         if (threeDObject != null)
         {
-            summary += $"\n3D物件: {threeDObject.name}";
+            summary += $"\n3D物件: {threeDObject}";
         }
         if (HasInteractiveQuestions())
         {
@@ -539,13 +539,13 @@ public class TutorialContentManager_Test : MonoBehaviour
 
     private void InitializeThreeDObjects()
     {
-        for (int i = 0; i < tutorialContents.Count; i++)
-        {
-            if (tutorialContents[i].threeDObject != null)
-            {
-                tutorialContents[i].threeDObject.SetActive(false);
-            }
-        }
+        // for (int i = 0; i < tutorialContents.Count; i++)
+        // {
+        //     if (tutorialContents[i].threeDObject != null)
+        //     {
+        //         tutorialContents[i].threeDObject.SetActive(false);
+        //     }
+        // }
     }
 #region Button
     private void InitializeButtons()
@@ -713,6 +713,7 @@ public class TutorialContentManager_Test : MonoBehaviour
             UpdateVideo(content.videoClip);
             UpdateQuestionContent(content);
             Update3DObject(content.threeDObject);
+            Debug.Log("3D"+content.threeDObject);
             ResetAnswerState();
             UpdateScoreDisplay();
         }
@@ -1594,8 +1595,9 @@ public class TutorialContentManager_Test : MonoBehaviour
         }
     }
 
-    private void Update3DObject(GameObject newThreeDObject)
+    private void Update3DObject(String newThreeDObjectName)
     {
+        GameObject newThreeDObject = GameObject.Find(newThreeDObjectName);
         if (currentThreeDObject != null)
         {
             currentThreeDObject.SetActive(false); //控制在場景消失
@@ -1603,14 +1605,18 @@ public class TutorialContentManager_Test : MonoBehaviour
 
         if (newThreeDObject != null)
         {
-            if (newThreeDObject.transform.parent != threeDContainer)
-            {
-                newThreeDObject.transform.SetParent(threeDContainer);
-                newThreeDObject.transform.localPosition = Vector3.zero;
-                newThreeDObject.transform.localRotation = Quaternion.identity; //設定3D物件位置
-            }
+            // if (newThreeDObject.transform.parent != threeDContainer)
+            // {
+            //     newThreeDObject.transform.SetParent(threeDContainer);
+            //     newThreeDObject.transform.localPosition = Vector3.zero;
+            //     newThreeDObject.transform.localRotation = Quaternion.identity; //設定3D物件位置
+            // }
             newThreeDObject.SetActive(true); //控制在場景出現
+            Debug.Log("有3D物件" + newThreeDObject);
             currentThreeDObject = newThreeDObject;
+        }else
+        {
+            Debug.Log("沒有3D物件" + newThreeDObject);
         }
     }
 

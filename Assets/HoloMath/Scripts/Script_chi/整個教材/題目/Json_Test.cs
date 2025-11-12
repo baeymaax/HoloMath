@@ -291,7 +291,18 @@ public class Json_Test : MonoBehaviour
         // 处理 3D 物件
         if (!string.IsNullOrEmpty(jsonContent.threeDObject))
         {
-            tutorialContent.threeDObject = GameObject.Find(jsonContent.threeDObject);
+            // 首先嘗試在場景中尋找物件（執行時）
+            tutorialContent.threeDObject = jsonContent.threeDObject;
+
+            // 如果在場景中找不到，記錄警告
+            if (tutorialContent.threeDObject == null)
+            {
+                Debug.LogWarning($"在場景中找不到 3D 物件: {jsonContent.threeDObject}，將在執行時動態尋找");
+            }
+            else
+            {
+                Debug.Log($"成功在場景中找到 3D 物件: {jsonContent.threeDObject}");
+            }
         }
         
         // 转换问题
