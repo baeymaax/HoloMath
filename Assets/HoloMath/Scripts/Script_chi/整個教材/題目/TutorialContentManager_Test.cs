@@ -679,6 +679,12 @@ public class TutorialContentManager_Test : MonoBehaviour
 
     #region 單元載入方法
 
+    // 切換單元的方法（公開版本供選單使用）
+    public void LoadUnitFromMenu(int unitIndex, int contentIndexInUnit)
+    {
+        LoadUnit(unitIndex, contentIndexInUnit);
+    }
+
     // 切換單元的方法
     private void LoadUnit(int unitIndex, int contentIndexInUnit)
     {
