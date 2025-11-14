@@ -22,7 +22,7 @@
           "questions": [
             {
               "questionType": "MultipleChoice",
-              "promptText": "上圖是正方體的平面展開圖，請問在這個正方體中，(1) 線段 CH 與 AF 的關係為何?",
+              "promptText": "(1) 線段 CH 與 AF 的關係為何?",
               "correctAnswer": "",
               "acceptableAnswers": [],
               "hint": "",
