@@ -141,7 +141,10 @@ PlayerSettings:
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
   bundleVersion: 0.1
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: -2866878952802919170, guid: 5a0dcb3195a407141a9225992a482f14, type: 2}
+  - {fileID: -863650960480744228, guid: 1055f7d4ca7d4cc41a2b6c8b15d99472, type: 2}
+  - {fileID: 11400000, guid: 628bf83874828554d80c749f15299b50, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -302,6 +305,9 @@ PlayerSettings:
     m_DynamicBatching: 0
   - m_BuildTarget: WebGL
     m_StaticBatching: 0
+    m_DynamicBatching: 0
+  - m_BuildTarget: Windows Store Apps
+    m_StaticBatching: 1
     m_DynamicBatching: 0
   m_BuildTargetShaderSettings: []
   m_BuildTargetGraphicsJobs:
@@ -696,11 +702,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: HoloMathPackage
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: 
+  metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 8088f6a8606ddd01
   metroApplicationDescription: Template_3D
   wsaImages: {}
   metroTileShortName: HoloMath

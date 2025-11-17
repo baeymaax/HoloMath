@@ -233,9 +233,19 @@ public class Json_Test : MonoBehaviour
         if (!string.IsNullOrEmpty(jsonContent.videoClip))
         {
             string normalizedPath = jsonContent.videoClip.Replace('\\', '/');
-            
+
             #if UNITY_EDITOR
             tutorialContent.videoClip = UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.Video.VideoClip>(normalizedPath);
+            if (tutorialContent.videoClip == null)
+            {
+                Debug.LogWarning($"無法載入影片: {normalizedPath}");
+            }
+            else
+            {
+                Debug.Log($"成功載入影片: {normalizedPath} -> {tutorialContent.videoClip.name}");
+            }
+            #else
+            Debug.LogWarning($"非編輯器模式,無法載入影片: {normalizedPath}");
             #endif
         }
 
@@ -281,7 +291,18 @@ public class Json_Test : MonoBehaviour
         // 处理 3D 物件
         if (!string.IsNullOrEmpty(jsonContent.threeDObject))
         {
-            tutorialContent.threeDObject = GameObject.Find(jsonContent.threeDObject);
+            // 首先嘗試在場景中尋找物件（執行時）
+            tutorialContent.threeDObject = jsonContent.threeDObject;
+
+            // 如果在場景中找不到，記錄警告
+            if (tutorialContent.threeDObject == null)
+            {
+                Debug.LogWarning($"在場景中找不到 3D 物件: {jsonContent.threeDObject}，將在執行時動態尋找");
+            }
+            else
+            {
+                Debug.Log($"成功在場景中找到 3D 物件: {jsonContent.threeDObject}");
+            }
         }
         
         // 转换问题
